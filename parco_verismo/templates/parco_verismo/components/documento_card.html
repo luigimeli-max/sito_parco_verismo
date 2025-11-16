@@ -1,0 +1,50 @@
+{% load i18n %}
+{% comment %}
+Componente per card documento riutilizzabile
+Uso: {% include 'parco_verismo/components/documento_card.html' with documento=documento %}
+{% endcomment %}
+
+<div class="col-md-6 col-lg-4 mb-4">
+  <div class="card h-100 shadow-sm">
+    {% if documento.anteprima %}
+      <img src="{{ documento.anteprima.url }}"
+           class="card-img-top"
+           alt="Anteprima {{ documento.titolo }}"
+           style="max-height: 200px; object-fit: cover;">
+    {% else %}
+      <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+        <i class="bi bi-file-pdf" style="font-size: 4rem; color: #dc3545;"></i>
+      </div>
+    {% endif %}
+    <div class="card-body d-flex flex-column">
+      <div class="mb-2">
+        <span class="badge bg-primary">{{ documento.get_tipo_display }}</span>
+        {% if documento.anno_pubblicazione %}
+          <span class="badge bg-secondary">{{ documento.anno_pubblicazione }}</span>
+        {% endif %}
+      </div>
+      <h5 class="card-title">
+        <a href="{{ documento.get_absolute_url }}" class="text-decoration-none">{{ documento.titolo }}</a>
+      </h5>
+      {% if documento.autori %}
+        <p class="card-text text-muted small mb-2">
+          <i class="bi bi-person me-1"></i>{{ documento.autori }}
+        </p>
+      {% endif %}
+      <p class="card-text text-muted mb-2">
+        <i class="bi bi-calendar me-1"></i>{{ documento.data_pubblicazione|date:"d/m/Y" }}
+      </p>
+      {% if documento.riassunto %}
+        <p class="card-text">{{ documento.riassunto|truncatewords:25 }}</p>
+      {% else %}
+        <p class="card-text">{{ documento.descrizione|truncatewords:25 }}</p>
+      {% endif %}
+      <div class="mt-auto">
+        <a href="{{ documento.get_absolute_url }}" class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-file-pdf me-1"></i>{% trans 'Visualizza documento' %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

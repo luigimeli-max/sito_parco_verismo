@@ -1,0 +1,76 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ evento.titolo }} - {% trans 'Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="site-section detail-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="site-section-title text-center mb-3">{{ evento.titolo }}</h1>
+
+        {% if evento.immagine %}
+          <div class="text-center mb-5">
+            <img src="{{ evento.immagine.url }}" alt="Immagine evento {{ evento.titolo }}" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: contain;">
+          </div>
+        {% endif %}
+
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <div class="site-card h-100">
+              <div class="site-card-body">
+                <h5 class="site-card-title">
+                  <i class="bi bi-calendar-event me-2"></i>{% trans 'Data e Ora' %}
+                </h5>
+                <p class="mb-2">
+                  <strong>{% trans 'Inizio:' %}</strong> {{ evento.data_inizio|date:"l, d F Y \a\l\l\e H:i" }}
+                </p>
+                {% if evento.data_fine %}
+                  <p class="mb-0">
+                    <strong>{% trans 'Fine:' %}</strong> {{ evento.data_fine|date:"l, d F Y \a\l\l\e H:i" }}
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="site-card h-100">
+              <div class="site-card-body">
+                <h5 class="site-card-title">
+                  <i class="bi bi-geo-alt me-2"></i>{% trans 'Luogo' %}
+                </h5>
+                <p class="mb-2">
+                  <strong>{{ evento.luogo }}</strong>
+                </p>
+                {% if evento.indirizzo %}
+                  <p class="mb-0 text-secondary">{{ evento.indirizzo }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="site-card mb-5">
+          <div class="site-card-body">
+            <div class="site-card-description">
+              {{ evento.descrizione|linebreaks }}
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center d-flex flex-column flex-sm-row justify-content-center gap-3 return-actions">
+          <a href="{% url 'eventi' %}" class="btn btn-outline-secondary">
+            ← {% trans 'Torna agli eventi' %}
+          </a>
+          <a href="{% url 'calendario' %}" class="btn btn-outline-primary">
+            <i class="bi bi-calendar"></i> {% trans 'Vedi calendario' %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

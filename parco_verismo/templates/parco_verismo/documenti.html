@@ -1,0 +1,58 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans 'Documenti e Studi - Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="container my-5 pt-5">
+  <h1 class="text-center mb-4">{% trans 'Documenti e Studi' %}</h1>
+  <p class="text-center mb-5">{% trans 'Esplora i documenti e gli studi pubblicati dal Parco Letterario del Verismo' %}</p>
+
+  <!-- Filtri e ricerca -->
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <form method="get" action="{% url 'documenti' %}" class="d-flex">
+        <input type="text" 
+               name="q" 
+               class="form-control me-2" 
+               placeholder="{% trans 'Cerca per titolo, descrizione, autori...' %}" 
+               value="{{ query }}">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-search"></i> {% trans 'Cerca' %}
+        </button>
+      </form>
+    </div>
+    <div class="col-md-4">
+      <form method="get" action="{% url 'documenti' %}" class="d-flex">
+        {% if query %}
+          <input type="hidden" name="q" value="{{ query }}">
+        {% endif %}
+        <select name="tipo" class="form-select" onchange="this.form.submit()">
+          <option value="">{% trans 'Tutti i tipi' %}</option>
+          <option value="documento" {% if tipo_filter == 'documento' %}selected{% endif %}>{% trans 'Documenti' %}</option>
+          <option value="studio" {% if tipo_filter == 'studio' %}selected{% endif %}>{% trans 'Studi' %}</option>
+          <option value="ricerca" {% if tipo_filter == 'ricerca' %}selected{% endif %}>{% trans 'Ricerche' %}</option>
+          <option value="saggio" {% if tipo_filter == 'saggio' %}selected{% endif %}>{% trans 'Saggi' %}</option>
+        </select>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista documenti -->
+  <div class="row">
+    {% for documento in documenti %}
+      {% include 'parco_verismo/components/documento_card.html' with documento=documento %}
+    {% empty %}
+      <div class="col-12">
+        <div class="alert alert-info text-center">
+          <h5>{% trans 'Nessun documento disponibile' %}</h5>
+          <p>{% trans 'Al momento non ci sono documenti o studi pubblicati. Torna presto per consultare i nostri materiali!' %}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+

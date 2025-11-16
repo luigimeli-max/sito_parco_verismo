@@ -1,0 +1,26 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans 'Notizie - Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="container my-5 pt-5">
+  <h1 class="text-center mb-4">{% trans 'News & Novità' %}</h1>
+  <p class="text-center mb-5">{% trans 'Rimani aggiornato sulle ultime novità del Parco Letterario del Verismo' %}</p>
+
+  <div class="row">
+    {% for notizia in notizie %}
+      {% include 'parco_verismo/components/notizia_card.html' with notizia=notizia %}
+    {% empty %}
+      <div class="col-12">
+        <div class="alert alert-info text-center">
+          <h5>{% trans 'Nessuna notizia disponibile' %}</h5>
+          <p>{% trans 'Al momento non ci sono notizie pubblicate. Torna presto per leggere le nostre novità!' %}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load i18n %}
+{% comment %}
+Componente per form di ricerca riutilizzabile
+Uso: {% include 'parco_verismo/components/search_form.html' with action_url='biblioteca' placeholder='Cerca...' %}
+{% endcomment %}
+
+<div class="row justify-content-center mb-4">
+  <div class="col-md-8">
+    <form method="get" action="{% url action_url %}" class="d-flex gap-2">
+      <input type="text"
+             name="q"
+             class="form-control"
+             placeholder="{{ placeholder|default:_('Cerca...') }}"
+             value="{{ query }}">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-search me-1"></i>{% trans 'Cerca' %}
+      </button>
+    </form>
+  </div>
+</div>

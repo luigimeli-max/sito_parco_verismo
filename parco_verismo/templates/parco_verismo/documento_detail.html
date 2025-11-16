@@ -1,0 +1,91 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ documento.titolo }} - {% trans 'Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="site-section detail-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="site-section-title text-center mb-3">{{ documento.titolo }}</h1>
+
+        <!-- Badge tipo e anno -->
+        <div class="text-center mb-3">
+          <span class="badge bg-primary me-2">{{ documento.get_tipo_display }}</span>
+          {% if documento.anno_pubblicazione %}
+            <span class="badge bg-secondary">{{ documento.anno_pubblicazione }}</span>
+          {% endif %}
+        </div>
+
+        <!-- Informazioni documento -->
+        <div class="text-center text-secondary mb-5">
+          {% if documento.autori %}
+            <p class="mb-2">
+              <i class="bi bi-person me-2"></i><strong>{% trans 'Autori:' %}</strong> {{ documento.autori }}
+            </p>
+          {% endif %}
+          {% blocktrans with data_pub=documento.data_pubblicazione|date:"l, d F Y" %}
+          <p class="mb-0">
+            <i class="bi bi-calendar me-2"></i>Pubblicato il {{ data_pub }}
+          </p>
+          {% endblocktrans %}
+        </div>
+
+        <!-- Anteprima -->
+        {% if documento.anteprima %}
+          <div class="text-center mb-5">
+            <img src="{{ documento.anteprima.url }}" 
+                 alt="Anteprima {{ documento.titolo }}" 
+                 class="img-fluid rounded shadow" 
+                 style="max-height: 400px; object-fit: contain;">
+          </div>
+        {% endif %}
+
+        <!-- Descrizione -->
+        <div class="site-card">
+          <div class="site-card-body">
+            <div class="documento-descrizione site-card-description">
+              {{ documento.descrizione|linebreaks }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Parole chiave -->
+        {% if documento.parole_chiave %}
+          <div class="mt-4">
+            <h6>{% trans 'Parole chiave:' %}</h6>
+            <p class="text-muted">{{ documento.parole_chiave }}</p>
+          </div>
+        {% endif %}
+
+        <!-- Download PDF -->
+        <div class="text-center mt-5 mb-4">
+          <a href="{{ documento.pdf_file.url }}" 
+             class="btn btn-primary btn-lg" 
+             target="_blank"
+             download>
+            <i class="bi bi-download me-2"></i>{% trans 'Scarica PDF' %}
+          </a>
+          <a href="{{ documento.pdf_file.url }}" 
+             class="btn btn-outline-primary btn-lg ms-2" 
+             target="_blank">
+            <i class="bi bi-file-pdf me-2"></i>{% trans 'Visualizza PDF' %}
+          </a>
+        </div>
+
+        <!-- Torna indietro -->
+        <div class="text-center mt-5 return-actions">
+          <a href="{% url 'documenti' %}" class="btn btn-outline-secondary">
+            ← {% trans 'Torna ai documenti' %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

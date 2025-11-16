@@ -1,0 +1,168 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" data-theme="verismo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% trans 'Parco Letterario Verismo - Un viaggio nella letteratura verista siciliana' %}">
+    <title>{% block title %}{% trans 'Parco Letterario Verismo' %}{% endblock %}</title>
+
+    <!-- Bootstrap CSS locale -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="{% static 'fonts/inter-400.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/montserrat-500.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/montserrat-700.css' %}">
+
+    <!-- Bootstrap Icons locale -->
+    <link rel="stylesheet" href="{% static 'fonts/bootstrap-icons/bootstrap-icons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    {% include 'parco_verismo/navbar.html' %}
+
+    {% block hero_section %}{% endblock %}
+
+    <main class="page-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="footer-heading mb-3">{% trans 'Parco Letterario Verismo' %}</h5>
+                    <p class="footer-text mb-3">{% trans 'Un viaggio nella Sicilia di Verga e Capuana attraverso i luoghi che hanno ispirato i grandi capolavori del verismo italiano.' %}</p>
+                    <div class="social-links d-flex">
+                        <a href="#" class="footer-social-link me-3" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer-social-link me-3" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-link me-3" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer-social-link" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="footer-subheading mb-3">{% trans 'Navigazione' %}</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="footer-link">{% trans 'Home' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'biblioteca' %}" class="footer-link">{% trans 'Biblioteca' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'eventi' %}" class="footer-link">{% trans 'Eventi' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'notizie' %}" class="footer-link">{% trans 'Notizie' %}</a></li>
+                        <li class="mb-2"><a href="{% url 'documenti' %}" class="footer-link">{% trans 'Documenti & Studi' %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h6 class="footer-subheading mb-3">{% trans 'Contatti' %}</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2 footer-icon"></i>
+                            Sicilia, Italia
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2 footer-icon"></i>
+                            info@parcoverismo.it
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2 footer-icon"></i>
+                            +39 091 123 4567
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h6 class="footer-subheading mb-3">{% trans 'Newsletter' %}</h6>
+                    <p class="footer-text small mb-3">{% trans 'Ricevi aggiornamenti sugli eventi e le novità del Parco.' %}</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control footer-input" placeholder="{% trans 'La tua email' %}" aria-label="{% trans 'Email per newsletter' %}">
+                        <button class="btn btn-primary footer-btn" type="button">{% trans 'Iscriviti' %}</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 small footer-text">&copy; 2024 {% trans 'Parco Letterario Verismo. Tutti i diritti riservati.' %}</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="footer-link small me-3">{% trans 'Privacy Policy' %}</a>
+                    <a href="#" class="footer-link small">{% trans 'Termini di Servizio' %}</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+        // Navbar scroll effect (solo per homepage)
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            const logo = navbar ? navbar.querySelector('.logo-header') : null;
+            // Applica navbar-scrolled solo se non è una pagina non-homepage
+            if (navbar && !navbar.classList.contains('navbar-dark-pages')) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                    // Cambia logo da bianco a nero quando si scrolla
+                    if (logo && logo.src.includes('logo-header-white.png')) {
+                        logo.src = logo.src.replace('logo-header-white.png', 'logo-header.png');
+                    }
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                    // Ripristina logo bianco quando si torna in alto
+                    if (logo && logo.src.includes('logo-header.png') && !logo.src.includes('logo-header-white.png')) {
+                        logo.src = logo.src.replace('logo-header.png', 'logo-header-white.png');
+                    }
+                }
+            }
+        });
+        
+        // Applica navbar-scrolled immediatamente alla pagina se non è homepage
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('mainNav');
+            if (navbar && navbar.classList.contains('navbar-dark-pages')) {
+                navbar.classList.add('navbar-scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#' || href.length <= 1) {
+                    return;
+                }
+
+                const target = document.getElementById(href.substring(1));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>
+

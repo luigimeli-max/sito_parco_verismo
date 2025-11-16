@@ -1,0 +1,37 @@
+{% load i18n %}
+{% comment %}
+Componente per card evento riutilizzabile
+Uso: {% include 'parco_verismo/components/evento_card.html' with evento=evento %}
+{% endcomment %}
+
+<div class="col-md-6 col-lg-4 mb-4">
+  <div class="card h-100 shadow-sm">
+    {% if evento.immagine %}
+      <img src="{{ evento.immagine.url }}"
+           class="card-img-top"
+           alt="Immagine evento {{ evento.titolo }}"
+           style="max-height: 200px; object-fit: cover;">
+    {% endif %}
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">
+        <a href="{{ evento.get_absolute_url }}" class="text-decoration-none">{{ evento.titolo }}</a>
+      </h5>
+      <p class="card-text text-muted mb-2">
+        <i class="bi bi-calendar-event me-1"></i>
+        {{ evento.data_inizio|date:"d/m/Y H:i" }}
+        {% if evento.data_fine %} 
+          - {{ evento.data_fine|date:"d/m/Y H:i" }}
+        {% endif %}
+      </p>
+      <p class="card-text text-muted mb-2">
+        <i class="bi bi-geo-alt me-1"></i>{{ evento.luogo }}
+      </p>
+      <p class="card-text">{{ evento.descrizione|truncatewords:30 }}</p>
+      <div class="mt-auto">
+        <a href="{{ evento.get_absolute_url }}" class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-info-circle me-1"></i>{% trans 'Scopri di più' %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+{% load i18n %}
+{% comment %}
+Componente per messaggio "nessun risultato"
+Uso: {% include 'parco_verismo/components/no_results.html' with message='Nessun elemento trovato' %}
+{% endcomment %}
+
+<div class="col-12">
+  <div class="text-center py-5">
+    <div class="mb-4">
+      <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
+    </div>
+    <h4 class="text-muted mb-2">{{ title|default:_('Nessun risultato') }}</h4>
+    <p class="text-muted mb-0">{{ message|default:_('Non sono stati trovati elementi corrispondenti alla tua ricerca.') }}</p>
+  </div>
+</div> 

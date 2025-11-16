@@ -1,0 +1,46 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% blocktrans with autore=autore.nome %}Opere di {{ autore }}{% endblocktrans %} - {% trans 'Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="container my-5 pt-5">
+  {% blocktrans with autore=autore.nome %}
+  <h1 class="text-center mb-4">Opere di {{ autore }}</h1>
+  {% endblocktrans %}
+  
+  <div class="row">
+    {% for opera in opere %}
+      <div class="col-md-12 mb-4">
+        <div class="card">
+          <div class="row g-0">
+            {% if opera.copertina %}
+              <div class="col-md-3">
+                <img src="{{ opera.copertina.url }}" class="img-fluid rounded-start" alt="Copertina di {{ opera.titolo }}" style="max-height: 180px; object-fit: cover;">
+              </div>
+            {% endif %}
+            <div class="col-md-9">
+              <div class="card-body">
+                <h3 class="card-title">
+                  <a href="{{ opera.get_absolute_url }}" class="text-decoration-none">{{ opera.titolo }}</a>
+                </h3>
+                {% if opera.anno_pubblicazione %}
+                  <p class="text-muted"><strong>{% trans 'Anno di pubblicazione:' %}</strong> {{ opera.anno_pubblicazione }}</p>
+                {% endif %}
+                <p class="card-text">{{ opera.trama|truncatewords:50 }}</p>
+                <a href="{{ opera.get_absolute_url }}" class="btn btn-primary">{% trans 'Scopri di più' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <p class="text-center text-muted">{% trans 'Nessuna opera disponibile per questo autore.' %}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

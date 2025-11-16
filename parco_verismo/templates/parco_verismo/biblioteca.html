@@ -1,0 +1,23 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans 'Biblioteca Digitale - Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="container my-5 pt-5">
+  <h1 class="text-center mb-4">{% trans 'Biblioteca Digitale' %}</h1>
+  <p class="text-center mb-5">{% trans 'Cerca tra le opere di Verga e Capuana e accedi alla lettura integrale su Wikisource.' %}</p>
+
+  {% include 'parco_verismo/components/search_form.html' with action_url='biblioteca' placeholder='Cerca un\'opera o un autore...' %}
+
+  <div class="row">
+    {% for opera in opere %}
+      {% include 'parco_verismo/components/opera_card.html' with opera=opera %}
+    {% empty %}
+      {% include 'parco_verismo/components/no_results.html' with title=_('Nessuna opera trovata') message=_('Non sono state trovate opere corrispondenti alla tua ricerca.') %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load i18n %}
+{% comment %}
+Componente per card opera riutilizzabile
+Uso: {% include 'parco_verismo/components/opera_card.html' with opera=opera %}
+{% endcomment %}
+
+<div class="col-md-6 col-lg-4 mb-4">
+  <div class="card h-100 shadow-sm">
+    {% if opera.copertina %}
+      <img src="{{ opera.copertina.url }}"
+           class="card-img-top"
+           alt="Copertina di {{ opera.titolo }}"
+           style="max-height: 250px; object-fit: cover;">
+    {% endif %}
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">
+        <a href="{{ opera.get_absolute_url }}" class="text-decoration-none">{{ opera.titolo }}</a>
+      </h5>
+      {% blocktrans with autore=opera.autore.nome %}
+      <p class="card-text text-muted mb-2">di {{ autore }}</p>
+      {% endblocktrans %}
+      {% if opera.anno_pubblicazione %}
+        <p class="card-text"><small class="text-muted">{% trans 'Anno:' %} {{ opera.anno_pubblicazione }}</small></p>
+      {% endif %}
+      <div class="mt-auto">
+        <a href="{{ opera.get_absolute_url }}" class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-info-circle me-1"></i>{% trans 'Scopri di più' %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,50 +1,21 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="it" data-theme="verismo">
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Parco Letterario Verismo - Un viaggio nella letteratura verista siciliana">
-    <title>Parco Letterario Verismo</title>
+{% block body_class %}has-hero{% endblock %}
 
-    <!-- Bootstrap CSS locale -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% block title %}{% trans 'Parco Letterario Verismo' %}{% endblock %}
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="{% static 'fonts/inter-400.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/montserrat-500.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/montserrat-700.css' %}">
-
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-</head>
-
-<body>
-    {% include 'parco_verismo/navbar.html' %}
-    <header>
-        <video class="videobg" src="{% static 'assets/video/videobg.mp4' %}" autoplay muted loop></video>
-        <div class="hero-content">
-            <h1 class="hero-title">Parco Letterario del Verismo</h1>
-            <p class="hero-subtitle">Un viaggio nella Sicilia di Verga e Capuana</p>
-        </div>
-    </header>
+{% block hero_section %}
+<header>
+    <video class="videobg" src="{% static 'assets/video/videobg.mp4' %}" autoplay muted loop></video>
+    <div class="hero-content">
+        <h1 class="hero-title">{% trans 'Parco Letterario del Verismo' %}</h1>
+        <p class="hero-subtitle">{% trans 'Un viaggio nella Sicilia di Verga e Capuana' %}</p>
     </div>
+</header>
+{% endblock %}
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-        });
-    </script>
-</body>
+{% block content %}
+<!-- Contenuto della homepage -->
+{% endblock %}
 
-</html>

@@ -1,0 +1,44 @@
+{% extends "parco_verismo/base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ notizia.titolo }} - {% trans 'Parco Letterario Verismo' %}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="site-section detail-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="site-section-title text-center mb-3">{{ notizia.titolo }}</h1>
+
+        {% blocktrans with data_pub=notizia.data_pubblicazione|date:"l, d F Y" %}
+        <div class="text-center text-secondary mb-5">
+          <i class="bi bi-calendar me-2"></i>Pubblicata il {{ data_pub }}
+        </div>
+        {% endblocktrans %}
+
+        {% if notizia.immagine %}
+          <div class="text-center mb-5">
+            <img src="{{ notizia.immagine.url }}" alt="Immagine notizia {{ notizia.titolo }}" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: contain;">
+          </div>
+        {% endif %}
+
+        <div class="site-card">
+          <div class="site-card-body">
+            <div class="notizia-contenuto site-card-description">
+              {{ notizia.contenuto|linebreaks }}
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5 return-actions">
+          <a href="{% url 'notizie' %}" class="btn btn-outline-secondary">
+            ← {% trans 'Torna alle news' %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
