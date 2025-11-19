@@ -1,6 +1,6 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
-from .models import Autore, Opera, Evento, Notizia, Documento, FotoArchivio
+from .models import Autore, Opera, Evento, Notizia, Documento, FotoArchivio, Itinerario
 
 @admin.register(Autore)
 class AutoreAdmin(admin.ModelAdmin):
@@ -65,5 +65,21 @@ class FotoArchivioAdmin(TranslatableAdmin):
         }),
         ('Informazioni', {
             'fields': ('titolo', 'descrizione')
+        }),
+    )
+
+@admin.register(Itinerario)
+class ItinerarioAdmin(TranslatableAdmin):
+    list_display = ('__str__', 'tipo', 'ordine', 'is_active')
+    list_filter = ('is_active', 'tipo')
+    search_fields = ('translations__titolo', 'translations__descrizione')
+    ordering = ('ordine', 'translations__titolo')
+    list_editable = ('ordine', 'is_active')
+    fieldsets = (
+        (None, {
+            'fields': ('slug', 'tipo', 'ordine', 'is_active')
+        }),
+        ('Contenuto', {
+            'fields': ('titolo', 'descrizione', 'immagine', 'link_strava')
         }),
     )

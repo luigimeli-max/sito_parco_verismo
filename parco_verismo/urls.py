@@ -32,4 +32,7 @@ urlpatterns = [
     path('licodia/', views.Licodia_View, name='licodia'),
     path('mineo/', views.Mineo_View, name='mineo'),
     path('vizzini/', views.Vizzini_View, name='vizzini'),
+
+    # Itinerari
+    path('itinerari-verghiani/', views.itinerari_verghiani_view, name='itinerari_verghiani'),
 ]

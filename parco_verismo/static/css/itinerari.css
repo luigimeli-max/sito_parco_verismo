@@ -1,0 +1,166 @@
+/* ===========================
+   STILI PAGINA ITINERARI
+   =========================== */
+
+/* Hero Section Itinerari Verghiani */
+.hero-verghiani {
+  position: relative;
+  background: url("/static/assets/img/itinerari/bg-hero-verghiani.jpg") center center / cover no-repeat;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-text-inverse);
+  border-bottom: 4px solid var(--color-primary);
+  overflow: hidden;
+}
+
+.hero-verghiani::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+.hero-verghiani .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-verghiani h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text-inverse);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-verghiani p {
+  font-size: 1.2rem;
+  color: var(--color-primary-pale);
+  margin-top: var(--space-sm);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* ===========================
+   CARD ITINERARI
+   =========================== */
+
+.itinerario-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.itinerario-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.itinerario-stats {
+  background-color: var(--color-surface-elevated);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
+.itinerario-card .btn-strava {
+  background-color: #FC4C02;
+  border-color: #FC4C02;
+  color: white;
+  font-weight: 600;
+}
+
+.itinerario-card .btn-strava:hover {
+  background-color: #E63900;
+  border-color: #E63900;
+  color: white;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+/* Desktop (992px - 1199px) */
+@media (max-width: 1199px) {
+  .hero-verghiani h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-verghiani p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+  .hero-verghiani {
+    height: 65vh;
+  }
+
+  .hero-verghiani .hero-content {
+    transform: translateY(-40px);
+    padding: 0 20px;
+  }
+
+  .hero-verghiani h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-verghiani p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Large (576px - 767px) */
+@media (max-width: 767px) {
+  .hero-verghiani {
+    height: 55vh;
+  }
+
+  .hero-verghiani .hero-content {
+    transform: translateY(-30px);
+    padding: 0 15px;
+  }
+
+  .hero-verghiani h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-verghiani p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Small (≤575px) */
+@media (max-width: 575px) {
+  .hero-verghiani {
+    height: 50vh;
+  }
+
+  .hero-verghiani .hero-content {
+    transform: translateY(-20px);
+    padding: 0 10px;
+  }
+
+  .hero-verghiani h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-verghiani p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Extra Small (≤400px) */
+@media (max-width: 400px) {
+  .hero-verghiani h1 {
+    font-size: 1.3rem;
+  }
+
+  .hero-verghiani p {
+    font-size: 0.85rem;
+  }
+}
