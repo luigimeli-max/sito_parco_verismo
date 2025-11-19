@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Opera, Autore, Evento, Notizia, Documento, FotoArchivio
+from .models import Opera, Autore, Evento, Notizia, Documento, FotoArchivio, Itinerario
 from django.db.models import Q
 from django.http import HttpResponse
 
@@ -172,3 +172,10 @@ def Mineo_View(request):
 
 def Vizzini_View(request):
     return render(request, 'parco_verismo/vizzini.html')
+
+def itinerari_verghiani_view(request):
+    itinerari = Itinerario.objects.filter(is_active=True, tipo='verghiano').order_by('ordine')
+    context = {
+        'itinerari': itinerari,
+    }
+    return render(request, 'parco_verismo/itinerari_verghiani.html', context)

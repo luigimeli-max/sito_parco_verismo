@@ -1,115 +1,247 @@
-{% load static i18n %}
-{% if request.path == '/' %}
+{% load static i18n %} {% if request.path == '/' %}
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-{% else %}
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-dark-pages" id="mainNav">
-{% endif %}
+  {% else %}
+  <nav
+    class="navbar navbar-expand-lg navbar-light fixed-top navbar-dark-pages"
+    id="mainNav"
+  >
+    {% endif %}
     <div class="container">
-        <a class="navbar-brand" href="/">
-            {% if request.path == '/' %}
-            <img src="{% static 'assets/img/logo-header-white.png' %}" alt="{% trans 'Parco Letterario Verismo' %}" class="logo-header">
-            {% else %}
-            <img src="{% static 'assets/img/logo-header.png' %}" alt="{% trans 'Parco Letterario Verismo' %}" class="logo-header">
-            {% endif %}
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="{% trans 'Apri navigazione' %}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="/">
+        {% if request.path == '/' %}
+        <img
+          src="{% static 'assets/img/logo-header-white.png' %}"
+          alt="{% trans 'Parco Letterario Verismo' %}"
+          class="logo-header"
+        />
+        {% else %}
+        <img
+          src="{% static 'assets/img/logo-header.png' %}"
+          alt="{% trans 'Parco Letterario Verismo' %}"
+          class="logo-header"
+        />
+        {% endif %}
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="{% trans 'Apri navigazione' %}"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="parcoDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {% trans 'Il Parco' %}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="parcoDropdown">
-                        <li><a class="dropdown-item" href="#missioni">{% trans 'Missioni e visione' %}</a></li>
-                        <li><a class="dropdown-item" href="#comitato">{% trans 'Comitato tecnico' %}</a></li>
-                        <li><a class="dropdown-item" href="#regolamenti">{% trans 'Regolamenti & documenti' %}</a></li>
-                        <li><a class="dropdown-item" href="#partner">{% trans 'Partner e rete territoriale' %}</a></li>
-                        <li><a class="dropdown-item" href="#accrediti">{% trans 'Accrediti e finanziamenti' %}</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="luoghiDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {% trans 'Luoghi & Percorsi' %}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="luoghiPercorsiDropdown">
-                        <li><a class="dropdown-item" href="{% url 'vizzini'%}">Vizzini</a></li>
-                        <li><a class="dropdown-item" href="{% url 'mineo'%}">Mineo</a></li>
-                        <li><a class="dropdown-item" href="{% url 'licodia' %}">Licodia Eubea</a></li>
-                        <li><a class="dropdown-item" href="/#mappe">Mappe interattive</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/#verghiani">Itinerari Verghiani</a></li>
-                        <li><a class="dropdown-item" href="/#capuaniani">Itinerari Capuaniani</a></li>
-                        <li><a class="dropdown-item" href="/#tematici">Tematici</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="eventiDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {% trans 'Eventi & News' %}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="eventiDropdown">
-                        <li><a class="dropdown-item" href="{% url 'eventi' %}">{% trans 'Eventi' %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'calendario' %}">{% trans 'Calendario' %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'notizie' %}">{% trans 'News' %}</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="opereDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {% trans 'Opere & Letteratura' %}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="opereDropdown">
-                        <li><a class="dropdown-item" href="{% url 'opere_per_autore' 'giovanni-verga' %}">{% trans 'Opere di Verga' %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'opere_per_autore' 'luigi-capuana' %}">{% trans 'Opere di Capuana' %}</a></li>
-                        <li><a class="dropdown-item" href="/#personaggi">{% trans 'Personaggi & Lessico del Verismo' %}</a></li>
-                        <li><a class="dropdown-item" href="/#luoghi-opere">{% trans 'Luoghi delle Opere' %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'biblioteca' %}">{% trans 'Biblioteca Digitale' %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'archivio_fotografico' %}">{% trans 'Archivio fotografico' %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'documenti' %}">{% trans 'Documenti & Studi' %}</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/#contatti">{% trans 'Contatti' %}</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="btn btn-primary ms-3" href="/#prenota">{% trans 'Prenota' %}</a>
-                </li>
-
-                <li class="nav-item ms-lg-3">
-                    <form action="{% url 'set_language' %}" method="post" class="language-switcher d-flex align-items-center">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.get_full_path|default:'/' }}">
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                            <button type="submit"
-                                    name="language"
-                                    value="{{ language.code }}"
-                                    class="lang-toggle {% if language.code == LANGUAGE_CODE %}active{% endif %}"
-                                    aria-label="{% trans 'Cambia lingua' %} {{ language.name_local }}">
-                                {{ language.code|upper }}
-                            </button>
-                            {% if not forloop.last %}
-                                <span class="lang-separator">/</span>
-                            {% endif %}
-                        {% endfor %}
-                    </form>
-                </li>
-
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="parcoDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {% trans 'Il Parco' %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="parcoDropdown">
+              <li>
+                <a class="dropdown-item" href="#missioni"
+                  >{% trans 'Missioni e visione' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#comitato"
+                  >{% trans 'Comitato tecnico' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#regolamenti"
+                  >{% trans 'Regolamenti & documenti' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#partner"
+                  >{% trans 'Partner e rete territoriale' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#accrediti"
+                  >{% trans 'Accrediti e finanziamenti' %}</a
+                >
+              </li>
             </ul>
-        </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="luoghiDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {% trans 'Luoghi & Percorsi' %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="luoghiPercorsiDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'vizzini'%}">Vizzini</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'mineo'%}">Mineo</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'licodia' %}"
+                  >Licodia Eubea</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="/#mappe">Mappe interattive</a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="{% url 'itinerari_verghiani' %}"
+                  >Itinerari Verghiani</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="/#capuaniani"
+                  >Itinerari Capuaniani</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="/#tematici">Tematici</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="eventiDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {% trans 'Eventi & News' %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="eventiDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'eventi' %}"
+                  >{% trans 'Eventi' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'calendario' %}"
+                  >{% trans 'Calendario' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'notizie' %}"
+                  >{% trans 'News' %}</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="opereDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {% trans 'Opere & Letteratura' %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="opereDropdown">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{% url 'opere_per_autore' 'giovanni-verga' %}"
+                  >{% trans 'Opere di Verga' %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{% url 'opere_per_autore' 'luigi-capuana' %}"
+                  >{% trans 'Opere di Capuana' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="/#personaggi"
+                  >{% trans 'Personaggi & Lessico del Verismo' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="/#luoghi-opere"
+                  >{% trans 'Luoghi delle Opere' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'biblioteca' %}"
+                  >{% trans 'Biblioteca Digitale' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'archivio_fotografico' %}"
+                  >{% trans 'Archivio fotografico' %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'documenti' %}"
+                  >{% trans 'Documenti & Studi' %}</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/#contatti">{% trans 'Contatti' %}</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-primary ms-3" href="/#prenota"
+              >{% trans 'Prenota' %}</a
+            >
+          </li>
+
+          <li class="nav-item ms-lg-3">
+            <form
+              action="{% url 'set_language' %}"
+              method="post"
+              class="language-switcher d-flex align-items-center"
+            >
+              {% csrf_token %}
+              <input
+                type="hidden"
+                name="next"
+                value="{{ request.get_full_path|default:'/' }}"
+              />
+              {% get_current_language as LANGUAGE_CODE %} {%
+              get_available_languages as LANGUAGES %} {% get_language_info_list
+              for LANGUAGES as languages %} {% for language in languages %}
+              <button
+                type="submit"
+                name="language"
+                value="{{ language.code }}"
+                class="lang-toggle {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                aria-label="{% trans 'Cambia lingua' %} {{ language.name_local }}"
+              >
+                {{ language.code|upper }}
+              </button>
+              {% if not forloop.last %}
+              <span class="lang-separator">/</span>
+              {% endif %} {% endfor %}
+            </form>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 </nav>

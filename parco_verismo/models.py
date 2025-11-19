@@ -201,3 +201,59 @@ class FotoArchivio(TranslatableModel):
         if titolo:
             return titolo
         return f"Foto #{self.pk}"
+
+
+class Itinerario(TranslatableModel):
+    """
+    Modello per gli itinerari verghiani e capuaniani.
+    """
+    slug = models.SlugField(max_length=200, unique=True)
+    immagine = models.ImageField(
+        upload_to="itinerari/",
+        help_text="Immagine rappresentativa dell'itinerario."
+    )
+    link_strava = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Link al percorso su Strava (opzionale)"
+    )
+    ordine = models.IntegerField(
+        default=0,
+        help_text="Ordine di visualizzazione (numero più basso = prima)."
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="Se l'itinerario è attivo e visibile."
+    )
+    tipo = models.CharField(
+        max_length=50,
+        choices=[
+            ('verghiano', 'Itinerario Verghiano'),
+            ('capuaniano', 'Itinerario Capuaniano'),
+            ('tematico', 'Itinerario Tematico'),
+        ],
+        default='verghiano',
+        help_text="Tipo di itinerario."
+    )
+
+    translations = TranslatedFields(
+        titolo=models.CharField(max_length=200, help_text="Titolo dell'itinerario."),
+        descrizione=models.TextField(help_text="Descrizione dettagliata dell'itinerario."),
+    )
+
+    class Meta:
+        ordering = ['ordine', 'translations__titolo']
+        verbose_name = "Itinerario"
+        verbose_name_plural = "Itinerari"
+
+    def __str__(self):
+        return self.safe_translation_getter('titolo', any_language=True) or str(self.pk)
+
+    def get_absolute_url(self):
+        if self.tipo == 'verghiano':
+            return reverse('itinerari_verghiani')
+        elif self.tipo == 'capuaniano':
+            return reverse('itinerari_capuaniani')
+        else:
+            return reverse('itinerari_tematici')
