@@ -59,24 +59,129 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-.itinerario-stats {
-  background-color: var(--color-surface-elevated);
-  padding: 0.75rem;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-primary);
+.itinerario-card .card-title a:hover {
+  color: var(--color-accent) !important;
 }
 
-.itinerario-card .btn-strava {
-  background-color: #FC4C02;
-  border-color: #FC4C02;
+.itinerario-card .btn-maps-card {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%);
+  border: none;
   color: white;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.itinerario-card .btn-strava:hover {
-  background-color: #E63900;
-  border-color: #E63900;
+.itinerario-card .btn-maps-card:hover {
+  background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent) 100%);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 109, 92, 0.3);
+}
+
+/* Pulsanti Maps */
+.btn-maps {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  min-width: 180px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-maps:hover {
+  background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent) 100%);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(47, 109, 92, 0.4);
+}
+
+/* Pagina dettaglio itinerario */
+.itinerario-image-detail img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Stili per le tappe */
+.tappa-card {
+  border-left: 4px solid var(--color-accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tappa-card:hover {
+  transform: translateX(5px);
+}
+
+.tappa-card .site-card-body {
+  padding: 1rem;
+}
+
+.tappa-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tappa-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.tappa-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.tappa-description p {
+  margin-bottom: 0.5rem;
+}
+
+.tappa-description p:last-child {
+  margin-bottom: 0;
+}
+
+.tappa-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .tappa-image {
+    height: 150px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .tappa-title {
+    font-size: 1.1rem;
+  }
+  
+  .tappa-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+  
+  .tappa-card .site-card-body {
+    padding: 0.75rem;
+  }
 }
 
 /* ===========================
@@ -111,6 +216,11 @@
 
   .hero-verghiani p {
     font-size: 1rem;
+  }
+  
+  .btn-maps {
+    min-width: 140px;
+    padding: 0.75rem 2rem !important;
   }
 }
 

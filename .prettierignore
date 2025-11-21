@@ -1,0 +1,6 @@
+# Ignora i template Django
+*.html
+**/*.html
+
+# Ignora le migrazioni
+**/migrations/*.py

@@ -212,11 +212,11 @@ class Itinerario(TranslatableModel):
         upload_to="itinerari/",
         help_text="Immagine rappresentativa dell'itinerario."
     )
-    link_strava = models.URLField(
+    link_maps = models.URLField(
         max_length=500,
         blank=True,
         null=True,
-        help_text="Link al percorso su Strava (opzionale)"
+        help_text="Link al percorso su Google Maps (opzionale)"
     )
     ordine = models.IntegerField(
         default=0,
@@ -253,3 +253,45 @@ class Itinerario(TranslatableModel):
     def get_absolute_url(self):
         """Return the detail URL for this itinerario."""
         return reverse('itinerario_detail', kwargs={'slug': self.slug})
+
+
+class TappaItinerario(TranslatableModel):
+    """
+    Modello per le singole tappe di un itinerario.
+    """
+    itinerario = models.ForeignKey(
+        Itinerario,
+        on_delete=models.CASCADE,
+        related_name='tappe',
+        help_text="Itinerario a cui appartiene questa tappa."
+    )
+    ordine = models.IntegerField(
+        default=0,
+        help_text="Ordine della tappa nell'itinerario (numero più basso = prima)."
+    )
+    immagine = models.ImageField(
+        upload_to="tappe_itinerari/",
+        blank=True,
+        null=True,
+        help_text="Immagine rappresentativa della tappa (opzionale)."
+    )
+
+    translations = TranslatedFields(
+        nome=models.CharField(
+            max_length=200,
+            help_text="Nome della tappa (es. 'Tappa 1: Chiesa di Santa Margherita')"
+        ),
+        descrizione=models.TextField(
+            help_text="Descrizione dettagliata della tappa."
+        ),
+    )
+
+    class Meta:
+        ordering = ['ordine']
+        verbose_name = "Tappa Itinerario"
+        verbose_name_plural = "Tappe Itinerari"
+
+    def __str__(self):
+        nome = self.safe_translation_getter('nome', any_language=True)
+        itinerario_nome = self.itinerario.safe_translation_getter('titolo', any_language=True) if self.itinerario else 'N/A'
+        return f"{itinerario_nome} - {nome}" if nome else f"Tappa #{self.pk}"

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from parler.admin import TranslatableAdmin
-from .models import Autore, Opera, Evento, Notizia, Documento, FotoArchivio, Itinerario
+from parler.admin import TranslatableAdmin, TranslatableTabularInline
+from .models import Autore, Opera, Evento, Notizia, Documento, FotoArchivio, Itinerario, TappaItinerario
 
 @admin.register(Autore)
 class AutoreAdmin(admin.ModelAdmin):
@@ -68,6 +68,12 @@ class FotoArchivioAdmin(TranslatableAdmin):
         }),
     )
 
+class TappaItinerarioInline(TranslatableTabularInline):
+    model = TappaItinerario
+    extra = 1
+    fields = ('ordine', 'nome', 'descrizione', 'immagine')
+    ordering = ['ordine']
+
 @admin.register(Itinerario)
 class ItinerarioAdmin(TranslatableAdmin):
     list_display = ('__str__', 'tipo', 'ordine', 'is_active')
@@ -75,11 +81,31 @@ class ItinerarioAdmin(TranslatableAdmin):
     search_fields = ('translations__titolo', 'translations__descrizione')
     ordering = ('ordine', 'translations__titolo')
     list_editable = ('ordine', 'is_active')
+    inlines = [TappaItinerarioInline]
     fieldsets = (
         (None, {
             'fields': ('slug', 'tipo', 'ordine', 'is_active')
         }),
         ('Contenuto', {
-            'fields': ('titolo', 'descrizione', 'immagine', 'link_strava')
+            'fields': ('titolo', 'descrizione', 'immagine')
+        }),
+        ('Link esterni', {
+            'fields': ('link_maps',)
+        }),
+    )
+
+@admin.register(TappaItinerario)
+class TappaItinerarioAdmin(TranslatableAdmin):
+    list_display = ('__str__', 'itinerario', 'ordine')
+    list_filter = ('itinerario',)
+    search_fields = ('translations__nome', 'translations__descrizione', 'itinerario__translations__titolo')
+    ordering = ('itinerario', 'ordine')
+    list_editable = ('ordine',)
+    fieldsets = (
+        (None, {
+            'fields': ('itinerario', 'ordine')
+        }),
+        ('Contenuto', {
+            'fields': ('nome', 'descrizione', 'immagine')
         }),
     )
