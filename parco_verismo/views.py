@@ -4,7 +4,19 @@ from django.db.models import Q
 from django.http import HttpResponse
 
 def home_view(request):
-    return render(request, 'parco_verismo/index.html')
+    from django.utils import timezone
+
+    # Eventi: prendere i prossimi eventi attivi (a partire da oggi) ordinati per data
+    eventi_latest = Evento.objects.filter(is_active=True, data_inizio__gte=timezone.now()).order_by('data_inizio')[:4]
+
+    # Notizie: prendere le ultime notizie attive ordinate per data di pubblicazione
+    notizie_latest = Notizia.objects.filter(is_active=True).order_by('-data_pubblicazione')[:4]
+
+    context = {
+        'eventi': eventi_latest,
+        'notizie': notizie_latest,
+    }
+    return render(request, 'parco_verismo/index.html', context)
 
 def biblioteca_view(request):
     """

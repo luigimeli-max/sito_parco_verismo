@@ -42,35 +42,78 @@
 
     <!-- Custom Scripts -->
     <script>
-        // Navbar scroll effect (solo per homepage)
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('mainNav');
-            const logo = navbar ? navbar.querySelector('.logo-header') : null;
-            // Applica navbar-scrolled solo se non è una pagina non-homepage
-            if (navbar && !navbar.classList.contains('navbar-dark-pages')) {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('navbar-scrolled');
-                    // Cambia logo da bianco a nero quando si scrolla
-                    if (logo && logo.src.includes('logo-header-white.png')) {
-                        logo.src = logo.src.replace('logo-header-white.png', 'logo-header.png');
+        (function(){
+            function setLogoWhite(logo){
+                try{
+                    if(!logo || !logo.src) return;
+                    if(logo.src.includes('logo-header.png')){
+                        logo.src = logo.src.replace('logo-header.png','logo-header-white.png');
                     }
-                } else {
+                }catch(e){}
+            }
+
+            function setLogoDark(logo){
+                try{
+                    if(!logo || !logo.src) return;
+                    if(logo.src.includes('logo-header-white.png')){
+                        logo.src = logo.src.replace('logo-header-white.png','logo-header.png');
+                    }
+                }catch(e){}
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                const navbar = document.getElementById('mainNav');
+                const logo = navbar ? navbar.querySelector('.logo-header') : null;
+                const hero = document.querySelector('.mv-hero, .hp-hero, .hero, .hero-section, .cts-hero');
+
+                // If we have a hero section, use IntersectionObserver to toggle navbar state
+                if(hero && navbar){
+                    // Start transparent
                     navbar.classList.remove('navbar-scrolled');
-                    // Ripristina logo bianco quando si torna in alto
-                    if (logo && logo.src.includes('logo-header.png') && !logo.src.includes('logo-header-white.png')) {
-                        logo.src = logo.src.replace('logo-header.png', 'logo-header-white.png');
+                    setLogoWhite(logo);
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if(entry.isIntersecting){
+                                // hero visible -> transparent + white logo
+                                navbar.classList.remove('navbar-scrolled');
+                                setLogoWhite(logo);
+                            } else {
+                                // hero out of view -> solid + dark logo
+                                navbar.classList.add('navbar-scrolled');
+                                setLogoDark(logo);
+                            }
+                        });
+                    }, { root: null, threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+
+                    observer.observe(hero);
+                } else if(navbar){
+                    // No hero: default behavior
+                    if(navbar.classList.contains('navbar-dark-pages')){
+                        navbar.classList.add('navbar-scrolled');
+                        setLogoDark(logo);
+                    } else {
+                        navbar.classList.remove('navbar-scrolled');
+                        setLogoWhite(logo);
                     }
                 }
-            }
-        });
-        
-        // Applica navbar-scrolled immediatamente alla pagina se non è homepage
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('mainNav');
-            if (navbar && navbar.classList.contains('navbar-dark-pages')) {
-                navbar.classList.add('navbar-scrolled');
-            }
-        });
+
+                // Backup: listen to scroll in case observer isn't supported
+                window.addEventListener('scroll', function(){
+                    if(!navbar) return;
+                    if(window.scrollY > 50){
+                        navbar.classList.add('navbar-scrolled');
+                        setLogoDark(logo);
+                    } else {
+                        // Only remove scrolled if we either had a hero or the navbar isn't the dark-pages variant
+                        if(hero || !navbar.classList.contains('navbar-dark-pages')){
+                            navbar.classList.remove('navbar-scrolled');
+                            setLogoWhite(logo);
+                        }
+                    }
+                }, { passive: true });
+            });
+        })();
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

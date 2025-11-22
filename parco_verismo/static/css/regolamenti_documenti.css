@@ -1,3 +1,254 @@
+@import url('index.css'); /* reuse variables and base styles from index */
+/* ========================================================
+   REGOLAMENTI & DOCUMENTI - Styled like index
+   This file maps page-specific classes to the same visual system
+   used on the homepage (`index.css`). It reuses the same CSS
+   variables and applies section backgrounds, typography, cards
+   and quick-links to match the index layout.
+   ======================================================== */
+
+/* Page wrappers reuse hp-section spacing */
+.page-intro,
+.page-section,
+.page-section.regolamenti-section,
+.page-section.documenti-section,
+.page-section.documenti-quick,
+.page-section.regolamenti-cta {
+    padding: 5rem 0;
+    background: var(--color-background);
+}
+
+/* Alternate backgrounds like homepage sections */
+section.page-section:nth-of-type(odd) {
+    background: var(--color-primary-pale);
+}
+
+section.page-section:nth-of-type(even) {
+    background: var(--color-background);
+}
+
+/* Page intro / title area mirrors index hero/title sizes */
+.page-intro .display-5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.page-intro .lead {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+}
+
+/* Section titles use the same treatment as hp-section titles */
+.page-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+.page-section-accent {
+    background: var(--color-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Reg cards (list of regolamenti) - mirror mv-recognition-card / mv-value-card */
+.reg-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--color-shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 100%;
+}
+
+.reg-card-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.reg-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(131,50,40,0.08), rgba(199,106,82,0.06));
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.reg-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.reg-date {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.reg-card-body .reg-desc {
+    color: var(--color-text-secondary);
+    margin: 0.5rem 0 0 0;
+}
+
+.reg-highlights {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.reg-highlight {
+    background: var(--color-primary-pale);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-primary-dark);
+}
+
+.reg-card-footer {
+    margin-top: auto;
+}
+
+.reg-card-footer .reg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.reg-card-footer .reg-link i {
+    font-size: 1.125rem;
+}
+
+/* Document categories (grid cards) */
+.doc-category-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    box-shadow: var(--color-shadow-md);
+}
+
+.doc-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.doc-category-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+}
+
+.doc-list {
+    padding-left: 1rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.doc-list a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
+.doc-list a:hover {
+    color: var(--color-primary);
+}
+
+/* Quick download tiles */
+.doc-quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+.doc-quick-link i {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+}
+
+.doc-quick-link span {
+    font-size: 0.9rem;
+}
+
+/* CTA card at bottom mimics hero CTA look */
+.reg-cta-card {
+    background: linear-gradient(135deg, var(--color-primary-pale), var(--color-background));
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--color-shadow-md);
+}
+
+.reg-cta-card .btn-primary {
+    background: var(--color-gradient-primary);
+    border: none;
+    color: white;
+}
+
+/* Responsive tweaks matching index.css */
+@media (max-width: 991.98px) {
+    .page-intro,
+    .page-section {
+        padding: 3rem 0;
+    }
+    .page-section-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-intro,
+    .page-section {
+        padding: 2rem 0;
+    }
+    .page-intro .display-5 {
+        font-size: 1.75rem;
+    }
+    .doc-icon { width: 56px; height: 56px; }
+}
+
+/* Accessibility: reduced motion respects preference */
+@media (prefers-reduced-motion: reduce) {
+    .reg-card,
+    .doc-category-card,
+    .doc-quick-link {
+        transition: none !important;
+        animation: none !important;
+    }
+}
 /* ============================================================================
    REGOLAMENTI_DOCUMENTI.CSS - Stili personalizzati per Regolamenti e Documenti
    Utilizza il sistema di colori Malpelo da styles.css
@@ -145,6 +396,154 @@
     color: var(--color-primary);
     margin-bottom: 1rem;
     display: inline-block;
+}
+/* ========================================================
+   HERO (copied/adapted from missione_visione.css)
+   These rules are used by the hero section in
+   `regolamenti_documenti.html` so the page can rely only
+   on `regolamenti_documenti.css` (no missione_visione import)
+   ======================================================== */
+
+.mv-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, 
+        rgba(74, 20, 13, 0.95) 0%,
+        rgba(131, 50, 40, 0.85) 50%,
+        rgba(192, 140, 59, 0.4) 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+.mv-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 20% 50%, 
+        rgba(199, 106, 82, 0.15) 0%,
+        transparent 50%);
+    pointer-events: none;
+}
+
+.mv-hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.mv-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(243, 196, 113, 0.25);
+    border: 1px solid rgba(243, 196, 113, 0.5);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.mv-hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.mv-hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 90%;
+    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mv-hero-image {
+    position: relative;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-image,
+.placeholder-image-secondary {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(74, 20, 13, 0.15));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@media (max-width: 991.98px) {
+    .mv-hero {
+        min-height: 70vh;
+    }
+    
+    .mv-hero-title {
+        font-size: 2rem;
+    }
+    
+    .mv-hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .mv-hero {
+        min-height: 60vh;
+    }
+    
+    .mv-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .mv-hero-content {
+        text-align: center;
+    }
+    
+    .mv-hero-subtitle {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .mv-hero-image {
+        min-height: 350px;
+        margin-top: 2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .placeholder-image,
+    .placeholder-image-secondary,
+    .mv-hero-content {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 .reg-card-header h3 {
@@ -761,7 +1160,6 @@
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(199, 106, 82, 0.3), transparent 70%);
     border-radius: 50%;
 }
 

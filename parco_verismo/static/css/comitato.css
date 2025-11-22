@@ -45,7 +45,7 @@
    HERO SECTION
    ======================================================== */
 
-.cts-hero {
+.cts-hero, .mv-hero {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -60,7 +60,7 @@
     overflow: hidden;
 }
 
-.cts-hero-overlay {
+.cts-hero-overlay, .mv-hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -72,12 +72,12 @@
     pointer-events: none;
 }
 
-.cts-hero-content {
+.cts-hero-content, .mv-hero-content {
     position: relative;
     z-index: 10;
 }
 
-.cts-badge {
+.cts-badge, .mv-badge {
     display: inline-block;
     padding: 0.5rem 1rem;
     background: rgba(243, 196, 113, 0.25);
@@ -91,7 +91,7 @@
     backdrop-filter: blur(10px);
 }
 
-.cts-hero-title {
+.cts-hero-title, .mv-hero-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     line-height: 1.2;
@@ -100,7 +100,7 @@
     margin-bottom: 1rem;
 }
 
-.cts-hero-subtitle {
+.cts-hero-subtitle, .mv-hero-subtitle {
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.6;
@@ -109,7 +109,7 @@
     text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.cts-hero-image {
+.cts-hero-image, .mv-hero-image {
     position: relative;
     height: 100%;
     min-height: 500px;
@@ -140,31 +140,31 @@
    SECTIONS
    ======================================================== */
 
-.cts-section {
+.cts-section, .mv-section {
     position: relative;
     padding: 4rem 0;
 }
 
-.cts-section.cts-institution {
+.cts-section.cts-institution, .mv-section.mv-institution {
     background: var(--color-background);
     border-bottom: 1px solid var(--color-border);
 }
 
-.cts-section.cts-composition {
+.cts-section.cts-composition, .mv-section.mv-composition {
     background: color-mix(in srgb, var(--color-primary-pale) 50%, var(--color-background));
 }
 
-.cts-section.cts-functions {
+.cts-section.cts-functions, .mv-section.mv-functions {
     background: linear-gradient(135deg, 
         var(--color-surface) 0%,
         color-mix(in srgb, var(--color-primary-pale) 50%, var(--color-surface)) 100%);
 }
 
-.cts-section.cts-cta {
+.cts-section.cts-cta, .mv-section.mv-cta {
     background: var(--color-background);
 }
 
-.cts-section-title {
+.cts-section-title, .mv-section-title {
     font-family: 'Montserrat', sans-serif;
     color: var(--color-text-primary);
     font-weight: 700;
@@ -172,7 +172,7 @@
     margin-bottom: 1.5rem;
 }
 
-.cts-title-accent {
+.cts-title-accent, .mv-title-accent {
     background: var(--color-gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -183,7 +183,7 @@
    HIGHLIGHT TEXT
    ======================================================== */
 
-.cts-highlight-text {
+.cts-highlight-text, .mv-highlight-text {
     padding: 1.5rem;
     background: linear-gradient(135deg,
         rgba(199, 106, 82, 0.08) 0%,
@@ -192,7 +192,7 @@
     border-radius: 0.5rem;
 }
 
-.cts-highlight-text .lead {
+.cts-highlight-text .lead, .mv-highlight-text .lead {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--color-text-secondary);
@@ -204,7 +204,7 @@
    INFO BOX
    ======================================================== */
 
-.cts-info-box {
+.cts-info-box, .mv-info-box {
     padding: 1.5rem;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -237,14 +237,14 @@
    COMPOSITION GROUPS
    ======================================================== */
 
-.cts-composition-group {
+.cts-composition-group, .mv-composition-group {
     padding: 2rem;
     background: var(--color-surface);
     border-radius: 1rem;
     border: 1px solid var(--color-border);
 }
 
-.cts-group-title {
+.cts-group-title, .mv-group-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: var(--color-text-primary);
@@ -258,7 +258,7 @@
    MEMBER CARDS
    ======================================================== */
 
-.cts-member-card {
+.cts-member-card, .mv-member-card {
     background: linear-gradient(135deg,
         color-mix(in srgb, var(--color-primary-pale) 60%, var(--color-surface)) 0%,
         var(--color-surface) 100%);
@@ -273,7 +273,7 @@
     gap: 1rem;
 }
 
-.cts-member-card:hover {
+.cts-member-card:hover, .mv-member-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--color-shadow-lg);
     border-color: var(--color-primary-light);
@@ -282,18 +282,18 @@
         color-mix(in srgb, var(--color-secondary-light) 20%, var(--color-surface)) 100%);
 }
 
-.cts-member-card-highlight {
+.cts-member-card-highlight, .mv-member-card-highlight {
     background: linear-gradient(135deg,
         rgba(199, 106, 82, 0.15) 0%,
         rgba(192, 140, 59, 0.1) 100%);
     border: 2px solid var(--color-primary-light);
 }
 
-.cts-member-card-highlight:hover {
+.cts-member-card-highlight:hover, .mv-member-card-highlight:hover {
     box-shadow: 0 24px 48px rgba(131, 50, 40, 0.15);
 }
 
-.cts-member-icon {
+.cts-member-icon, .mv-member-icon {
     width: 60px;
     height: 60px;
     display: flex;
@@ -309,13 +309,13 @@
     transition: all 0.3s ease;
 }
 
-.cts-member-card:hover .cts-member-icon {
+.cts-member-card:hover .cts-member-icon, .mv-member-card:hover .mv-member-icon {
     background: var(--color-gradient-primary);
     color: white;
     transform: scale(1.15);
 }
 
-.cts-member-card h4 {
+.cts-member-card h4, .mv-member-card h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
@@ -323,7 +323,7 @@
     margin: 0;
 }
 
-.cts-member-card p {
+.cts-member-card p, .mv-member-card p {
     color: var(--color-text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
@@ -564,3 +564,131 @@
         transition: none !important;
     }
 }
+
+/* ------------------------------------------------------------------
+   Compatibility / Hero & Section helpers (copied from missione_visione)
+   Provide both .cts-* and .mv-* selectors so templates that still
+   reference .mv- classes keep working (hero, overlays, image wrappers)
+   ------------------------------------------------------------------ */
+
+/* HERO / OVERLAY */
+.cts-hero, .mv-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, 
+        rgba(74, 20, 13, 0.95) 0%,
+        rgba(131, 50, 40, 0.85) 50%,
+        rgba(192, 140, 59, 0.4) 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.cts-hero-overlay, .mv-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 20% 50%, 
+        rgba(199, 106, 82, 0.15) 0%,
+        transparent 50%);
+    pointer-events: none;
+}
+
+.cts-hero-content, .mv-hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Badge / Title / Subtitle */
+.cts-badge, .mv-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(243, 196, 113, 0.25);
+    border: 1px solid rgba(243, 196, 113, 0.5);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.cts-hero-title, .mv-hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+.cts-hero-subtitle, .mv-hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 90%;
+    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cts-hero-image, .mv-hero-image {
+    position: relative;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Placeholder images (SVG wrappers) */
+.placeholder-image, .placeholder-image-secondary,
+.cts-placeholder-image, .mv-placeholder-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(74, 20, 13, 0.15));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Image wrapper compatibility */
+.cts-image-wrapper, .mv-image-wrapper {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--color-shadow-lg);
+}
+
+/* Section title compatibility */
+.cts-section-title, .mv-section-title {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive tweaks copied for hero behavior */
+@media (max-width: 991.98px) {
+    .cts-hero, .mv-hero { min-height: 70vh; }
+    .cts-hero-title, .mv-hero-title { font-size: 2rem; }
+    .cts-hero-subtitle, .mv-hero-subtitle { font-size: 1rem; }
+}
+
+@media (max-width: 767.98px) {
+    .cts-hero, .mv-hero { min-height: 60vh; }
+    .cts-hero-title, .mv-hero-title { font-size: 1.75rem; }
+    .cts-hero-content, .mv-hero-content { text-align: center; }
+    .cts-hero-image, .mv-hero-image { min-height: 350px; margin-top: 2rem; }
+}
+

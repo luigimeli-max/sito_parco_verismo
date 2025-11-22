@@ -7,10 +7,12 @@ header {
     position: relative;
     width: 100%;
     height: 100vh;
+    max-height: 100vh; /* ensure header never exceeds viewport height */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 30;
 }
 
 /* Video background responsive */
@@ -43,12 +45,18 @@ header::after {
 /* Hero Content */
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 40;
     text-align: center;
     color: var(--color-text-inverse);
     padding: var(--space-xl);
     max-width: 900px;
     animation: fadeInUp 1s ease-out;
+}
+
+/* Keep hero content constrained so header stays within 100vh */
+.hero-content {
+    max-height: calc(100vh - 120px);
+    overflow: auto;
 }
 
 .hero-title {
@@ -256,6 +264,90 @@ header::after {
     border-bottom: 1px solid var(--color-border);
 }
 
+/* Sezione 'Il Parco' full-screen con logo di sfondo trasparente verso sinistra */
+#il-parco.hp-parco {
+    position: relative;
+    min-height: 100vh;
+    max-height: 100vh; /* cap section height to viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#il-parco.hp-parco::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    /* Reduced width/scale to avoid forcing horizontal overflow */
+    transform: translate(-10%, -50%) scale(1.2);
+    transform-origin: left center;
+    width: 70vw;
+    height: auto;
+    background-image: url('../assets/img/logo-header.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+    /* ensure the pseudo-element can't create scrollbars */
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Assicura che il contenuto resti sopra il logo di sfondo */
+#il-parco .container-xl,
+#il-parco .hp-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Constrain content inside #il-parco so the section doesn't exceed viewport */
+#il-parco .hp-content {
+    max-height: calc(100vh - 140px);
+    overflow: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Pulsanti nella sezione Il Parco: riga e centrati */
+#il-parco.hp-parco .hp-cta-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Mobile: impilare verticalmente per spazio ridotto */
+@media (max-width: 480px) {
+    #il-parco.hp-parco .hp-cta-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+}
+
+/* Mobile: logo più piccolo e meno invadente */
+@media (max-width: 768px) {
+    #il-parco.hp-parco::before {
+        left: 0;
+        transform: translate(-50%, -50%) scale(1.6);
+        transform-origin: left center;
+        width: 100vw;
+        height: 50vh;
+        background-size: 70vw auto;
+        opacity: 0.04;
+    }
+    #il-parco.hp-parco {
+        min-height: 70vh;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
 .hp-luoghi {
     background: linear-gradient(to bottom,
         color-mix(in srgb, var(--color-primary-pale) 30%, var(--color-background)) 0%,
@@ -284,6 +376,63 @@ header::after {
     background: linear-gradient(135deg,
         color-mix(in srgb, var(--color-primary-pale) 50%, var(--color-background)) 0%,
         color-mix(in srgb, var(--color-secondary-light) 20%, var(--color-background)) 100%);
+}
+
+/* ========================================================
+   ALTERNATE SECTION BACKGROUNDS
+   Use two alternating colors instead of gradients for hp sections
+   ======================================================== */
+
+/* Default fallback for sections */
+.hp-section {
+    background: var(--color-background) !important;
+}
+
+/* Odd sections: primary pale, Even sections: background (alternating) */
+/* We target section elements in sequence to alternate colors */
+section.hp-section:nth-of-type(odd) {
+    background: var(--color-primary-pale) !important;
+}
+
+section.hp-section:nth-of-type(even) {
+    background: var(--color-background) !important;
+}
+
+/* Slight border contrast preserved */
+section.hp-section {
+    border-bottom: 1px solid var(--color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    section.hp-section {
+        transition: none !important;
+    }
+}
+
+/* Eventi - lista: più spazio e divisori tra gli elementi nella sezione Eventi & Notizie */
+.hp-eventi-notizie .hp-card ul.list-unstyled {
+    margin: 0;
+    padding: 0;
+}
+
+.hp-eventi-notizie .hp-card ul.list-unstyled li {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hp-eventi-notizie .hp-card ul.list-unstyled li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hp-eventi-notizie .hp-card ul.list-unstyled li a {
+    display: block;
+    padding: 0.15rem 0;
+}
+
+.hp-eventi-notizie .hp-card ul.list-unstyled li .text-muted {
+    display: block;
+    margin-top: 0.25rem;
 }
 
 .hp-section-title {
@@ -469,11 +618,13 @@ header::after {
 .hp-card-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center; /* center the link text/icon inside the card */
     gap: 0.5rem;
     color: var(--color-primary);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    width: 100%; /* make the link take full width so centering is effective */
 }
 
 .hp-card-link:hover {
@@ -623,4 +774,75 @@ header::after {
         min-height: auto;
         background: var(--color-surface);
     }
+}
+
+/* ====================
+   Overflow fixes
+   - Ensure predictable box-sizing
+   - Prevent horizontal scrollbar caused by wide pseudo-elements
+   ==================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Defensive: if any element still overflows, hide horizontal overflow globally */
+html, body {
+    overflow-x: hidden;
+}
+
+/* ========================================================
+   CONTACT / FORM - hp-contact-split
+   ======================================================== */
+/* removed legacy .hp-contact-split (was duplicate) */
+
+.hp-contact-center {
+    display: grid;
+    grid-template-columns: 1fr; /* single column: form centered */
+    gap: 2rem;
+    align-items: start;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    justify-items: center;
+}
+.hp-contact-column {
+    min-width: 0; /* prevents grid children from forcing overflow */
+    width: 100%;
+}
+.hp-contact-card {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface-elevated) 60%, var(--color-surface)) 0%, var(--color-surface) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--color-shadow-md);
+    width: 100%;
+    max-width: 600px; /* constrain form width so it stays centered (narrower) */
+}
+
+.hp-contact-form .form-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.hp-contact-form .form-control {
+    display: block;
+    width: 100%;
+    height: 54px;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.6rem;
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* right-column styles removed (column deleted from template) */
+
+.hp-contact-form .form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 6px 18px rgba(130,50,40,0.06);
 }

@@ -1,3 +1,6 @@
+/* Hero and mv-section styles are now provided globally in `styles.css`.
+   This file keeps page-specific partner rules below; do not duplicate hero rules here.
+*/
 /* ============================================================================
    PARTNER_RETE.CSS - Stili personalizzati per Partner e Rete Territoriale
    Utilizza il sistema di colori Malpelo da styles.css
@@ -395,6 +398,170 @@
     padding: 5rem 0;
     position: relative;
 }
+
+/* --------------------------------------------------------------------------
+   Textured sections: use the same subtle "dots" SVG texture from `index.css`/
+   `styles.css` but keep these rules page-scoped so only the partner page
+   alters its sections here. The texture is low-contrast and repeated.
+   ----------------------------------------------------------------------- */
+.mv-section {
+    /* base background color (keeps accessibility) */
+    background-color: var(--color-background);
+    /* subtle dotted texture (copied from global styles.svg) */
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.04)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 1000px 1000px;
+}
+
+/* Slight color variations per section to emulate the index look */
+.mv-section.mv-institution {
+    background-image: linear-gradient(180deg, color-mix(in srgb, var(--color-primary-pale) 12%, var(--color-background)) 0%, var(--color-background) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.04)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+    background-blend-mode: overlay;
+}
+
+.mv-section.mv-values {
+    background-image: linear-gradient(180deg, color-mix(in srgb, var(--color-surface-elevated) 8%, var(--color-background)) 0%, var(--color-background) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.04)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+    background-blend-mode: overlay;
+}
+
+.mv-section.mv-recognition {
+    background-image: linear-gradient(180deg, color-mix(in srgb, var(--color-primary-pale) 6%, var(--color-background)) 0%, var(--color-background) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.04)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+    background-blend-mode: overlay;
+}
+
+/* keep content readable on textured backgrounds */
+.mv-section .mv-section-title,
+.mv-section .mv-highlight-text,
+.mv-section p,
+.mv-section .lead {
+    color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Homepage-like section and card styles (match visuals from `index.css`)
+   These rules align the partner page with the homepage: titles, alternating
+   section backgrounds, cards, sponsor grid and CTA appearance.
+   ----------------------------------------------------------------------- */
+
+/* Section titles and accent (uses same gradient clip technique) */
+.page-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.page-section-accent,
+.page-section-title .page-section-accent,
+.page-section-accent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Alternate section backgrounds to emulate homepage rhythm */
+section.page-section:nth-of-type(odd) {
+    background: color-mix(in srgb, var(--color-primary-pale) 30%, var(--color-background)) !important;
+}
+
+section.page-section:nth-of-type(even) {
+    background: var(--color-background) !important;
+}
+
+section.page-section {
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Partner cards: align with homepage card style */
+.partner-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.partner-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+.partner-logo-wrap {
+    padding: 1.25rem;
+    background: linear-gradient(135deg, rgba(131,50,40,0.03) 0%, rgba(192,140,59,0.03) 100%);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+}
+
+.partner-logo { font-size: 2rem; color: var(--color-primary); }
+
+.partner-desc { color: var(--color-text-secondary); line-height: 1.6; }
+
+/* Network cards aligned to hp-card look */
+.network-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.network-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+.network-icon { font-size: 2.25rem; color: var(--color-accent); margin-bottom: 0.5rem; }
+
+.network-list { list-style: none; padding: 0; margin: 0.5rem 0 1rem 0; }
+.network-list li { padding: 0.4rem 0; }
+
+/* Sponsor logos grid */
+.sponsor-logos { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center; align-items: center; }
+.sponsor-item { flex: 0 1 150px; }
+.sponsor-logo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 0.75rem; min-height: 80px; }
+.sponsor-logo i { font-size: 1.6rem; color: var(--color-primary); }
+.sponsor-logo span { font-weight: 600; color: var(--color-text-secondary); }
+
+/* CTA card (match homepage CTA look) */
+.partner-cta-card {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-secondary-dark) 100%);
+    color: white;
+    padding: 2.25rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.partner-cta-card .lead { color: rgba(255,255,255,0.95); }
+
+.partner-cta-card .btn {
+    font-weight: 600;
+}
+
+.partner-cta-card .btn.btn-primary { background: white; color: var(--color-primary); border: 2px solid white; }
+.partner-cta-card .btn.btn-outline-primary { background: transparent; color: white; border: 2px solid white; }
+
+/* Smaller responsive tweaks */
+@media (max-width: 767.98px) {
+    .page-section { padding: 3rem 0; }
+    .page-section-title { font-size: 1.75rem; }
+    .partner-card { padding: 1.25rem; }
+}
+
+
 
 .page-intro {
     padding: 2.5rem 0 !important;

@@ -1,3 +1,4 @@
+@import url('index.css'); /* import variables and base rules from index */
 /* ========================================================
    MISSIONE E VISIONE - STILI PERSONALIZZATI
    Palette Malpelo da styles.css
@@ -37,112 +38,13 @@
    HERO SECTION
    ======================================================== */
 
-.missione-visione-page {
-    background: var(--mv-background);
-    color: var(--mv-text-primary);
-}
+/* Hero rules moved to global `styles.css` to make hero classes available site-wide. */
 
-.mv-hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, 
-        rgba(74, 20, 13, 0.95) 0%,
-        rgba(131, 50, 40, 0.85) 50%,
-        rgba(192, 140, 59, 0.4) 100%),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-.mv-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 20% 50%, 
-        rgba(199, 106, 82, 0.15) 0%,
-        transparent 50%);
-    pointer-events: none;
-}
-
-.mv-hero-content {
-    position: relative;
-    z-index: 10;
-}
-
-.mv-badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(243, 196, 113, 0.25);
-    border: 1px solid rgba(243, 196, 113, 0.5);
-    border-radius: 50px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    backdrop-filter: blur(10px);
-}
-
-.mv-hero-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
-    margin-bottom: 1rem;
-}
-
-.mv-hero-subtitle {
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 90%;
-    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.mv-hero-image {
-    position: relative;
-    height: 100%;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.placeholder-image,
-.placeholder-image-secondary {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0 20px 40px rgba(74, 20, 13, 0.15));
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
 
 /* ========================================================
    MISSION & VISION SECTIONS
    ======================================================== */
-
-.mv-section {
-    position: relative;
-    padding: 4rem 0;
-}
-
-.mv-section.mv-mission {
+   .mv-section.mv-mission {
     background: var(--mv-background);
     border-bottom: 1px solid var(--mv-border);
 }
@@ -515,3 +417,38 @@
         transition: none !important;
     }
 }
+
+/* ========================================================
+   PAGE-SPECIFIC: Composizione del Comitato (moved from template)
+   These overrides were previously inline in
+   `templates/parco_verismo/comitato_tecnico_scientifico.html`.
+   Keeping them here keeps styles centralized with missione styles.
+   ======================================================== */
+
+.mv-composition .mv-member-card{
+    background: var(--color-surface);
+    border:1px solid var(--color-border);
+    padding:1.05rem;
+    border-radius:10px;
+    box-shadow: var(--color-shadow-md);
+}
+.mv-composition .mv-member-icon{
+    width:56px;height:56px;border-radius:10px;
+    background: var(--color-gradient-primary);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem;margin-bottom:.75rem
+}
+.mv-composition .mv-member-card h4{margin-bottom:.25rem;color:var(--color-text-primary)}
+.mv-separator{border:0;border-top:1px solid var(--color-border);margin:1rem 0 1.5rem;width:100%;max-width:900px;margin-left:auto;margin-right:auto}
+.mv-composition .mv-member-card-highlight{background: linear-gradient(180deg, var(--color-surface-elevated), var(--color-surface));border-color:var(--color-border)}
+.mv-composition .mv-group-title{margin-bottom:.75rem;color:var(--color-text-primary)}
+
+/* Alternate section backgrounds (copied from index.css) */
+/* Apply alternating background colors to .mv-section elements */
+section.mv-section:nth-of-type(odd) {
+    background: var(--color-primary-pale) !important;
+}
+
+section.mv-section:nth-of-type(even) {
+    background: var(--color-background) !important;
+}
+

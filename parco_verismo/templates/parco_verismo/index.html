@@ -7,6 +7,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<!-- Contact styles moved to `parco_verismo/static/css/index.css` -->
 {% endblock %}
 
 {% block hero_section %}
@@ -24,44 +25,19 @@
 <!-- Sezione: Il Parco -->
 <section id="il-parco" class="hp-section hp-parco py-6">
     <div class="container-xl">
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-6">
-                <div class="hp-image-wrapper">
-                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="hp-illustration">
-                        <defs>
-                            <linearGradient id="parcoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#C76A52;stop-opacity:0.2" />
-                                <stop offset="100%" style="stop-color:#823228;stop-opacity:0.3" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="500" height="500" fill="url(#parcoGrad)"/>
-                        <circle cx="250" cy="180" r="100" fill="#823228" opacity="0.15"/>
-                        <path d="M 100 350 Q 150 320 200 340 T 300 330 T 400 350" fill="none" stroke="#C76A52" stroke-width="3" opacity="0.6"/>
-                        <text x="250" y="450" font-family="serif" font-size="24" font-weight="bold" fill="#823228" opacity="0.4" text-anchor="middle">{% trans 'Valorizzazione Culturale' %}</text>
-                    </svg>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="hp-content">
-                    <h2 class="hp-section-title">
-                        <span class="hp-accent">{% trans 'Il' %}</span> {% trans 'Parco' %}
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="hp-content text-center">
+                    <h2 class="hp-section-title fw-bold display-5" style="font-size:2.5rem;">
+                        <span class="hp-accent">{% trans 'Il' %}</span> {% trans 'Parco Letterario del Verismo' %}
                     </h2>
-                    <p class="lead mb-4">
-                        {% trans 'Un modello integrato di welfare culturale fondato sulla valorizzazione dell&rsquo;eredità verista di Giovanni Verga e Luigi Capuana.' %}
+                    <p class="lead mb-4 text-muted" style="font-size:1.125rem; max-width:900px; margin: 0 auto; line-height:1.6;">
+                        Il Parco Letterario del Verismo <strong>valorizza</strong> il patrimonio verista attraverso <strong>ricerca</strong>, percorsi culturali e progetti che coinvolgono la <strong>comunità</strong>. L’obiettivo è trasformare la <strong>memoria letteraria</strong> in un motore di <strong>sviluppo condiviso</strong>, favorendo un <strong>turismo culturale responsabile</strong> e un territorio in cui <strong>identità</strong>, <strong>storia</strong> e <strong>futuro</strong> dialogano in modo armonioso.
                     </p>
-                    <ul class="hp-features">
-                        <li><i class="bi bi-check-circle"></i> {% trans 'Missione e visione culturale condivisa' %}</li>
-                        <li><i class="bi bi-check-circle"></i> {% trans 'Comitato Tecnico-Scientifico d&rsquo;eccellenza' %}</li>
-                        <li><i class="bi bi-check-circle"></i> {% trans 'Riconoscimento istituzionale della Regione Siciliana' %}</li>
-                        <li><i class="bi bi-check-circle"></i> {% trans 'Radicamento territoriale tra Vizzini, Mineo e Licodia Eubea' %}</li>
-                    </ul>
-                    <div class="hp-cta-buttons">
-                        <a href="{% url 'missione_visione' %}" class="btn btn-primary">
-                            {% trans 'Missione e Visione' %}
-                        </a>
-                        <a href="{% url 'comitato_tecnico_scientifico' %}" class="btn btn-outline-primary">
-                            {% trans 'Comitato Tecnico' %}
-                        </a>
+
+                    <div class="hp-cta-buttons mt-4">
+                        <a href="{% url 'missione_visione' %}" class="btn btn-primary me-2">{% trans 'Scopri il Parco' %}</a>
+                        <a href="{% url 'comitato_tecnico_scientifico' %}" class="btn btn-outline-primary">{% trans 'Comitato Tecnico' %}</a>
                     </div>
                 </div>
             </div>
@@ -74,7 +50,7 @@
     <div class="container-xl">
         <div class="text-center mb-5 mb-lg-6">
             <h2 class="hp-section-title">
-                {% trans 'Luoghi & Percorsi' %}
+                {% trans 'Località' %}
             </h2>
             <p class="lead text-secondary" style="max-width: 600px; margin: 0 auto;">
                 {% trans 'Scopri i tre comuni del Verismo e gli itinerari tematici dedicati a Verga e Capuana' %}
@@ -117,6 +93,66 @@
         </div>
     </div>
 </section>
+
+
+<!-- Sezione: Eventi Recenti & Notizie -->
+<section class="hp-section hp-eventi-notizie py-6">
+    <div class="container-xl">
+        <div class="text-center mb-5 mb-lg-6">
+            <h2 class="hp-section-title">{% trans 'Eventi & Notizie' %}</h2>
+            <p class="lead text-secondary" style="max-width: 700px; margin: 0 auto;">{% trans "Ultimi eventi e aggiornamenti dal Parco" %}</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="hp-card">
+                    <h3 class="h5 mb-3">{% trans 'Eventi recenti' %}</h3>
+                    <ul class="list-unstyled mb-3">
+                        {% if eventi %}
+                            {% for evento in eventi|slice:":4" %}
+                                <li class="mb-3">
+                                    <a href="{{ evento.get_absolute_url }}" class="d-block text-decoration-none">
+                                        <strong class="d-block">{{ evento.titolo }}</strong>
+                                        <small class="text-muted"><i class="bi bi-calendar-event me-1"></i>{{ evento.data_inizio|date:"d/m/Y" }}{% if evento.luogo %} · <i class="bi bi-geo-alt"></i> {{ evento.luogo }}{% endif %}</small>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="text-muted">{% trans 'Nessun evento recente' %}</li>
+                        {% endif %}
+                    </ul>
+                    <div class="text-center">
+                        <a href="{% url 'eventi' %}" class="btn btn-outline-primary">{% trans 'Vedi tutti gli eventi' %}</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="hp-card">
+                    <h3 class="h5 mb-3">{% trans 'Notizie recenti' %}</h3>
+                    <ul class="list-unstyled mb-3">
+                        {% if notizie %}
+                            {% for notizia in notizie|slice:":4" %}
+                                <li class="mb-3">
+                                    <a href="{{ notizia.get_absolute_url }}" class="d-block text-decoration-none">
+                                        <strong class="d-block">{{ notizia.titolo }}</strong>
+                                        <small class="text-muted"><i class="bi bi-calendar me-1"></i>{{ notizia.data_pubblicazione|date:"d/m/Y" }}</small>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="text-muted">{% trans 'Nessuna notizia recente' %}</li>
+                        {% endif %}
+                    </ul>
+                    <div class="text-center">
+                        <a href="{% url 'notizie' %}" class="btn btn-outline-primary">{% trans 'Leggi tutte le notizie' %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!-- Sezione: Biblioteca Letteraria -->
 <section class="hp-section hp-biblioteca py-6">
@@ -177,54 +213,7 @@
     </div>
 </section>
 
-<!-- Sezione: Eventi e Cultura -->
-<section class="hp-section hp-eventi py-6">
-    <div class="container-xl">
-        <div class="text-center mb-5 mb-lg-6">
-            <h2 class="hp-section-title">
-                {% trans 'Eventi & Cultura' %}
-            </h2>
-            <p class="lead text-secondary" style="max-width: 600px; margin: 0 auto;">
-                {% trans 'Scopri il calendario degli eventi, le notizie e le iniziative culturali' %}
-            </p>
-        </div>
 
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="hp-card hp-card-secondary">
-                    <div class="hp-card-icon">
-                        <i class="bi bi-calendar-event"></i>
-                    </div>
-                    <h3>{% trans 'Eventi' %}</h3>
-                    <p>{% trans 'Manifestazioni teatrali, convegni, spettacoli e produzioni culturali dedicate al Verismo.' %}</p>
-                    <a href="{% url 'eventi' %}" class="hp-card-link">{% trans 'Vedi gli eventi' %} <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="hp-card hp-card-secondary">
-                    <div class="hp-card-icon">
-                        <i class="bi bi-calendar2-check"></i>
-                    </div>
-                    <h3>{% trans 'Calendario' %}</h3>
-                    <p>{% trans 'Pianifica le tue visite con il calendario interattivo degli appuntamenti e delle attività.' %}</p>
-                    <a href="{% url 'calendario' %}" class="hp-card-link">{% trans 'Accedi al calendario' %} <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="hp-card hp-card-secondary">
-                    <div class="hp-card-icon">
-                        <i class="bi bi-newspaper"></i>
-                    </div>
-                    <h3>{% trans 'Notizie' %}</h3>
-                    <p>{% trans 'Resta aggiornato sulle ultime novità, scoperte e iniziative del Parco Letterario.' %}</p>
-                    <a href="{% url 'notizie' %}" class="hp-card-link">{% trans 'Leggi le notizie' %} <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Sezione: Archivi e Documenti -->
 <section class="hp-section hp-archivi py-6">
@@ -283,26 +272,112 @@
     </div>
 </section>
 
-<!-- Call to Action finale -->
+<!-- Sezione: Opere & Letteratura -->
+<section class="hp-section hp-eventi py-6">
+    <div class="container-xl">
+        <div class="text-center mb-5 mb-lg-6">
+            <h2 class="hp-section-title">
+                {% trans 'Opere & Letteratura' %}
+            </h2>
+            <p class="lead text-secondary" style="max-width: 600px; margin: 0 auto;">
+                {% trans 'Esplora le opere, i testi e i protagonisti del movimento verista' %}
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="hp-card hp-card-secondary">
+                    <div class="hp-card-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <h3>{% trans 'Opere di Verga' %}</h3>
+                    <p>{% trans 'Catalogo e risorse sulle opere principali di Giovanni Verga, saggi e edizioni critiche.' %}</p>
+                    <a href="#" class="hp-card-link">{% trans 'Scopri le opere' %} <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="hp-card hp-card-secondary">
+                    <div class="hp-card-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <h3>{% trans 'Opere di Capuana' %}</h3>
+                    <p>{% trans 'Raccolta di testi, contesti critici e materiali su Luigi Capuana e la sua produzione.' %}</p>
+                    <a href="#" class="hp-card-link">{% trans 'Esplora Capuana' %} <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="hp-card hp-card-secondary">
+                    <div class="hp-card-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3>{% trans 'Personaggi & Lessico del Verismo' %}</h3>
+                    <p>{% trans 'Schede sui personaggi principali, lessico caratteristico e termini letterari del Verismo.' %}</p>
+                    <a href="#" class="hp-card-link">{% trans 'Approfondisci' %} <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sezione: Contatto / Prenotazione Itinerario (split: form a sinistra, info a destra) -->
 <section class="hp-section hp-cta-final py-6">
     <div class="container-xl">
         <div class="row">
             <div class="col-lg-10 mx-auto">
-                <div class="hp-cta-card">
-                    <div class="text-center">
-                        <h2 class="h2 fw-bold mb-3">
-                            {% trans 'Inizia il Tuo Viaggio nel Verismo' %}
-                        </h2>
-                        <p class="lead mb-5" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-                            {% trans 'Scopri il fascino della letteratura siciliana e immergerti nei paesaggi, nelle storie e nei personaggi che hanno affascinato il mondo con le loro opere.' %}
-                        </p>
-                        <div class="hp-cta-buttons justify-content-center">
-                            <a href="{% url 'biblioteca' %}" class="btn btn-primary btn-lg">
-                                <i class="bi bi-book"></i> {% trans 'Esplora la Biblioteca' %}
-                            </a>
-                            <a href="#il-parco" class="btn btn-outline-primary btn-lg">
-                                <i class="bi bi-map"></i> {% trans 'Scopri i Luoghi' %}
-                            </a>
+                <div class="hp-contact-center">
+                    <div class="hp-contact-column d-flex justify-content-center">
+                        <div class="hp-contact-card">
+                            <div class="mb-3 d-flex flex-column align-items-center justify-content-center">
+                                <h2 class="h2 fw-bold mb-1">{% trans 'Prenota il tuo itinerario' %}</h2>
+                                <p class="text-secondary mb-0">{% trans "Compila i tuoi dati e scegli luogo e tipologia d'itinerario. Ti contatteremo al più presto." %}</p>
+                            </div>
+
+                            <form class="hp-contact-form" action="#" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 form-group">
+                                        <label class="form-label" for="nome">{% trans 'Nome' %}</label>
+                                        <input id="nome" name="nome" type="text" class="form-control" placeholder="{% trans 'Inserisci il tuo nome' %}" required>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label class="form-label" for="cognome">{% trans 'Cognome' %}</label>
+                                        <input id="cognome" name="cognome" type="text" class="form-control" placeholder="{% trans 'Inserisci il tuo cognome' %}" required>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label class="form-label" for="email">{% trans 'Email' %}</label>
+                                        <input id="email" name="email" type="email" class="form-control" placeholder="{% trans 'Inserisci la tua email' %}" required>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label class="form-label" for="luogo">{% trans 'Luogo' %}</label>
+                                        <select id="luogo" name="luogo" class="form-control" required>
+                                            <option value="vizzini">Vizzini</option>
+                                            <option value="mineo">Mineo</option>
+                                            <option value="licodia">Licodia Eubea</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label class="form-label" for="itinerario">{% trans 'Tipologia itinerario' %}</label>
+                                        <select id="itinerario" name="itinerario" class="form-control" required>
+                                            <option value="verghiani">{% trans 'Itinerari verghiani' %}</option>
+                                            <option value="capuaniani">{% trans 'Itinerari capuaniani' %}</option>
+                                            <option value="tematici">{% trans 'Itinerari tematici' %}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 text-center mt-3">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-envelope-paper"></i> {% trans 'Invia richiesta' %}
+                                        </button>
+                                        <div class="form-note mt-2">{% trans 'Ti risponderemo via email per confermare la tua richiesta.' %}</div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

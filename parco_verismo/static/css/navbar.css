@@ -5,6 +5,22 @@
     padding: var(--space-md) 0;
 }
 
+/* Pages that explicitly request the homepage-like transparent navbar */
+body.transparent-nav #mainNav,
+body.transparent-nav #mainNav.navbar-dark-pages {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: none;
+    padding: var(--space-md) 0;
+}
+
+body.transparent-nav #mainNav .navbar-nav .nav-link,
+body.transparent-nav #mainNav .navbar-brand,
+body.transparent-nav #mainNav .navbar-toggler-icon::before,
+body.transparent-nav #mainNav .navbar-toggler-icon::after {
+    color: var(--color-text-inverse);
+}
+
 /* Navbar nelle pagine non-homepage: sempre scura */
 #mainNav.navbar-dark-pages {
     background-color: var(--color-surface);
@@ -20,6 +36,21 @@
     border-bottom: 1px solid var(--color-border);
     padding: var(--space-sm) 0;
     box-shadow: var(--shadow-md);
+}
+
+/* When a page requests a transparent nav but the scrolled state is active,
+   ensure the scrolled styles take precedence so the navbar becomes solid. */
+body.transparent-nav #mainNav.navbar-scrolled {
+    background-color: var(--color-surface);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-sm) 0;
+    box-shadow: var(--shadow-md);
+}
+
+body.transparent-nav #mainNav.navbar-scrolled .navbar-nav .nav-link,
+body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
+    color: var(--color-text-primary);
 }
 
 #mainNav.navbar-scrolled .navbar-nav .nav-link {
