@@ -29,9 +29,9 @@ urlpatterns = [
     path('archivio/', views.archivio_fotografico_view, name='archivio_fotografico'),
 
     # Pagine statiche per i comuni del Parco
-    path('licodia/', views.Licodia_View, name='licodia'),
-    path('mineo/', views.Mineo_View, name='mineo'),
-    path('vizzini/', views.Vizzini_View, name='vizzini'),
+    path('licodia/', views.licodia_view, name='licodia'),
+    path('mineo/', views.mineo_view, name='mineo'),
+    path('vizzini/', views.vizzini_view, name='vizzini'),
 
     # Missione e Visione
     path('missione-visione/', views.missione_visione_view, name='missione_visione'),

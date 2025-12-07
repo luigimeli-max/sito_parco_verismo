@@ -184,13 +184,13 @@ def archivio_fotografico_view(request):
     return render(request, 'parco_verismo/archivio_fotografico.html', context)
 
 
-def Licodia_View(request):
+def licodia_view(request):
     return render(request, 'parco_verismo/licodia.html')
 
-def Mineo_View(request):
+def mineo_view(request):
     return render(request, 'parco_verismo/mineo.html')
 
-def Vizzini_View(request):
+def vizzini_view(request):
     return render(request, 'parco_verismo/vizzini.html')
 
 def missione_visione_view(request):

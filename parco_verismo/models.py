@@ -29,7 +29,7 @@ class Opera(TranslatableModel):
     )
 
     class Meta:
-        ordering = ['translations__titolo']
+        ordering = ['anno_pubblicazione', 'slug']
         verbose_name = "Opera"
         verbose_name_plural = "Opere"
 
@@ -275,7 +275,7 @@ class Itinerario(TranslatableModel):
     )
 
     class Meta:
-        ordering = ['ordine', 'translations__titolo']
+        ordering = ['ordine', 'slug']
         verbose_name = "Itinerario"
         verbose_name_plural = "Itinerari"
 
