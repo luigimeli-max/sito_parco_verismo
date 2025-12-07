@@ -96,6 +96,26 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
     padding: var(--space-sm) var(--space-md);
     transition: color var(--transition-fast);
     position: relative;
+    opacity: 1; /* Forza visibilità piena */
+}
+
+/* Override stili Bootstrap navbar-dark che impostano opacità ridotta */
+#mainNav.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Quando navbar-dark viene scrollata, il testo deve diventare scuro */
+#mainNav.navbar-dark.navbar-scrolled .navbar-nav .nav-link {
+    color: var(--color-text-primary);
+}
+
+#mainNav.navbar-dark.navbar-scrolled .navbar-nav .nav-link:hover,
+#mainNav.navbar-dark.navbar-scrolled .navbar-nav .nav-link.active {
+    color: var(--color-primary);
+}
+
+#mainNav.navbar-dark.navbar-scrolled .navbar-brand {
+    color: var(--color-text-primary);
 }
 
 /* Link scuri nelle pagine non-homepage */
@@ -104,15 +124,20 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
 }
 
 #mainNav .navbar-nav .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background-color: var(--color-primary);
-    transition: width var(--transition-base);
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 0 !important;
+    height: 2px !important;
+    background-color: var(--color-primary) !important;
+    transition: width var(--transition-base) !important;
+    /* Reset proprietà freccia Bootstrap */
+    border: none !important;
+    vertical-align: baseline !important;
+    margin: 0 !important;
+    display: block !important;
 }
 
 #mainNav .navbar-nav .nav-link:hover {
@@ -124,7 +149,7 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
 }
 
 #mainNav .navbar-nav .nav-link:hover::after {
-    width: 80%;
+    width: 80% !important;
 }
 
 #mainNav .navbar-nav .nav-link.active {
@@ -132,6 +157,37 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
 }
 
 /* Dropdown Menu */
+
+/* Indicatore chevron per dropdown - usa ::before per non interferire con il trattino */
+#mainNav .navbar-nav .dropdown-toggle::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    border-radius: 1px;
+    opacity: 0.7;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+#mainNav .navbar-nav .dropdown-toggle:hover::before {
+    opacity: 1;
+}
+
+#mainNav .navbar-nav .dropdown.show .dropdown-toggle::before {
+    transform: translateY(-30%) rotate(-135deg);
+    opacity: 1;
+}
+
+/* Aggiunge spazio per il chevron */
+#mainNav .navbar-nav .dropdown-toggle {
+    padding-right: calc(var(--space-sm) + 10px) !important;
+}
+
 #mainNav .navbar-nav .dropdown-menu {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -230,49 +286,34 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
     background-color: var(--color-text-primary);
 }
 
-/* Language Switcher */
-.language-switcher {
-    gap: 0.35rem;
+/* Language Dropdown - usa variabili del tema */
+#languageDropdown {
+    font-size: 0.9rem;
 }
 
-.language-switcher .lang-toggle {
-    border: none;
-    background: transparent;
+#languageDropdown .bi-globe2 {
+    font-size: 1.1rem;
+}
+
+/* Dropdown menu lingua - segue il tema */
+#mainNav .navbar-nav .dropdown-menu[aria-labelledby="languageDropdown"] {
+    min-width: auto;
+    padding: var(--space-xs);
+}
+
+#mainNav .navbar-nav .dropdown-menu[aria-labelledby="languageDropdown"] .dropdown-item {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.9rem;
+}
+
+#mainNav .navbar-nav .dropdown-menu[aria-labelledby="languageDropdown"] .dropdown-item.active {
+    background-color: var(--color-primary);
     color: var(--color-text-inverse);
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 0.15rem 0.25rem;
-    transition: color var(--transition-fast);
 }
 
-.language-switcher .lang-toggle.active {
-    color: var(--color-primary-light);
-}
-
-.language-switcher .lang-toggle:hover {
-    color: var(--color-primary-light);
-}
-
-.language-switcher .lang-separator {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.85rem;
-}
-
-#mainNav.navbar-scrolled .language-switcher .lang-toggle,
-#mainNav.navbar-dark-pages .language-switcher .lang-toggle {
-    color: var(--color-text-primary);
-}
-
-#mainNav.navbar-scrolled .language-switcher .lang-toggle.active,
-#mainNav.navbar-scrolled .language-switcher .lang-toggle:hover,
-#mainNav.navbar-dark-pages .language-switcher .lang-toggle.active,
-#mainNav.navbar-dark-pages .language-switcher .lang-toggle:hover {
-    color: var(--color-primary);
-}
-
-#mainNav.navbar-scrolled .language-switcher .lang-separator,
-#mainNav.navbar-dark-pages .language-switcher .lang-separator {
-    color: var(--color-text-secondary);
+#mainNav .navbar-nav .dropdown-menu[aria-labelledby="languageDropdown"] .dropdown-item:hover:not(.active) {
+    background-color: var(--color-primary-pale);
+    color: var(--color-primary-dark);
 }
 
 /* Responsive */
@@ -283,6 +324,30 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
         padding: var(--space-md);
         margin-top: var(--space-md);
         box-shadow: var(--shadow-lg);
+    }
+    
+    /* Centra il testo nel menu mobile */
+    #mainNav .navbar-nav {
+        text-align: center;
+    }
+    
+    #mainNav .navbar-nav .nav-link {
+        justify-content: center;
+    }
+    
+    #mainNav .navbar-nav .dropdown-menu {
+        text-align: center;
+    }
+    
+    /* Fix: testo scuro nel menu mobile anche quando navbar è trasparente */
+    #mainNav.navbar-dark .navbar-nav .nav-link,
+    #mainNav.navbar-dark .dropdown-item {
+        color: var(--color-text-primary);
+    }
+    
+    #mainNav.navbar-dark .navbar-nav .nav-link:hover,
+    #mainNav.navbar-dark .navbar-nav .nav-link.active {
+        color: var(--color-primary);
     }
     
     #mainNav .navbar-nav .nav-item .btn {
