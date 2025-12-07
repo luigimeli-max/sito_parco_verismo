@@ -8,7 +8,9 @@ __pycache__/
 *.so
 .venv/
 venv/
+env/
 *.egg-info/
+*.egg
 
 # Django
 *.log
@@ -17,23 +19,53 @@ db.sqlite3
 /media/
 /staticfiles/
 .env
+*.mo
 
 # Node.js
 node_modules/
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
 
 # IDEs
 .vscode/*
 !.vscode/extensions.json
 .idea/
 *.sublime-project
+*.sublime-workspace
 *.swp
+*.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
-*~
+ehthumbs.db
+Desktop.ini
 
-# Backup
+# Backup e temporanei
 *.bak
 *.backup
+*.tmp
+*.temp
+*~
+
+# Coverage e testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+
+# Certificati e chiavi (sicurezza)
+*.pem
+*.key
+*.cert
+*.crt
+
+# Compilati e build
+*.pyc
+*.pyo
+dist/
+build/
+*.egg-info/
