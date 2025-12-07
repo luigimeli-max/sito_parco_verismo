@@ -14,12 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('parco_verismo/', include('parco_verismo.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.i18n import i18n_patterns
+# Django imports
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
+from django.urls import path, include
+
+# Local imports
 from parco_verismo.admin_prenotazioni import richieste_admin_site
 from parco_verismo.sitemaps import (
     StaticViewSitemap, OperaSitemap, AutoreSitemap,
