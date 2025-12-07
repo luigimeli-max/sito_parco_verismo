@@ -1,40 +1,43 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Opera, Autore, Evento, Notizia, Documento, FotoArchivio, Itinerario, Prenotazione
+from .forms import PrenotazioneForm
 from django.db.models import Q
 from django.http import HttpResponse
 from django.contrib import messages
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.cache import cache_page
 import json
+
+# Rate limiting configuration (will be activated when django-ratelimit is installed)
+# from django_ratelimit.decorators import ratelimit
 
 def home_view(request):
     from django.utils import timezone
 
-    # Gestione form di contatto
+    # Gestione form di contatto con validazione
     if request.method == 'POST':
-        try:
-            # Gestione data preferita
-            data_preferita = request.POST.get('data_preferita')
-            if data_preferita:
-                from datetime import datetime
-                data_preferita = datetime.strptime(data_preferita, '%Y-%m-%d').date()
-            else:
-                data_preferita = None
-            
-            richiesta = Prenotazione(
-                nome=request.POST.get('nome'),
-                cognome=request.POST.get('cognome'),
-                email=request.POST.get('email'),
-                telefono=request.POST.get('telefono', ''),
-                luogo=request.POST.get('luogo'),
-                itinerario=request.POST.get('itinerario'),
-                data_preferita=data_preferita,
-                numero_partecipanti=int(request.POST.get('numero_partecipanti', 1)),
-                messaggio=request.POST.get('messaggio', '')
-            )
-            richiesta.save()
-            messages.success(request, 'Prenotazione inviata con successo! Ti contatteremo presto via email.')
-            return redirect('home' + '#prenota-itinerario')
-        except Exception as e:
-            messages.error(request, 'Si è verificato un errore. Riprova più tardi.')
+        form = PrenotazioneForm(request.POST)
+        if form.is_valid():
+            try:
+                prenotazione = form.save()
+                messages.success(
+                    request, 
+                    'Prenotazione inviata con successo! Ti contatteremo presto via email.'
+                )
+                return redirect('home' + '#prenota-itinerario')
+            except Exception as e:
+                messages.error(request, 'Errore nel salvataggio. Riprova più tardi.')
+        else:
+            # Mostra errori di validazione
+            for field, errors in form.errors.items():
+                for error in errors:
+                    if field == '__all__':
+                        messages.error(request, error)
+                    else:
+                        field_label = form.fields[field].label or field
+                        messages.error(request, f'{field_label}: {error}')
+    else:
+        form = PrenotazioneForm()
 
     # Eventi: prendere i prossimi eventi attivi (a partire da oggi) ordinati per data
     eventi_latest = Evento.objects.filter(is_active=True, data_inizio__gte=timezone.now()).order_by('data_inizio')[:4]
