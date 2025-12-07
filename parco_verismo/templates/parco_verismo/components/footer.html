@@ -31,7 +31,7 @@
                     <li class="mb-2"><a href="{% url 'documenti' %}" class="footer-link">{% trans 'Documenti & Studi' %}</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-3 col-md-4" id="contatti">
                 <h6 class="footer-subheading mb-3">{% trans 'Contatti' %}</h6>
                 <ul class="list-unstyled">
                     <li class="mb-2">
@@ -73,8 +73,10 @@
                 </div>
             </div>
             <div class="col-md-3 text-md-end">
-                <a href="#" class="footer-link small me-3">{% trans 'Privacy Policy' %}</a>
-                <a href="#" class="footer-link small">{% trans 'Termini di Servizio' %}</a>
+                <a href="{% url 'privacy_policy' %}" class="footer-link small me-3">{% trans 'Privacy' %}</a>
+                <a href="{% url 'cookie_policy' %}" class="footer-link small me-3">{% trans 'Cookie' %}</a>
+                <a href="{% url 'note_legali' %}" class="footer-link small me-3">{% trans 'Note Legali' %}</a>
+                <a href="{% url 'dichiarazione_accessibilita' %}" class="footer-link small">{% trans 'Accessibilità' %}</a>
             </div>
         </div>
     </div>

@@ -322,7 +322,7 @@
 </section>
 
 <!-- Sezione: Contatto / Prenotazione Itinerario (split: form a sinistra, info a destra) -->
-<section class="hp-section hp-cta-final py-6">
+<section id="prenota-itinerario" class="hp-section hp-cta-final py-6">
     <div class="container-xl">
         <div class="row">
             <div class="col-lg-10 mx-auto">
@@ -334,40 +334,71 @@
                                 <p class="text-secondary mb-0">{% trans "Compila i tuoi dati e scegli luogo e tipologia d'itinerario. Ti contatteremo al più presto." %}</p>
                             </div>
 
-                            <form class="hp-contact-form" action="#" method="post">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <form class="hp-contact-form" method="post">
                                 {% csrf_token %}
                                 <div class="row">
-                                    <div class="col-12 form-group">
-                                        <label class="form-label" for="nome">{% trans 'Nome' %}</label>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="nome">{% trans 'Nome' %} *</label>
                                         <input id="nome" name="nome" type="text" class="form-control" placeholder="{% trans 'Inserisci il tuo nome' %}" required>
                                     </div>
 
-                                    <div class="col-12 form-group">
-                                        <label class="form-label" for="cognome">{% trans 'Cognome' %}</label>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="cognome">{% trans 'Cognome' %} *</label>
                                         <input id="cognome" name="cognome" type="text" class="form-control" placeholder="{% trans 'Inserisci il tuo cognome' %}" required>
                                     </div>
 
-                                    <div class="col-12 form-group">
-                                        <label class="form-label" for="email">{% trans 'Email' %}</label>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="email">{% trans 'Email' %} *</label>
                                         <input id="email" name="email" type="email" class="form-control" placeholder="{% trans 'Inserisci la tua email' %}" required>
                                     </div>
 
-                                    <div class="col-12 form-group">
-                                        <label class="form-label" for="luogo">{% trans 'Luogo' %}</label>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="telefono">{% trans 'Telefono' %}</label>
+                                        <input id="telefono" name="telefono" type="tel" class="form-control" placeholder="{% trans 'Numero di telefono (opzionale)' %}">
+                                    </div>
+
+                                    <div class="col-md-4 form-group">
+                                        <label class="form-label" for="luogo">{% trans 'Luogo' %} *</label>
                                         <select id="luogo" name="luogo" class="form-control" required>
+                                            <option value="">{% trans 'Seleziona...' %}</option>
                                             <option value="vizzini">Vizzini</option>
                                             <option value="mineo">Mineo</option>
                                             <option value="licodia">Licodia Eubea</option>
                                         </select>
                                     </div>
 
-                                    <div class="col-12 form-group">
-                                        <label class="form-label" for="itinerario">{% trans 'Tipologia itinerario' %}</label>
+                                    <div class="col-md-8 form-group">
+                                        <label class="form-label" for="itinerario">{% trans 'Tipologia itinerario' %} *</label>
                                         <select id="itinerario" name="itinerario" class="form-control" required>
+                                            <option value="">{% trans 'Seleziona...' %}</option>
                                             <option value="verghiani">{% trans 'Itinerari verghiani' %}</option>
                                             <option value="capuaniani">{% trans 'Itinerari capuaniani' %}</option>
                                             <option value="tematici">{% trans 'Itinerari tematici' %}</option>
                                         </select>
+                                    </div>
+
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="data_preferita">{% trans 'Data preferita visita' %}</label>
+                                        <input id="data_preferita" name="data_preferita" type="date" class="form-control" min="{{ oggi }}">
+                                    </div>
+
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="numero_partecipanti">{% trans 'Numero partecipanti' %} *</label>
+                                        <input id="numero_partecipanti" name="numero_partecipanti" type="number" class="form-control" min="1" max="100" value="1" required>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label class="form-label" for="messaggio">{% trans 'Messaggio o richieste particolari' %}</label>
+                                        <textarea id="messaggio" name="messaggio" class="form-control" rows="3" placeholder="{% trans 'Eventuali richieste o informazioni aggiuntive...' %}"></textarea>
                                     </div>
 
                                     <div class="col-12 text-center mt-3">
