@@ -1,5 +1,8 @@
+# Django imports
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
+
+# Local imports
 from .models import Opera, Evento, Notizia, Documento, Itinerario, Autore
 
 

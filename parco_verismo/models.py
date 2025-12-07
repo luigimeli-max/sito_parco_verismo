@@ -1,5 +1,8 @@
+# Django imports
 from django.db import models
 from django.urls import reverse
+
+# Third-party imports
 from parler.models import TranslatableModel, TranslatedFields
 
 class Autore(models.Model):
