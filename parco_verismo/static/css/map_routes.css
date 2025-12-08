@@ -23,8 +23,8 @@
 
 .map-sidebar-header {
     background: linear-gradient(135deg,
-        rgba(130, 50, 40, 0.1) 0%,
-        rgba(192, 140, 59, 0.08) 100%);
+            rgba(130, 50, 40, 0.1) 0%,
+            rgba(192, 140, 59, 0.08) 100%);
     padding: 1rem 1.25rem;
     border-bottom: 1px solid #e0d8d0;
 }
@@ -74,8 +74,8 @@
 
 .filters-list .filter-item.active {
     background: linear-gradient(135deg,
-        rgba(130, 50, 40, 0.12) 0%,
-        rgba(192, 140, 59, 0.08) 100%);
+            rgba(130, 50, 40, 0.12) 0%,
+            rgba(192, 140, 59, 0.08) 100%);
     color: #823228;
     font-weight: 600;
     border-color: rgba(130, 50, 40, 0.3);
@@ -263,23 +263,23 @@
     .map-layout {
         flex-direction: column;
     }
-    
+
     .map-sidebar {
         width: 100%;
         max-height: none;
     }
-    
+
     .map-sidebar-content {
         max-height: 200px;
         overflow-y: auto;
     }
-    
+
     .filters-list {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 0.5rem;
     }
-    
+
     .filters-list .filter-item {
         flex: 1 1 auto;
         min-width: 140px;
@@ -289,6 +289,7 @@
 }
 
 @media (max-width: 768px) {
+
     .map-main .map-container,
     .map-container {
         height: 400px;
@@ -309,7 +310,7 @@
         text-align: left;
         justify-content: flex-start;
     }
-    
+
     .map-main .map-container,
     .map-container {
         height: 350px;
