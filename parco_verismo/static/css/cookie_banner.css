@@ -6,11 +6,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: color-mix(in srgb, var(--color-surface) 98%, transparent);
+    background: var(--color-surface, #ffffff);
     border-top: 3px solid var(--color-primary);
     padding: var(--space-6);
     box-shadow: var(--shadow-xl);
-    z-index: var(--z-modal);
+    z-index: 9999;
     display: none;
     animation: slideUp 0.4s ease-out;
 }
@@ -126,7 +126,7 @@
     right: 0;
     bottom: 0;
     background: var(--overlay-darker);
-    z-index: calc(var(--z-modal) + 10);
+    z-index: 10000;
     overflow-y: auto;
     padding: var(--space-8);
 }
@@ -210,13 +210,15 @@
     position: relative;
     display: inline-block;
     width: 50px;
-    height: 24px;
+    height: 26px;
+    flex-shrink: 0;
 }
 
 .cookie-toggle input {
     opacity: 0;
     width: 0;
     height: 0;
+    position: absolute;
 }
 
 .cookie-toggle-slider {
@@ -226,34 +228,44 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-gray-400);
-    transition: var(--transition-base);
-    border-radius: var(--radius-full);
+    background-color: #ccc;
+    transition: 0.3s ease;
+    border-radius: 26px;
 }
 
 .cookie-toggle-slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
     left: 3px;
     bottom: 3px;
-    background-color: var(--color-white);
-    transition: var(--transition-base);
-    border-radius: var(--radius-full);
+    background-color: #ffffff;
+    transition: 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .cookie-toggle input:checked + .cookie-toggle-slider {
-    background-color: var(--color-primary);
+    background-color: #2e7d32;
+}
+
+.cookie-toggle input:focus + .cookie-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.3);
 }
 
 .cookie-toggle input:checked + .cookie-toggle-slider:before {
-    transform: translateX(26px);
+    transform: translateX(24px);
 }
 
 .cookie-toggle input:disabled + .cookie-toggle-slider {
-    background-color: var(--color-gray-600);
+    background-color: #2e7d32;
+    opacity: 0.7;
     cursor: not-allowed;
+}
+
+.cookie-toggle input:disabled + .cookie-toggle-slider:before {
+    transform: translateX(24px);
 }
 
 .cookie-modal-buttons {
