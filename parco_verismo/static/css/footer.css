@@ -10,9 +10,9 @@
 }
 
 .footer-logo {
-    height: 80px !important;
-    max-height: 80px !important;
-    max-width: 220px !important;
+    height: 100px !important;
+    max-height: 100px !important;
+    max-width: 260px !important;
     width: auto !important;
     object-fit: contain;
     transition: all 0.3s ease;
@@ -31,8 +31,8 @@
     }
     
     .footer-logo {
-        height: 50px !important;
-        max-width: 120px !important;
+        height: 65px !important;
+        max-width: 150px !important;
     }
 }
 
@@ -42,7 +42,7 @@
     }
     
     .footer-logo {
-        height: 40px !important;
-        max-width: 100px !important;
+        height: 50px !important;
+        max-width: 120px !important;
     }
 }
