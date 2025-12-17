@@ -1,103 +1,66 @@
+{% extends 'parco_verismo/base.html' %}
 {% load static i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}" data-theme="verismo">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{% trans 'Itinerari Verghiani - Scopri i luoghi delle opere di Giovanni Verga attraverso percorsi letterari nel cuore della Sicilia.' %}" />
-    <meta name="keywords" content="Itinerari Verghiani, Giovanni Verga, Verismo, Sicilia, percorsi letterari" />
-    <title>{% trans 'Parco Letterario Verismo - Itinerari Verghiani' %}</title>
 
-    <!-- Bootstrap CSS locale -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+{% block title %}{% trans 'Parco Letterario Verismo - Itinerari Verghiani' %}{% endblock %}
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="{% static 'fonts/inter-400.css' %}" />
-    <link rel="stylesheet" href="{% static 'fonts/montserrat-500.css' %}" />
-    <link rel="stylesheet" href="{% static 'fonts/montserrat-700.css' %}" />
+{% block meta_description %}{% trans 'Itinerari Verghiani - Scopri i luoghi delle opere di Giovanni Verga attraverso percorsi letterari nel cuore della Sicilia.' %}{% endblock %}
+{% block meta_keywords %}Itinerari Verghiani, Giovanni Verga, Verismo, Sicilia, percorsi letterari{% endblock %}
 
-    <!-- Stili -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+{% block extra_head %}
+    <!-- Stili specifici per itinerari -->
     <link rel="stylesheet" href="{% static 'css/itinerari.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
     <link rel="stylesheet" href="{% static 'css/map_routes.css' %}" />
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  </head>
-
-  <body>
-    {% include 'parco_verismo/navbar.html' %}
     
-    {% block content %}
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+{% endblock %}
+
+{% block hero_section %}
     <!-- Hero Section -->
     <section class="hero-verghiani d-flex align-items-center justify-content-center text-center mb-5">
       <div class="hero-content px-3">
         <h1 class="display-3 fw-bold text-white">{% trans 'Itinerari Verghiani' %}</h1>
       </div>
     </section>
+{% endblock %}
 
-    <div class="container my-5">
+{% block content %}
+    <div class="container-xl my-5">
       {% if itinerari %}
-      <h2 class="text-center mb-4" style="color: #823228;">{% trans 'Mappa Itinerari Verghiani' %}</h2>
-      <p class="text-center text-muted mb-4">{% trans 'Esplora i percorsi letterari di Giovanni Verga attraverso la Sicilia' %}</p>
+      <div class="text-center mb-5">
+        <h2 class="pages-section-title h2 fw-bold" style="color: #823228;">{% trans 'Mappa Itinerari Verghiani' %}</h2>
+        <p class="lead text-secondary" style="max-width: 600px; margin: 0 auto;">{% trans 'Scopri i luoghi di interesse sulla mappa interattiva' %}</p>
+      </div>
 
-      <section id="map-routes-section" class="map-routes-container mb-5">
+      <div class="map-layout">
+        <!-- Pannello Laterale Filtri -->
+        <div class="map-sidebar">
+          <div class="map-sidebar-header">
+            <h4><i class="bi bi-signpost-2 me-2"></i>{% trans 'Percorsi Disponibili' %}</h4>
+          </div>
+          <div class="map-sidebar-content">
+            <!-- Lista percorsi -->
+            <div class="filters-list">
+              {% for data in itinerari_data %}
+              <div class="filter-item route-btn d-flex align-items-center gap-2" 
+                   data-itinerario='{{ data.itinerario_json|safe }}'>
+                <span style="font-size: 1.2rem;">{{ data.obj.icona_percorso|default:'📖' }}</span>
+                <span>{{ data.obj.titolo }}</span>
+              </div>
+              {% endfor %}
+              <div class="filter-item filter-item-reset reset-view-btn d-flex align-items-center gap-2">
+                <i class="bi bi-arrow-clockwise text-primary"></i>
+                <span>{% trans 'Reset vista' %}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <!-- Mappa -->
-        <div id="map" class="map-container"></div>
-
-        <!-- Pannello laterale con i percorsi -->
-        <div class="routes-sidebar">
-          <div class="routes-sidebar-header">
-            <h5>🗺️ {% trans 'Percorsi Verghiani' %}</h5>
-          </div>
-
-          <!-- Pulsanti percorsi dinamici -->
-          {% for data in itinerari_data %}
-          <button class="route-btn" 
-                  data-itinerario='{"slug": "{{ data.obj.slug }}", 
-                                    "titolo": "{{ data.obj.titolo|escapejs }}", 
-                                    "descrizione_breve": "{{ data.obj.descrizione|truncatewords:15|escapejs }}",
-                                    "colore": "{{ data.obj.colore_percorso|default:'#2E7D32' }}", 
-                                    "icona": "{{ data.obj.icona_percorso|default:'📖' }}", 
-                                    "durata": "{{ data.obj.durata_stimata|default:'' }}", 
-                                    "difficolta": "{{ data.obj.get_difficolta_display|default:'' }}",
-                                    "coordinate_tappe": {{ data.coordinate_tappe_json|safe }}}'>
-            <span class="route-btn-icon">{{ data.obj.icona_percorso|default:'📖' }}</span>
-            <div class="route-btn-content">
-              <h6>{{ data.obj.titolo }}</h6>
-              <small>
-                {% if data.obj.durata_stimata %}{{ data.obj.durata_stimata }}{% endif %}
-                {% if data.obj.durata_stimata and data.obj.difficolta %} · {% endif %}
-                {% if data.obj.difficolta %}{{ data.obj.get_difficolta_display }}{% endif %}
-              </small>
-            </div>
-          </button>
-          {% endfor %}
-
-          <!-- Legenda -->
-          <div class="route-legend">
-            <h6>{% trans 'Legenda' %}</h6>
-            {% for itinerario in itinerari %}
-            <div class="legend-item">
-              <div class="legend-line" style="background: {{ itinerario.colore_percorso|default:'#2E7D32' }};"></div>
-              <span>{{ itinerario.titolo|truncatewords:3 }}</span>
-            </div>
-            {% endfor %}
-          </div>
+        <div class="map-main">
+          <div id="map" class="map-container rounded shadow"></div>
         </div>
-
-        <!-- Controlli mappa -->
-        <div class="map-controls">
-          <button class="map-control-btn reset-view-btn">
-            <span>🎯</span>
-            <span>{% trans 'Reset vista' %}</span>
-          </button>
-        </div>
-
-        <!-- Pannello informazioni percorso -->
-        <div class="route-info-panel"></div>
-      </section>
+      </div>
 
       {% else %}
       <div class="alert alert-info text-center">
@@ -106,37 +69,13 @@
       </div>
       {% endif %}
     </div>
-    {% endblock %}
-    
-    {% include 'parco_verismo/components/footer.html' %}
+{% endblock %}
 
+{% block extra_scripts %}
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <!-- Map Scripts -->
     <script src="{% static 'js/map/script_itinerari_verghiani.js' %}"></script>
-
-    <!-- Bootstrap Bundle JS -->
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Shrinking Navbar Script -->
-    <script>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        var navbarShrink = function () {
-          const navbarCollapsible = document.body.querySelector("#mainNav");
-          if (!navbarCollapsible) {
-            return;
-          }
-          if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove("navbar-shrink");
-          } else {
-            navbarCollapsible.classList.add("navbar-shrink");
-          }
-        };
-        navbarShrink();
-        document.addEventListener("scroll", navbarShrink);
-      });
-    </script>
-  </body>
-</html>
+{% endblock %}
 

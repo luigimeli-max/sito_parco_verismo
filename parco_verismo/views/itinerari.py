@@ -19,9 +19,20 @@ def itinerari_verghiani_view(request):
     itinerari_data = []
     for itinerario in itinerari:
         coordinate_tappe = itinerario.coordinate_tappe if itinerario.coordinate_tappe else []
+        # Serializza l'intero oggetto itinerario per evitare problemi di escaping
+        itinerario_json = json.dumps({
+            'slug': itinerario.slug,
+            'titolo': itinerario.titolo,
+            'descrizione_breve': ' '.join(itinerario.descrizione.split()[:15]) + '...' if itinerario.descrizione else '',
+            'colore': itinerario.colore_percorso or '#2E7D32',
+            'icona': itinerario.icona_percorso or '📖',
+            'durata': itinerario.durata_stimata or '',
+            'difficolta': itinerario.get_difficolta_display() if itinerario.difficolta else '',
+            'coordinate_tappe': coordinate_tappe
+        }, ensure_ascii=False)
         itinerari_data.append({
             'obj': itinerario,
-            'coordinate_tappe_json': json.dumps(coordinate_tappe)
+            'itinerario_json': itinerario_json
         })
     
     context = {

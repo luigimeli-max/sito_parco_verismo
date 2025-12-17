@@ -37,15 +37,15 @@ class DocumentoAdmin(TranslatableAdmin):
 
 @admin.register(FotoArchivio)
 class FotoArchivioAdmin(TranslatableAdmin):
-    list_display = ('__str__', 'categoria', 'ordine', 'data_aggiunta', 'is_active')
-    list_filter = ('is_active', 'categoria', 'data_aggiunta')
+    list_display = ('__str__', 'autore', 'categoria', 'ordine', 'data_aggiunta', 'is_active')
+    list_filter = ('is_active', 'autore', 'categoria', 'data_aggiunta')
     search_fields = ('translations__titolo', 'translations__descrizione', 'categoria')
     date_hierarchy = 'data_aggiunta'
     ordering = ('ordine', '-data_aggiunta')
     list_editable = ('ordine', 'is_active')
     fieldsets = (
         (None, {
-            'fields': ('immagine', 'categoria', 'ordine', 'is_active')
+            'fields': ('immagine', 'autore', 'categoria', 'ordine', 'is_active')
         }),
         ('Informazioni', {
             'fields': ('titolo', 'descrizione')

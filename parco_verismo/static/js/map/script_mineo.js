@@ -55,7 +55,7 @@ function createMarker(type) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Inizializza la mappa centrata su Mineo
-    var map = L.map('map-mineo').setView([37.2648, 14.6925], 15);
+    var map = L.map('map').setView([37.2648, 14.6925], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Aggiungi active al cliccato
             this.classList.add('active');
             
-            var filter = this.getAttribute('data-filter');
+            var filter = this.getAttribute('data-type');
             addMarkers(filter);
             
             // Centra la mappa se necessario

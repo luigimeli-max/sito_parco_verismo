@@ -67,62 +67,55 @@ a:focus {
 }
 
 /* ========================================================
-   PALETTE COLORI - Aggiungi una classe al <body> per cambiare tema:
-   <body> oppure <body class="theme-default">  = TERRE DI VERGA
-   <body class="theme-mare">      = MARE E AGRUMI  
-   <body class="theme-verde">     = VERDE SICILIA
-   <body class="theme-bordeaux">  = ELEGANZA BORDEAUX
-   <body class="theme-blu">       = BLU NOTTE
+   PALETTE COLORI
    ======================================================== */
 
-/* TEMA 1: TERRE DI VERGA (Default) */
-:root,
-body:not([class*="theme-"]),
-body.theme-default {
+/* TEMA UNICO: VERDE SICILIA (Default) */
+:root {
     /* Colori principali */
-    --color-primary: #823228;
-    --color-primary-dark: #4A140D;
-    --color-primary-light: #C76A52;
-    --color-primary-pale: #FAEEE7;
+    --color-primary: #4A6741;
+    --color-primary-dark: #2F4028;
+    --color-primary-light: #7A9A6F;
+    --color-primary-pale: #E8F0E6;
     
-    --color-secondary: #C08C3B;
-    --color-secondary-dark: #8F6110;
-    --color-secondary-light: #F3C471;
+    --color-secondary: #BF9B30;
+    --color-secondary-dark: #8B6F15;
+    --color-secondary-light: #E8C560;
     
-    --color-accent: #2F6D5C;
+    --color-accent: #A85D3A;
     
     /* Neutri & sfondi */
-    --color-background: #FFFBF7;
-    --color-surface: #FFFEFD;
-    --color-surface-elevated: #F7EDE4;
-    --color-neutral-100: #FBF2EC;
-    --color-neutral-200: #EBDACF;
-    --color-neutral-300: #D8C5BA;
-    --color-neutral-400: #A68476;
+    --color-background: #F8FBF7;
+    --color-surface: #FFFFFF;
+    --color-surface-elevated: #f0f0f0;
+    --color-neutral-100: #F0F5EE;
+    --color-neutral-200: #DBDDD5;
+    --color-neutral-300: #C5CCC0;
+    --color-neutral-400: #8B9285;
     
     /* Testi */
-    --color-text-primary: #2B1A13;
-    --color-text-secondary: #5B4034;
-    --color-text-tertiary: #8A6D60;
+    --color-text-primary: #1A2416;
+    --color-text-secondary: #3D4839;
+    --color-text-tertiary: #6B7565;
     --color-text-inverse: #FFFFFF;
-    --color-heading: color-mix(in srgb, var(--color-primary) 40%, var(--color-text-primary));
+    --color-heading: color-mix(in srgb, var(--color-primary) 50%, var(--color-text-primary));
     
     /* Bordi */
-    --color-border: #E7D9CA;
-    --color-border-strong: rgba(43, 26, 19, 0.2);
-    --color-divider: rgba(43, 26, 19, 0.12);
+    --color-border: #D5E0D2;
+    --color-border-strong: rgba(26, 36, 22, 0.2);
+    --color-divider: rgba(26, 36, 22, 0.12);
     
     /* Stati */
-    --color-success: #4B9F7C;
-    --color-warning: #D07A00;
-    --color-warning-dark: #A85C00;
-    --color-error: #B0382D;
-    --color-info: #2F6E8C;
+    --color-success: #52A770;
+    --color-warning: #D89020;
+    --color-warning-dark: #A86D15;
+    --color-error: #B44033;
+    --color-info: #3D7A6F;
     
     /* Overlay e gradienti */
-    --overlay-hero-start: rgba(43, 26, 19, 0.62);
-    --overlay-hero-end: rgba(43, 26, 19, 0.32);
-    --color-text-inverse-muted: rgba(255, 255, 255, 0.8);
+    --overlay-hero-start: rgba(26, 36, 22, 0.65);
+    --overlay-hero-end: rgba(26, 36, 22, 0.35);
+    --color-text-inverse-muted: rgba(255,255,255,0.85);
     --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 80%, transparent);
     --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
     --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 18%, transparent);
@@ -133,9 +126,9 @@ body.theme-default {
     --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 80%, var(--color-background)) 100%);
     
     /* Ombre */
-    --shadow-sm: 0 1px 2px 0 rgba(43, 26, 19, 0.06);
-    --shadow-md: 0 8px 24px rgba(43, 26, 19, 0.08);
-    --shadow-lg: 0 18px 45px rgba(43, 26, 19, 0.12);
+    --shadow-sm: 0 1px 2px 0 rgba(26, 36, 22, 0.06);
+    --shadow-md: 0 8px 24px rgba(26, 36, 22, 0.08);
+    --shadow-lg: 0 18px 45px rgba(26, 36, 22, 0.12);
     
     /* Transizioni */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -202,423 +195,6 @@ body.theme-default {
     --color-gradient-secondary: var(--gradient-secondary);
     --color-shadow-md: var(--shadow-md);
     --color-shadow-lg: var(--shadow-lg);
-}
-
-/* TEMA 2: MARE E AGRUMI */
-body.theme-mare {
-    /* Colori principali */
-    --color-primary: #1F4F70;
-    --color-primary-dark: #0F2C40;
-    --color-primary-light: #5D8EAF;
-    --color-primary-pale: #E3EEF6;
-    
-    --color-secondary: #F09B2D;
-    --color-secondary-dark: #B5670F;
-    --color-secondary-light: #FFC171;
-    
-    --color-accent: #1F8B66;
-    
-    /* Neutri & sfondi */
-    --color-background: #F5FAFF;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #EEF4F9;
-    --color-neutral-100: #EDF3F7;
-    --color-neutral-200: #D7E4EE;
-    --color-neutral-300: #BBD0DF;
-    --color-neutral-400: #7B95AD;
-    
-    /* Testi */
-    --color-text-primary: #101C2C;
-    --color-text-secondary: #3C4F64;
-    --color-text-tertiary: #6D8297;
-    --color-heading: color-mix(in srgb, var(--color-primary) 40%, var(--color-text-primary));
-    
-    /* Bordi */
-    --color-border: #C9D8E5;
-    --color-border-strong: rgba(16, 28, 44, 0.18);
-    --color-divider: rgba(16, 28, 44, 0.12);
-    
-    /* Stati */
-    --color-success: #1F8B66;
-    --color-warning: #F29D2C;
-    --color-warning-dark: #C07113;
-    --color-error: #BD4C3F;
-    --color-info: #2A7FC0;
-    
-    /* Overlay e gradienti */
-    --overlay-hero-start: rgba(16, 28, 44, 0.7);
-    --overlay-hero-end: rgba(16, 28, 44, 0.4);
-    --color-text-inverse-muted: rgba(255,255,255,0.85);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 75%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 18%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 25%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 55%, var(--color-primary-light) 100%);
-    --gradient-secondary: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-primary) 15%, var(--color-background)) 0%, var(--color-background) 50%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 70%, var(--color-background)) 100%);
-    
-    /* Ombre */
-    --shadow-sm: 0 1px 2px 0 rgba(16, 28, 44, 0.05);
-    --shadow-md: 0 8px 24px rgba(16, 28, 44, 0.08);
-    --shadow-lg: 0 18px 45px rgba(16, 28, 44, 0.12);
-}
-
-/* TEMA 3: VERDE SICILIA */
-body.theme-verde {
-    /* Colori principali */
-    --color-primary: #4A6741;
-    --color-primary-dark: #2F4028;
-    --color-primary-light: #7A9A6F;
-    --color-primary-pale: #E8F0E6;
-    
-    --color-secondary: #BF9B30;
-    --color-secondary-dark: #8B6F15;
-    --color-secondary-light: #E8C560;
-    
-    --color-accent: #A85D3A;
-    
-    /* Neutri & sfondi */
-    --color-background: #F8FBF7;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #EDF4EB;
-    --color-neutral-100: #F0F5EE;
-    --color-neutral-200: #DBDDD5;
-    --color-neutral-300: #C5CCC0;
-    --color-neutral-400: #8B9285;
-    
-    /* Testi */
-    --color-text-primary: #1A2416;
-    --color-text-secondary: #3D4839;
-    --color-text-tertiary: #6B7565;
-    --color-heading: color-mix(in srgb, var(--color-primary) 50%, var(--color-text-primary));
-    
-    /* Bordi */
-    --color-border: #D5E0D2;
-    --color-border-strong: rgba(26, 36, 22, 0.2);
-    --color-divider: rgba(26, 36, 22, 0.12);
-    
-    /* Stati */
-    --color-success: #52A770;
-    --color-warning: #D89020;
-    --color-warning-dark: #A86D15;
-    --color-error: #B44033;
-    --color-info: #3D7A6F;
-    
-    /* Overlay e gradienti */
-    --overlay-hero-start: rgba(26, 36, 22, 0.65);
-    --overlay-hero-end: rgba(26, 36, 22, 0.35);
-    --color-text-inverse-muted: rgba(255,255,255,0.85);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 80%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 18%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 25%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    --gradient-secondary: linear-gradient(120deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-primary) 10%, var(--color-background)) 0%, var(--color-background) 45%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 80%, var(--color-background)) 100%);
-    
-    /* Ombre */
-    --shadow-sm: 0 1px 2px 0 rgba(26, 36, 22, 0.06);
-    --shadow-md: 0 8px 24px rgba(26, 36, 22, 0.08);
-    --shadow-lg: 0 18px 45px rgba(26, 36, 22, 0.12);
-}
-
-/* TEMA 4: ELEGANZA BORDEAUX */
-body.theme-bordeaux {
-    /* Colori principali */
-    --color-primary: #6B2737;
-    --color-primary-dark: #3F1520;
-    --color-primary-light: #A5485E;
-    --color-primary-pale: #F4E6EA;
-    
-    --color-secondary: #B38B2E;
-    --color-secondary-dark: #7D5E15;
-    --color-secondary-light: #D9BA64;
-    
-    --color-accent: #3E5563;
-    
-    /* Neutri & sfondi */
-    --color-background: #FBF7F8;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #F5EBE1;
-    --color-neutral-100: #F7F0F2;
-    --color-neutral-200: #E6D8DC;
-    --color-neutral-300: #D3C0C6;
-    --color-neutral-400: #9B7D83;
-    
-    /* Testi */
-    --color-text-primary: #2A1519;
-    --color-text-secondary: #4F3238;
-    --color-text-tertiary: #7B5A61;
-    --color-heading: color-mix(in srgb, var(--color-primary) 45%, var(--color-text-primary));
-    
-    /* Bordi */
-    --color-border: #E8D5DA;
-    --color-border-strong: rgba(42, 21, 25, 0.22);
-    --color-divider: rgba(42, 21, 25, 0.12);
-    
-    /* Stati */
-    --color-success: #5B8E5A;
-    --color-warning: #D18425;
-    --color-warning-dark: #9F631A;
-    --color-error: #B83345;
-    --color-info: #456A7F;
-    
-    /* Overlay e gradienti */
-    --overlay-hero-start: rgba(42, 21, 25, 0.68);
-    --overlay-hero-end: rgba(42, 21, 25, 0.38);
-    --color-text-inverse-muted: rgba(255,255,255,0.83);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 78%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 33%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 17%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 26%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    --gradient-secondary: linear-gradient(120deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-primary) 8%, var(--color-background)) 0%, var(--color-background) 45%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 80%, var(--color-background)) 100%);
-    
-    /* Ombre */
-    --shadow-sm: 0 1px 2px 0 rgba(42, 21, 25, 0.07);
-    --shadow-md: 0 8px 24px rgba(42, 21, 25, 0.09);
-    --shadow-lg: 0 18px 45px rgba(42, 21, 25, 0.13);
-}
-
-/* TEMA: BLACK & WHITE */
-body.theme-black {
-    /* Colori principali */
-    --color-primary: #1A1A1A;
-    --color-primary-dark: #000000;
-    --color-primary-light: #4D4D4D;
-    --color-primary-pale: #F0F0F0;
-    
-    --color-secondary: #808080;
-    --color-secondary-dark: #595959;
-    --color-secondary-light: #B3B3B3;
-    
-    --color-accent: #666666;
-    
-    /* Neutri & sfondi */
-    --color-background: #FAFAFA;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #F5F5F5;
-    --color-neutral-100: #EEEEEE;
-    --color-neutral-200: #E0E0E0;
-    --color-neutral-300: #D0D0D0;
-    --color-neutral-400: #999999;
-    
-    /* Testi */
-    --color-text-primary: #0D0D0D;
-    --color-text-secondary: #2B2B2B;
-    --color-text-tertiary: #555555;
-    --color-heading: color-mix(in srgb, var(--color-primary) 42%, var(--color-text-primary));
-    
-    /* Bordi */
-    --color-border: #D9D9D9;
-    --color-border-strong: rgba(13, 13, 13, 0.19);
-    --color-divider: rgba(13, 13, 13, 0.11);
-    
-    /* Stati */
-    --color-success: #4A4A4A;
-    --color-warning: #707070;
-    --color-warning-dark: #555555;
-    --color-error: #595959;
-    --color-info: #656565;
-    
-    /* Overlay e gradienti */
-    --overlay-hero-start: rgba(13, 13, 13, 0.72);
-    --overlay-hero-end: rgba(13, 13, 13, 0.42);
-    --color-text-inverse-muted: rgba(255, 255, 255, 0.87);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 82%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 36%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 19%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 27%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    --gradient-secondary: linear-gradient(120deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-primary) 12%, var(--color-background)) 0%, var(--color-background) 45%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 85%, var(--color-background)) 100%);
-    
-    /* Ombre */
-    --shadow-sm: 0 1px 2px 0 rgba(13, 13, 13, 0.06);
-    --shadow-md: 0 8px 24px rgba(13, 13, 13, 0.08);
-    --shadow-lg: 0 18px 45px rgba(13, 13, 13, 0.12);
-}
-
-/* ========================================================
-   Fine tema BLACK & WHITE
-   ======================================================== */
-
-
-/* TEMA 5: BLU NOTTE */
-body.theme-blu {
-    /* Colori principali */
-    --color-primary: #1E3A5F;
-    --color-primary-dark: #0F2137;
-    --color-primary-light: #4A6B95;
-    --color-primary-pale: #E4EBF3;
-    
-    --color-secondary: #C99A3E;
-    --color-secondary-dark: #916E1F;
-    --color-secondary-light: #E8C575;
-    
-    --color-accent: #5D7A4C;
-    
-    /* Neutri & sfondi */
-    --color-background: #F6F9FC;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #EDF2F7;
-    --color-neutral-100: #EEF4F9;
-    --color-neutral-200: #D8E3ED;
-    --color-neutral-300: #BFD0E0;
-    --color-neutral-400: #7E90A3;
-    
-    /* Testi */
-    --color-text-primary: #141D2A;
-    --color-text-secondary: #374556;
-    --color-text-tertiary: #627083;
-    --color-heading: color-mix(in srgb, var(--color-primary) 42%, var(--color-text-primary));
-    
-    /* Bordi */
-    --color-border: #CEDAE7;
-    --color-border-strong: rgba(20, 29, 42, 0.19);
-    --color-divider: rgba(20, 29, 42, 0.11);
-    
-    /* Stati */
-    --color-success: #3D9370;
-    --color-warning: #D89327;
-    --color-warning-dark: #A46F1C;
-    --color-error: #BD4840;
-    --color-info: #2878A8;
-    
-    /* Overlay e gradienti */
-    --overlay-hero-start: rgba(20, 29, 42, 0.72);
-    --overlay-hero-end: rgba(20, 29, 42, 0.42);
-    --color-text-inverse-muted: rgba(255,255,255,0.87);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 82%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 36%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 19%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 27%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    --gradient-secondary: linear-gradient(120deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-primary) 12%, var(--color-background)) 0%, var(--color-background) 45%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 85%, var(--color-background)) 100%);
-    
-    /* Ombre */
-    --shadow-sm: 0 1px 2px 0 rgba(20, 29, 42, 0.06);
-    --shadow-md: 0 8px 24px rgba(20, 29, 42, 0.08);
-    --shadow-lg: 0 18px 45px rgba(20, 29, 42, 0.12);
-}
-
-/* ========================================================
-   Fine temi - Rimuovo le alternative commentate
-   ======================================================== */
-
-/* TEMA 2: MARE E AGRUMI - LEGACY [data-theme] */
-[data-theme="mediterraneo"] {
-    --color-primary: #1F4F70;
-    --color-primary-dark: #0F2C40;
-    --color-primary-light: #5D8EAF;
-    --color-primary-pale: #E3EEF6;
-    
-    --color-secondary: #F09B2D;
-    --color-secondary-dark: #B5670F;
-    --color-secondary-light: #FFC171;
-    
-    --color-accent: #1F8B66;
-    
-    --color-background: #F5FAFF;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #EEF4F9;
-    --color-neutral-100: #EDF3F7;
-    --color-neutral-200: #D7E4EE;
-    --color-neutral-300: #BBD0DF;
-    --color-neutral-400: #7B95AD;
-    
-    --color-text-primary: #101C2C;
-    --color-text-secondary: #3C4F64;
-    --color-text-tertiary: #6D8297;
-    --color-text-inverse: #FFFFFF;
-    --color-heading: color-mix(in srgb, var(--color-primary) 40%, var(--color-text-primary));
-    
-    --color-border: #C9D8E5;
-    --color-border-strong: rgba(16, 28, 44, 0.18);
-    --color-divider: rgba(16, 28, 44, 0.12);
-    
-    --color-success: #1F8B66;
-    --color-warning: #F29D2C;
-    --color-warning-dark: #C07113;
-    --color-error: #BD4C3F;
-    --color-info: #2A7FC0;
-    
-    --overlay-hero-start: rgba(16, 28, 44, 0.7);
-    --overlay-hero-end: rgba(16, 28, 44, 0.4);
-    --color-text-inverse-muted: rgba(255,255,255,0.85);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 75%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 35%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 18%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 25%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 55%, var(--color-primary-light) 100%);
-    --gradient-secondary: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-primary) 15%, var(--color-background)) 0%, var(--color-background) 50%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 70%, var(--color-background)) 100%);
-    
-    --shadow-sm: 0 1px 2px 0 rgba(16, 28, 44, 0.05);
-    --shadow-md: 0 8px 24px rgba(16, 28, 44, 0.08);
-    --shadow-lg: 0 18px 45px rgba(16, 28, 44, 0.12);
-}
-
-/* TEMA 3: TERRA E ZOLFO */
-[data-theme="sicilia"] {
-    --color-primary: #7A3918;
-    --color-primary-dark: #4B1F09;
-    --color-primary-light: #C6763E;
-    --color-primary-pale: #F7E5D5;
-    
-    --color-secondary: #BFA239;
-    --color-secondary-dark: #8B7716;
-    --color-secondary-light: #E2C864;
-    
-    --color-accent: #A05434;
-    
-    --color-background: #FEF9F1;
-    --color-surface: #FFFFFF;
-    --color-surface-elevated: #F3E6D9;
-    --color-neutral-100: #F7EFE4;
-    --color-neutral-200: #E6D5C2;
-    --color-neutral-300: #D3C0A9;
-    --color-neutral-400: #9E7960;
-    
-    --color-text-primary: #2F1A10;
-    --color-text-secondary: #543522;
-    --color-text-tertiary: #836048;
-    --color-text-inverse: #FFFFFF;
-    --color-heading: color-mix(in srgb, var(--color-primary) 45%, var(--color-text-primary));
-    
-    --color-border: #E8D9C6;
-    --color-border-strong: rgba(47, 26, 16, 0.2);
-    --color-divider: rgba(47, 26, 16, 0.12);
-    
-    --color-success: #789E37;
-    --color-warning: #E18B19;
-    --color-warning-dark: #B16B0F;
-    --color-error: #B24C2B;
-    --color-info: #6C4D38;
-    
-    --overlay-hero-start: rgba(47, 26, 16, 0.7);
-    --overlay-hero-end: rgba(47, 26, 16, 0.4);
-    --color-text-inverse-muted: rgba(255,255,255,0.82);
-    --color-inverse-soft: color-mix(in srgb, var(--color-text-inverse) 78%, transparent);
-    --color-inverse-faint: color-mix(in srgb, var(--color-text-inverse) 32%, transparent);
-    --color-inverse-tint: color-mix(in srgb, var(--color-text-inverse) 16%, transparent);
-    --color-inverse-focus-ring: color-mix(in srgb, var(--color-text-inverse) 24%, transparent);
-    --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 55%, var(--color-primary-light) 100%);
-    --gradient-secondary: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
-    --gradient-background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-primary) 12%, var(--color-background)) 0%, var(--color-background) 50%, var(--color-surface) 100%);
-    --gradient-surface: linear-gradient(180deg, var(--color-surface) 0%, color-mix(in srgb, var(--color-surface) 75%, var(--color-background)) 100%);
-    
-    --shadow-sm: 0 1px 2px 0 rgba(47, 26, 16, 0.05);
-    --shadow-md: 0 8px 24px rgba(47, 26, 16, 0.09);
-    --shadow-lg: 0 18px 45px rgba(47, 26, 16, 0.14);
 }
 
 /* ========================================================
@@ -901,8 +477,8 @@ svg rect[fill="#fffbf7"] {
     fill: var(--color-background);
 }
 
-svg rect[fill="#F7EDE4"],
-svg rect[fill="#f7ede4"] {
+svg rect[fill="#f0f0f0"],
+svg rect[fill="#f0f0f0"] {
     fill: var(--color-surface-elevated);
 }
 
@@ -1013,8 +589,8 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .site-footer .social-links .footer-social-link {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
     border-radius: var(--radius-full);
     border: 1px solid var(--color-inverse-faint);
     display: inline-flex;
@@ -1385,7 +961,7 @@ svg feDropShadow[flood-color="#4a140d"] {
     align-items: center;
     background: linear-gradient(135deg, 
         #F5E6D9 0%,
-        #F7EDE4 50%,
+        #f0f0f0 50%,
         #FBF2EC 100%),
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(130,50,40,0.05)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
     background-size: cover;

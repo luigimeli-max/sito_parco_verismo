@@ -1207,6 +1207,11 @@ della Settimana Santa e i paesaggi che ispirarono diversi autori veristi.''',
             print(f"• Itinerario aggiornato: {itinerario_data['titolo']}")
     
     # ========================================================================
+    # AGGIORNAMENTO COORDINATE ITINERARI PER MAPPA
+    # ========================================================================
+    update_itinerari_coordinates()
+    
+    # ========================================================================
     # RIEPILOGO FINALE
     # ========================================================================
     print("\n" + "="*70)

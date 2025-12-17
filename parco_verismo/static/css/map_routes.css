@@ -1,122 +1,129 @@
-/* Stili per la mappa con percorsi stilizzati */
+/* ===========================
+   MAP SECTION - SIDEBAR LAYOUT (Stile Mineo)
+   =========================== */
 
-.map-routes-container {
-    position: relative;
-    min-height: 600px;
-    margin: 2rem 0;
+.map-layout {
+    display: flex;
+    gap: 1.5rem;
+    min-height: 500px;
+}
+
+/* Sidebar */
+.map-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: #fafaf8;
+    border: 1px solid #e0d8d0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.map-sidebar-header {
+    background: linear-gradient(135deg,
+            rgba(130, 50, 40, 0.1) 0%,
+            rgba(192, 140, 59, 0.08) 100%);
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e0d8d0;
+}
+
+.map-sidebar-header h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.map-sidebar-header i {
+    color: #823228;
+}
+
+.map-sidebar-content {
+    padding: 1rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Filters/Routes list */
+.filters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filters-list .filter-item {
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    color: #555;
+    border: 1px solid transparent;
+}
+
+.filters-list .filter-item:hover {
+    background: #fff;
+    color: #823228;
+    border-color: #e0d8d0;
+}
+
+.filters-list .filter-item.active {
+    background: linear-gradient(135deg,
+            rgba(130, 50, 40, 0.12) 0%,
+            rgba(192, 140, 59, 0.08) 100%);
+    color: #823228;
+    font-weight: 600;
+    border-color: rgba(130, 50, 40, 0.3);
+}
+
+.filters-list .filter-item i {
+    font-size: 1.1rem;
+    width: 22px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.filters-list .filter-item:hover i {
+    transform: scale(1.15);
+}
+
+.filters-list .filter-item-reset {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed #e0d8d0;
+}
+
+/* Map main area */
+.map-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.map-main .map-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .map-container {
-    height: 600px;
+    height: 500px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-/* Pannello laterale percorsi */
-.routes-sidebar {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    max-width: 320px;
-    max-height: calc(100% - 40px);
-    overflow-y: auto;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.routes-sidebar.collapsed {
-    transform: translateX(-100%);
-}
-
-.routes-sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-.routes-sidebar-header h5 {
-    margin: 0;
-    color: #333;
-    font-weight: 600;
-}
-
-.toggle-sidebar-btn {
-    position: absolute;
-    top: 20px;
-    left: 350px;
-    background: white;
+/* Marker numerati personalizzati - Stile goccia */
+.custom-marker {
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
 }
 
-.toggle-sidebar-btn:hover {
-    background: #f5f5f5;
-    transform: scale(1.1);
-}
-
-/* Pulsanti percorsi */
-.route-btn {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: left;
-}
-
-.route-btn:hover {
-    border-color: #ccc;
-    background: #f8f9fa;
-    transform: translateX(5px);
-}
-
-.route-btn.active {
-    border-width: 3px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-weight: 600;
-}
-
-.route-btn-icon {
-    font-size: 1.5rem;
-    min-width: 30px;
-    text-align: center;
-}
-
-.route-btn-content h6 {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #333;
-}
-
-.route-btn-content small {
-    color: #666;
-    font-size: 0.75rem;
-}
-
-/* Marker numerati personalizzati - Cerchi uniformi */
 .numbered-marker {
     position: relative;
     display: flex;
@@ -125,28 +132,29 @@
 }
 
 .marker-pin {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #c30b82;
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
     transition: transform 0.2s ease;
 }
 
 .marker-pin:hover {
-    transform: scale(1.15);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transform: rotate(-45deg) scale(1.15);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .marker-number {
+    transform: rotate(45deg);
     color: white;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 12px;
     text-align: center;
     line-height: 1;
     z-index: 10;
@@ -251,14 +259,40 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .routes-sidebar {
-        max-width: 280px;
-        padding: 15px;
+@media (max-width: 991px) {
+    .map-layout {
+        flex-direction: column;
     }
 
-    .toggle-sidebar-btn {
-        left: 300px;
+    .map-sidebar {
+        width: 100%;
+        max-height: none;
+    }
+
+    .map-sidebar-content {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .filters-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .filters-list .filter-item {
+        flex: 1 1 auto;
+        min-width: 140px;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .map-main .map-container,
+    .map-container {
+        height: 400px;
     }
 
     .route-info-panel {
@@ -268,32 +302,18 @@
         left: 10px;
         max-width: calc(100% - 20px);
     }
-
-    .map-container {
-        height: 500px;
-    }
 }
 
 @media (max-width: 576px) {
-    .routes-sidebar {
-        max-width: 240px;
-        padding: 12px;
+    .filters-list .filter-item {
+        min-width: 100%;
+        text-align: left;
+        justify-content: flex-start;
     }
 
-    .toggle-sidebar-btn {
-        left: 260px;
-    }
-
-    .route-btn {
-        padding: 10px 12px;
-    }
-
-    .route-btn-icon {
-        font-size: 1.2rem;
-    }
-
-    .route-btn-content h6 {
-        font-size: 0.85rem;
+    .map-main .map-container,
+    .map-container {
+        height: 350px;
     }
 }
 

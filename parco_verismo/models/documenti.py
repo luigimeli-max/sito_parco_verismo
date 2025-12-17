@@ -84,6 +84,20 @@ class FotoArchivio(TranslatableModel):
         default=True,
         help_text="Se la foto è attiva e visibile."
     )
+    
+    AUTORE_CHOICES = [
+        ('VERGA', 'Giovanni Verga'),
+        ('CAPUANA', 'Luigi Capuana'),
+        ('ALTRO', 'Altro/Generico'),
+    ]
+    
+    autore = models.CharField(
+        max_length=20,
+        choices=AUTORE_CHOICES,
+        default='ALTRO',
+        help_text="Seleziona l'autore a cui appartiene questa foto."
+    )
+
     categoria = models.CharField(
         max_length=100,
         blank=True,

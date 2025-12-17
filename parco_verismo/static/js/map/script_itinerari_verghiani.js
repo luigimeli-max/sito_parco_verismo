@@ -16,16 +16,16 @@ document.addEventListener("DOMContentLoaded", function() {
   // Array per tenere traccia di percorsi e marker attivi
   var activeRoutes = {};
 
-  // Icona personalizzata per i waypoint numerati
-  function createNumberedIcon(number, color) {
+  // Icona personalizzata stile Mineo (goccia con numero)
+  function createDropletIcon(number, color) {
     return L.divIcon({
-      className: 'numbered-marker',
-      html: `<div class="marker-pin" style="background-color: ${color}; border-color: white;">
+      className: 'custom-marker',
+      html: `<div class="marker-pin" style="background-color: ${color};">
                <span class="marker-number">${number}</span>
              </div>`,
-      iconSize: [36, 36],
-      iconAnchor: [18, 18],
-      popupAnchor: [0, -20]
+      iconSize: [30, 30],
+      iconAnchor: [15, 30],
+      popupAnchor: [0, -25]
     });
   }
 
@@ -98,25 +98,21 @@ document.addEventListener("DOMContentLoaded", function() {
       coords.push(point.coords);
       
       var marker = L.marker(point.coords, {
-        icon: createNumberedIcon(point.order, itinerario.colore)
+        icon: createDropletIcon(point.order, itinerario.colore)
       });
 
       // Crea il link Google Maps con tutte le tappe successive
       var googleMapsLink = createGoogleMapsRouteLink(points, index);
 
-      // Popup con informazioni dettagliate
+      // Popup con informazioni dettagliate (senza header)
       var popupContent = `
         <div class="route-popup">
-          <div class="route-popup-header" style="background-color: ${itinerario.colore}">
-            <span class="route-icon">${itinerario.icona}</span>
-            <strong>${itinerario.titolo}</strong>
-          </div>
           <div class="route-popup-body">
-            <h6><span class="badge bg-primary">${point.order}</span> ${point.nome}</h6>
-            <p class="small">${point.descrizione}</p>
+            <h6 class="mb-2"><span class="badge" style="background-color: ${itinerario.colore}">${point.order}</span> ${point.nome}</h6>
+            <p class="small text-muted mb-2">${point.descrizione}</p>
             <a href="${googleMapsLink}" 
                target="_blank" 
-               class="btn btn-sm btn-outline-primary w-100 mt-2">
+               class="btn btn-sm btn-outline-primary w-100">
               📍 Ottieni percorso completo
             </a>
             ${index < points.length - 1 ? 
@@ -181,6 +177,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // Gestione click sui pulsanti dei percorsi
   document.querySelectorAll('.route-btn').forEach(btn => {
     btn.addEventListener('click', async function() {
+      // Skip se è il pulsante reset
+      if (this.classList.contains('reset-view-btn')) {
+        return;
+      }
+      
       let itinerarioData;
       
       try {
@@ -197,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function() {
       if (this.classList.contains('active')) {
         this.classList.remove('active');
         await drawRoute(itinerarioData);
-        updateInfoPanel(null);
         return;
       }
       
@@ -205,14 +205,16 @@ document.addEventListener("DOMContentLoaded", function() {
       document.querySelectorAll('.route-btn.active').forEach(async activeBtn => {
         if (activeBtn !== this) {
           activeBtn.classList.remove('active');
-          const activeData = JSON.parse(activeBtn.dataset.itinerario);
-          if (activeRoutes[activeData.slug]) {
-            clearInterval(activeRoutes[activeData.slug].animation);
-            activeRoutes[activeData.slug].markers.forEach(m => map.removeLayer(m));
-            if (activeRoutes[activeData.slug].polyline) map.removeLayer(activeRoutes[activeData.slug].polyline);
-            if (activeRoutes[activeData.slug].polylineBorder) map.removeLayer(activeRoutes[activeData.slug].polylineBorder);
-            delete activeRoutes[activeData.slug];
-          }
+          try {
+            const activeData = JSON.parse(activeBtn.dataset.itinerario);
+            if (activeRoutes[activeData.slug]) {
+              clearInterval(activeRoutes[activeData.slug].animation);
+              activeRoutes[activeData.slug].markers.forEach(m => map.removeLayer(m));
+              if (activeRoutes[activeData.slug].polyline) map.removeLayer(activeRoutes[activeData.slug].polyline);
+              if (activeRoutes[activeData.slug].polylineBorder) map.removeLayer(activeRoutes[activeData.slug].polylineBorder);
+              delete activeRoutes[activeData.slug];
+            }
+          } catch (e) {}
         }
       });
       
@@ -225,45 +227,8 @@ document.addEventListener("DOMContentLoaded", function() {
       
       this.style.opacity = '1';
       this.style.cursor = 'pointer';
-      updateInfoPanel(itinerarioData);
     });
   });
-
-  // Aggiorna pannello informazioni
-  function updateInfoPanel(itinerario) {
-    var infoPanel = document.querySelector('.route-info-panel');
-
-    if (itinerario) {
-      infoPanel.innerHTML = `
-        <div class="route-info-content" style="border-left: 4px solid ${itinerario.colore}">
-          <div class="d-flex align-items-center mb-3">
-            <span class="route-icon-large me-2" style="font-size: 2rem">${itinerario.icona}</span>
-            <div>
-              <h5 class="mb-0">${itinerario.titolo}</h5>
-              <small class="text-muted">${itinerario.descrizione_breve || ''}</small>
-            </div>
-          </div>
-          <div class="route-details">
-            <div class="row g-2 mb-3">
-              ${itinerario.durata ? `<div class="col-6"><span class="badge bg-secondary">⏱️ ${itinerario.durata}</span></div>` : ''}
-              ${itinerario.difficolta ? `<div class="col-6"><span class="badge bg-secondary">📊 ${itinerario.difficolta}</span></div>` : ''}
-            </div>
-            ${itinerario.coordinate_tappe && itinerario.coordinate_tappe.length > 0 ? `
-            <div class="route-steps">
-              <h6>Tappe del percorso:</h6>
-              <ol class="small">
-                ${itinerario.coordinate_tappe.map(p => `<li><strong>${p.nome}</strong></li>`).join('')}
-              </ol>
-            </div>
-            ` : ''}
-          </div>
-        </div>
-      `;
-      infoPanel.style.display = 'block';
-    } else {
-      infoPanel.style.display = 'none';
-    }
-  }
 
   // Pulsante reset vista
   document.querySelector('.reset-view-btn')?.addEventListener('click', function() {

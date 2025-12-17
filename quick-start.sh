@@ -40,7 +40,8 @@ fi
 VENV_DIR=".venv"
 VENV_PY="$VENV_DIR/bin/python"
 
-# 1. Virtual Environment
+# 1. Virtua
+l Environment
 printf "${YELLOW}[1/6]${NC} Creazione virtual environment...\n"
 if [ ! -d "$VENV_DIR" ]; then
     $PYTHON_CMD -m venv "$VENV_DIR"

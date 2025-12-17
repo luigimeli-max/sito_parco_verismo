@@ -47,13 +47,15 @@ def documento_detail_view(request, slug):
 
 def archivio_fotografico_view(request):
     """Pagina dell'archivio fotografico con carosello e categorie."""
-    foto = FotoArchivio.objects.filter(is_active=True).order_by('ordine', '-data_aggiunta')
+    foto_verga = FotoArchivio.objects.filter(is_active=True, autore='VERGA').order_by('ordine', '-data_aggiunta')
+    foto_capuana = FotoArchivio.objects.filter(is_active=True, autore='CAPUANA').order_by('ordine', '-data_aggiunta')
+    foto_altro = FotoArchivio.objects.filter(is_active=True).exclude(autore__in=['VERGA', 'CAPUANA']).order_by('ordine', '-data_aggiunta')
     
-    # Raggruppa per categoria se necessario
-    categorie = foto.values_list('categoria', flat=True).distinct().exclude(categoria__isnull=True).exclude(categoria='')
+    # Raggruppa per categoria se necessario (opzionale, per ora lasciamo semplice)
     
     context = {
-        'foto': foto,
-        'categorie': categorie,
+        'foto_verga': foto_verga,
+        'foto_capuana': foto_capuana,
+        'foto_altro': foto_altro,
     }
     return render(request, 'parco_verismo/archivio_fotografico.html', context)
