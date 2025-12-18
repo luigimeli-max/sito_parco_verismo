@@ -15,8 +15,9 @@
 }
 
 .vizzini-page .pages-hero.vizzini-hero .pages-hero-title {
+    font-family: 'Perandory', sans-serif;
     color: white;
-}
+} 
 
 .vizzini-page .pages-hero.vizzini-hero .pages-hero-subtitle {
     color: rgba(255, 255, 255, 0.9);
@@ -116,7 +117,7 @@
 }
 
 .pages-value-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     font-size: 1rem;
@@ -201,7 +202,7 @@
 .cultura-card-badge {
     background: var(--color-primary-pale);
     color: var(--color-primary);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -215,8 +216,8 @@
 }
 
 .cultura-card-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     color: var(--color-text-primary);
     font-size: 1.15rem;
     margin-bottom: 0.75rem;
@@ -288,7 +289,7 @@
 }
 
 .map-sidebar-header h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
     color: var(--color-text-primary);

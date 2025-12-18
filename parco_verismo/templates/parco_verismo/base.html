@@ -57,10 +57,13 @@
     <!-- Bootstrap CSS locale -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Inter only) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'fonts/inter-400.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/montserrat-500.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/montserrat-700.css' %}">
+    <!-- Perandory (local) -->
+    <link rel="stylesheet" href="{% static 'fonts/perandory.css' %}?v=20251218">
 
     <!-- Bootstrap Icons locale -->
     <link rel="stylesheet" href="{% static 'fonts/bootstrap-icons/bootstrap-icons.min.css' %}">
@@ -69,6 +72,8 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Fonts helper (h1/h2 rules) -->
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/cookie_banner.css' %}">
 
     {% block extra_head %}{% endblock %}

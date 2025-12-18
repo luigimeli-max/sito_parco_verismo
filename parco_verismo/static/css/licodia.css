@@ -15,9 +15,10 @@
 }
 
 .licodia-page .pages-hero.licodia-hero .pages-hero-title {
+    font-family: 'Perandory', sans-serif;
     color: white;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
+} 
 
 .licodia-page .pages-hero.licodia-hero .pages-hero-subtitle {
     color: rgba(255, 255, 255, 0.9);
@@ -121,12 +122,12 @@
 }
 
 .pages-value-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     font-size: 1rem;
     margin: 0;
-}
+} 
 
 .pages-value-card p {
     color: var(--color-text-secondary);
@@ -161,7 +162,7 @@
     font-size: 0.9rem;
     color: var(--color-text-secondary);
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /* ===========================
@@ -188,7 +189,7 @@
 .pages-accordion .accordion-button {
     background: var(--color-surface);
     color: var(--color-text-primary);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 1rem;
     padding: 1.25rem 1.5rem;
@@ -250,8 +251,8 @@
     border: none;
     border-radius: var(--radius-md) var(--radius-md) 0 0;
     padding: 0.75rem 1.25rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     background: transparent;
@@ -281,7 +282,7 @@
 }
 
 .chiese-tabs .tab-pane h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     font-size: 1.25rem;
@@ -338,7 +339,7 @@
 }
 
 .museo-card-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     font-size: 1.1rem;
@@ -414,7 +415,7 @@
 .cultura-card-badge {
     background: var(--color-primary-pale);
     color: var(--color-primary);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -428,8 +429,8 @@
 }
 
 .cultura-card-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     color: var(--color-text-primary);
     font-size: 1.15rem;
     margin-bottom: 0.75rem;
@@ -505,7 +506,7 @@
 }
 
 .map-sidebar-header h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
     color: var(--color-text-primary);
@@ -704,7 +705,7 @@
 }
 
 .leaflet-popup-content h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--color-primary);
     font-size: 1.1rem;
     font-weight: 600;

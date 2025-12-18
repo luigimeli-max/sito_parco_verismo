@@ -2,9 +2,10 @@
    STILI PAGINA ITINERARI
    =========================== */
 
-/* Hero Section Itinerari Verghiani */
+/* Hero Section Itinerari Verghiani - keep background image with green overlay */
 .hero-verghiani {
   position: relative;
+  /* show background image and keep green accent via overlay */
   background: url("/static/assets/img/itinerari/bg-hero-verghiani.jpg") center center / cover no-repeat;
   height: 50vh;
   display: flex;
@@ -12,10 +13,11 @@
   justify-content: center;
   text-align: center;
   color: var(--color-text-inverse);
-  border-bottom: 4px solid var(--color-primary);
+  border-bottom: 4px solid var(--color-success);
   overflow: hidden;
 }
 
+/* green translucent overlay so image remains visible */
 .hero-verghiani::before {
   content: "";
   position: absolute;
@@ -23,10 +25,36 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(74, 103, 65, 0.45); /* main green with 45% opacity */
   z-index: 0;
 }
 
+/* ensure section title below hero uses main green */
+.hero-verghiani + .container-xl .pages-section-title {
+  color: var(--color-primary) !important;
+}
+
+/* Sidebar header and filters use main green color */
+.map-sidebar .map-sidebar-header h4,
+.map-sidebar .map-sidebar-header h4 .bi,
+.map-sidebar .map-sidebar-header h4 i {
+  color: var(--color-primary);
+}
+
+.map-sidebar .map-sidebar-content .filters-list .filter-item {
+  color: var(--color-primary);
+}
+
+.map-sidebar .map-sidebar-content .filters-list .filter-item span {
+  color: inherit;
+}
+
+/* Make route badges use main green */
+.route-popup .badge,
+.filter-item .badge {
+  background-color: var(--color-primary);
+  color: white;
+}
 .hero-verghiani .hero-content {
   position: relative;
   z-index: 1;
@@ -34,7 +62,7 @@
 
 .hero-verghiani h1 {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--color-text-inverse);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
@@ -138,7 +166,7 @@
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%);
   color: white;
   border-radius: 50%;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1rem;
   flex-shrink: 0;
 }

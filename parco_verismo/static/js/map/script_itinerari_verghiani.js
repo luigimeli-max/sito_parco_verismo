@@ -16,8 +16,15 @@ document.addEventListener("DOMContentLoaded", function() {
   // Array per tenere traccia di percorsi e marker attivi
   var activeRoutes = {};
 
+  // Color helper: get CSS var (fallback to theme green)
+  function getColorVar(varName) {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(varName);
+    return (v || '#4A6741').trim();
+  }
+  const MAIN_ROUTE_COLOR = getColorVar('--color-primary');
+
   // Icona personalizzata stile Mineo (goccia con numero)
-  function createDropletIcon(number, color) {
+  function createDropletIcon(number, color = MAIN_ROUTE_COLOR) {
     return L.divIcon({
       className: 'custom-marker',
       html: `<div class="marker-pin" style="background-color: ${color};">
@@ -98,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
       coords.push(point.coords);
       
       var marker = L.marker(point.coords, {
-        icon: createDropletIcon(point.order, itinerario.colore)
+        icon: createDropletIcon(point.order)
       });
 
       // Crea il link Google Maps con tutte le tappe successive
@@ -108,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var popupContent = `
         <div class="route-popup">
           <div class="route-popup-body">
-            <h6 class="mb-2"><span class="badge" style="background-color: ${itinerario.colore}">${point.order}</span> ${point.nome}</h6>
+            <h6 class="mb-2"><span class="badge" style="background-color: ${MAIN_ROUTE_COLOR}">${point.order}</span> ${point.nome}</h6>
             <p class="small text-muted mb-2">${point.descrizione}</p>
             <a href="${googleMapsLink}" 
                target="_blank" 
@@ -145,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }).addTo(map);
 
     var polyline = L.polyline(routingCoords, {
-      color: itinerario.colore,
+      color: MAIN_ROUTE_COLOR,
       weight: 5,
       opacity: 0.8,
       smoothFactor: 1,

@@ -40,8 +40,7 @@ fi
 VENV_DIR=".venv"
 VENV_PY="$VENV_DIR/bin/python"
 
-# 1. Virtua
-l Environment
+# 1. Virtual Environment
 printf "${YELLOW}[1/6]${NC} Creazione virtual environment...\n"
 if [ ! -d "$VENV_DIR" ]; then
     $PYTHON_CMD -m venv "$VENV_DIR"
@@ -70,7 +69,7 @@ fi
 
 # 4. Database
 printf "${YELLOW}[4/6]${NC} Setup database...\n"
-"$VENV_PY" manage.py migrate -q
+"$VENV_PY" manage.py migrate
 printf "${GREEN}✓${NC} Migrazioni applicate\n\n"
 
 # 5. Traduzioni

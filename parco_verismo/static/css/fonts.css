@@ -1,18 +1,27 @@
 /* Fonts CSS file - managed by npm scripts */
 
-/* Montserrat per i titoli */
+/* Perandory solo per h1 (tutte le pagine) */
 h1 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-family: "Perandory", sans-serif;
+  font-weight: 400;
 }
 
-h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-}
-
-/* Inter per il corpo del testo */
-body, p, a, li, span, div {
+/* Inter per il corpo del testo e altri titoli (inclusi h2-h6) */
+body, p, a, li, span, div, h2, h3, h4, h5, h6 {
   font-family: "Inter", sans-serif;
   font-weight: 400;
 }
+
+/* Forza Perandory sui titoli H1 e sulle classi hero-title per assicurare applicazione ovunque */
+.pages-hero-title,
+.mv-hero-title,
+.cts-hero-title,
+.reg-hero-title,
+.page-hero-title,
+.hero-title,
+h1.pages-hero-title,
+h1.mv-hero-title,
+h1.cts-hero-title,
+h1.reg-hero-title {
+  font-family: "Perandory", sans-serif;
+} 

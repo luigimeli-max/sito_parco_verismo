@@ -61,12 +61,12 @@ header::after {
 
 .hero-title {
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: var(--space-lg);
     color: var(--color-text-inverse);
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     line-height: 1.2;
-}
+} 
 
 .hero-subtitle {
     font-size: 1.5rem;
@@ -172,13 +172,13 @@ header::after {
 }
 
 .homepage-hero .hero-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Perandory', sans-serif;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-shadow: 3px 6px 16px rgba(0, 0, 0, 0.5);
     margin-bottom: 1rem;
-}
+} 
 
 .homepage-hero .hero-subtitle {
     font-size: 1.5rem;
@@ -199,7 +199,7 @@ header::after {
 }
 
 .hero-cta .btn {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     padding: 0.875rem 2.5rem;
     border-radius: 0.5rem;
@@ -207,7 +207,7 @@ header::after {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-}
+} 
 
 .hero-cta .btn-primary {
     background: var(--color-gradient-primary);
@@ -410,9 +410,9 @@ section.hp-section {
 }
 
 .hp-section-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-text-primary);
     letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
@@ -436,7 +436,7 @@ section.hp-section {
 
 .hp-content .lead {
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-text-secondary);
     line-height: 1.8;
 }
@@ -472,13 +472,13 @@ section.hp-section {
 }
 
 .hp-cta-buttons .btn {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     padding: 0.75rem 1.75rem;
     border-radius: 0.5rem;
     transition: all 0.3s ease;
     text-decoration: none;
-}
+} 
 
 .hp-cta-buttons .btn-primary {
     background: var(--color-gradient-primary);
@@ -572,12 +572,12 @@ section.hp-section {
 }
 
 .hp-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     color: var(--color-text-primary);
     font-size: 1.3rem;
     margin: 0;
-}
+} 
 
 .hp-card p {
     color: var(--color-text-secondary);

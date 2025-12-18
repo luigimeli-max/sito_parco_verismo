@@ -279,7 +279,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     color: var(--color-heading);
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 h2 {
@@ -312,7 +312,7 @@ a:focus-visible {
 
 /* BOTTONI - Override Bootstrap */
 .btn {
-    font-weight: 500;
+    font-weight: 400;
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
 }
@@ -557,7 +557,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 
 .site-footer .footer-heading {
     color: var(--color-text-inverse);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
@@ -621,7 +621,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .site-footer .footer-divider {
-    border-color: var(--color-inverse-faint);
+    border-color: var(--color-border-strong);
 }
 
 .site-footer .input-group .form-control:focus {
@@ -713,7 +713,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 
 .site-card-actions .btn {
     min-width: 120px;
-    font-weight: 500;
+    font-weight: 400;
     border-radius: var(--radius-md);
     transition: all var(--transition-fast);
 }
@@ -821,7 +821,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 
 .site-section-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-heading);
     margin-bottom: var(--space-md);
 }
@@ -1009,14 +1009,14 @@ svg feDropShadow[flood-color="#4a140d"] {
 
 .mv-hero-title,
 .pages-hero-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Perandory', sans-serif;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
     margin-bottom: 1rem;
     color: var(--color-primary-dark);
-}
+} 
 
 .mv-hero-subtitle,
 .pages-hero-subtitle {
@@ -1124,9 +1124,9 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-section-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--color-text-primary);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
 }
@@ -1153,7 +1153,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 
 .pages-highlight-text .lead {
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-text-secondary);
     margin: 0;
     line-height: 1.8;
@@ -1202,7 +1202,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-point-content h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-text-primary);
@@ -1221,7 +1221,7 @@ svg feDropShadow[flood-color="#4a140d"] {
    ======================================================== */
 
 .pages-actions-list h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     text-transform: uppercase;
@@ -1256,7 +1256,7 @@ svg feDropShadow[flood-color="#4a140d"] {
     content: "→";
     flex-shrink: 0;
     color: var(--color-primary-light);
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.2rem;
 }
 
@@ -1286,9 +1286,9 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-recognition-card h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--color-text-primary);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .pages-recognition-card p {
@@ -1344,7 +1344,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-value-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     font-size: 1rem;
@@ -1450,7 +1450,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-function-content h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-text-primary);
@@ -1477,9 +1477,9 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-cta-card h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--color-text-primary);
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 1rem;
 }
 
@@ -1505,7 +1505,7 @@ svg feDropShadow[flood-color="#4a140d"] {
 }
 
 .pages-extra h5 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: 1rem;
@@ -1530,7 +1530,7 @@ svg feDropShadow[flood-color="#4a140d"] {
     position: absolute;
     left: 0;
     color: var(--color-primary-light);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 /* ========================================================

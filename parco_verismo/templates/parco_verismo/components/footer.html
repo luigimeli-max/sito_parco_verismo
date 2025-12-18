@@ -1,6 +1,6 @@
 {% load static i18n %}
 <!-- Footer -->
-<footer class="site-footer py-5 mt-5">
+<footer class="site-footer py-3 mt-3">
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-5">
@@ -49,13 +49,11 @@
                 </ul>
             </div>
         </div>
-        <hr class="footer-divider my-4">
-        <div class="row align-items-center g-3">
-            <div class="col-md-3">
-                <p class="mb-0 small footer-text">&copy; {% now "Y" %} {% trans 'Parco Letterario Verismo. Tutti i diritti riservati.' %}</p>
-            </div>
-            <div class="col-md-6">
-                <div class="footer-logos">
+        <hr class="footer-divider mt-2 mb-4">
+        <!-- Sezione loghi -->
+        <div class="row justify-content-center mb-2">
+            <div class="col-12">
+                <div class="footer-logos text-center">
                     <img src="{% static 'assets/img/logo-header.png' %}" alt="Logo Parco Verismo" class="footer-logo">
                     <img src="{% static 'assets/img/loghi/LogoRegione2.png' %}" alt="Logo Regione" class="footer-logo">
                     <img src="{% static 'assets/img/loghi/LogoVizzini3.png' %}" alt="Logo Vizzini" class="footer-logo">
@@ -64,11 +62,17 @@
                     <img src="{% static 'assets/img/loghi/LogoCesta6.png' %}" alt="Logo Cesta" class="footer-logo" style="height: 180px !important; max-height: 180px !important;">
                 </div>
             </div>
-            <div class="col-md-3 text-md-center">
-                <a href="{% url 'privacy_policy' %}" class="footer-link small me-3">{% trans 'Privacy' %}</a>
-                <a href="{% url 'cookie_policy' %}" class="footer-link small me-3">{% trans 'Cookie' %}</a>
-                <a href="javascript:void(0)" class="footer-link small me-3" data-cookie-preferences style="cursor: pointer;">{% trans 'Gestisci Cookie' %}</a>
-                <a href="{% url 'note_legali' %}" class="footer-link small">{% trans 'Note Legali' %}</a>
+        </div>
+        <!-- Sezione copyright e link -->
+        <div class="row align-items-center justify-content-center g-3">
+            <div class="col-12 text-center">
+                <p class="mb-1 small footer-text">&copy; {% now "Y" %} {% trans 'Parco Letterario Verismo. Tutti i diritti riservati.' %}</p>
+                <div class="footer-links">
+                    <a href="{% url 'privacy_policy' %}" class="footer-link small me-3">{% trans 'Privacy' %}</a>
+                    <a href="{% url 'cookie_policy' %}" class="footer-link small me-3">{% trans 'Cookie' %}</a>
+                    <a href="javascript:void(0)" class="footer-link small me-3" data-cookie-preferences style="cursor: pointer;">{% trans 'Gestisci Cookie' %}</a>
+                    <a href="{% url 'note_legali' %}" class="footer-link small">{% trans 'Note Legali' %}</a>
+                </div>
             </div>
         </div>
     </div>

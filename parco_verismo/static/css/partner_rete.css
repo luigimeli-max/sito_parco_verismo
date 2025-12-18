@@ -45,9 +45,9 @@
 }
 
 .page-section-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--mv-text-primary);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
 }
@@ -110,7 +110,7 @@
 }
 
 .partner-card h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--mv-text-primary);
     font-size: 1rem;
@@ -191,7 +191,7 @@
 }
 
 .network-card h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--mv-text-primary);
@@ -303,9 +303,9 @@
 }
 
 .partner-cta-card h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--mv-text-primary);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .partner-cta-card .lead {

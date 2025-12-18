@@ -63,8 +63,8 @@
 }
 
 .cts-hero-title, .mv-hero-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
@@ -165,9 +165,9 @@
 }
 
 .cts-section-title, .mv-section-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--color-text-primary);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
 }
@@ -194,7 +194,7 @@
 
 .cts-highlight-text .lead, .mv-highlight-text .lead {
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-text-secondary);
     margin: 0;
     line-height: 1.8;
@@ -220,7 +220,7 @@
 }
 
 .cts-info-box h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: 1rem;
@@ -247,8 +247,8 @@
 }
 
 .cts-group-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     color: var(--color-primary);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
@@ -317,7 +317,7 @@
 }
 
 .pages-member-card h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     color: var(--color-text-primary);
     font-size: 0.95rem;
@@ -374,7 +374,7 @@
 }
 
 .cts-function-content h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-text-primary);
@@ -420,7 +420,7 @@
 }
 
 .cts-cta-buttons .btn {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     padding: 0.75rem 2rem;
     border-radius: 0.5rem;
@@ -625,8 +625,8 @@
 }
 
 .cts-hero-title, .mv-hero-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
@@ -676,9 +676,9 @@
 
 /* Section title compatibility */
 .cts-section-title, .mv-section-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--color-text-primary);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
 }

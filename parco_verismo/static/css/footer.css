@@ -45,6 +45,18 @@
         height: 50px !important;
         max-width: 120px !important;
     }
+    
+    /* Margini ridotti per dispositivi mobili */
+    .site-footer {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+        margin-top: 1rem !important;
+    }
+    
+    .footer-divider {
+        margin-top: 0.25rem !important;
+        margin-bottom: 1rem !important;
+    }
 }
 
 /* Footer Background Override */
