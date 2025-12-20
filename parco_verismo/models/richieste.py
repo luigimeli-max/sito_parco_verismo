@@ -30,9 +30,9 @@ class Richiesta(models.Model):
 
     # Messaggio
     messaggio = models.TextField(
-        blank=True,
+        blank=False,
         verbose_name="Messaggio/Richieste particolari",
-        help_text="Eventuali richieste o informazioni aggiuntive",
+        help_text="Inserisci il contenuto del messaggio (obbligatorio)",
     )
 
     # Gestione amministrativa
@@ -61,9 +61,9 @@ class Richiesta(models.Model):
     )
     oggetto = models.CharField(
         max_length=200,
-        blank=True,
+        blank=False,
         verbose_name="Oggetto",
-        help_text="Oggetto della richiesta (facoltativo)",
+        help_text="Oggetto della richiesta (obbligatorio)",
     )
     responsabile = models.CharField(
         max_length=100,

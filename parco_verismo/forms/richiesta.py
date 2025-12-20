@@ -65,6 +65,7 @@ class RichiestaForm(forms.ModelForm):
                     "rows": "6",
                     "placeholder": "Scrivi qui il tuo messaggio...",
                     "maxlength": "1000",
+                    "required": True,
                 }
             ),
         }
@@ -123,6 +124,8 @@ class RichiestaForm(forms.ModelForm):
     def clean_messaggio(self):
         """Validazione messaggio"""
         messaggio = self.cleaned_data.get("messaggio", "").strip()
+        if not messaggio:
+            raise ValidationError("Il messaggio è obbligatorio")
         if len(messaggio) > 1000:
             raise ValidationError("Il messaggio non può superare 1000 caratteri")
         return messaggio
@@ -143,15 +146,21 @@ class RichiestaForm(forms.ModelForm):
             if len(messaggio) > 20 and messaggio.isupper():
                 raise ValidationError("Non scrivere il messaggio tutto in maiuscolo")
 
-        # Validazione base su nome/cognome/email
+        # Validazione base su nome/cognome/email/oggetto/messaggio
         nome = cleaned_data.get("nome", "").strip()
         cognome = cleaned_data.get("cognome", "").strip()
         email = cleaned_data.get("email", "").strip()
+        oggetto = cleaned_data.get("oggetto", "").strip()
+        messaggio = cleaned_data.get("messaggio", "").strip()
         if not nome or len(nome) < 2:
             raise ValidationError("Inserisci un nome valido (almeno 2 caratteri)")
         if not cognome or len(cognome) < 2:
             raise ValidationError("Inserisci un cognome valido (almeno 2 caratteri)")
         if not email:
             raise ValidationError("L'email è obbligatoria")
+        if not oggetto:
+            raise ValidationError("L'oggetto è obbligatorio")
+        if not messaggio:
+            raise ValidationError("Il messaggio è obbligatorio")
 
         return cleaned_data
