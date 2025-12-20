@@ -101,11 +101,37 @@
     color: var(--mv-primary);
     font-size: 2rem;
     transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.partner-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Stili specifici per i partner istituzionali (senza cerchio, loghi più grandi) */
+.partner-institutional .partner-logo {
+    background: none;
+    border-radius: 0;
+    width: 100%;
+    height: 140px; /* Altezza aumentata per loghi più grandi */
+    overflow: visible;
+}
+
+.partner-institutional .partner-logo img {
+    object-fit: contain;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+}
+
+.partner-institutional:hover .partner-logo {
+    background: none;
+    transform: scale(1.05);
 }
 
 .partner-card:hover .partner-logo {
-    background: var(--mv-gradient-primary);
-    color: white;
     transform: scale(1.1);
 }
 
