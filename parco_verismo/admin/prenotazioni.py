@@ -1,5 +1,5 @@
 """
-Admin per Prenotazioni.
+Admin per le Richieste.
 """
 
 # Django imports

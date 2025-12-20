@@ -1,5 +1,5 @@
 """
-Servizi per la gestione delle email (naming aggiornato: 'prenotazione' -> 'richiesta').
+Servizi per la gestione delle email relative alle richieste.
 """
 
 import logging

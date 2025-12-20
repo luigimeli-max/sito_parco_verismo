@@ -894,7 +894,7 @@ Il progetto "Il verismo a scuola" prevede:
 L'iniziativa coinvolgerà oltre 50 istituti scolastici e mira a far conoscere il movimento
 verista alle nuove generazioni, stimolando l'interesse per la letteratura e la cultura siciliana.
 
-Le scuole interessate possono contattare gli uffici del Parco per informazioni e prenotazioni.""",
+Le scuole interessate possono contattare gli uffici del Parco per informazioni e richieste.""",
             "riassunto": "Nuovo progetto educativo per portare il verismo nelle scuole siciliane con visite guidate e laboratori.",
             "immagine_path": "mineo/premio-luigi.jpg",
             "is_active": True,

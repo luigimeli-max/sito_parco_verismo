@@ -143,7 +143,7 @@ views/
 
 ```python
 services/
-├── email_service.py   # Invio email prenotazioni
+├── email_service.py   # Invio email richieste
 ├── search_service.py  # Ricerca full-text opere
 └── stats_service.py   # Statistiche admin
 ```
@@ -198,10 +198,10 @@ services/
 ### Itinerari Letterari
 - Mappe interattive
 - Punti di interesse georeferenziati
-- Sistema prenotazioni
+- Sistema richieste
 - Link a mappe esterne
 
-### Sistema Prenotazioni
+### Sistema Richieste
 - Form validazione completa
 - Email automatiche
 - Admin panel dedicato
