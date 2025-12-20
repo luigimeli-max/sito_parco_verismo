@@ -11,6 +11,8 @@ from .biblioteca import (
     biblioteca_view,
     opere_per_autore_view,
     opera_detail_view,
+    personaggi_lessico_view,
+    luoghi_opere_view,
 )
 
 # Eventi e Notizie
@@ -64,6 +66,7 @@ __all__ = [
     'biblioteca_view',
     'opere_per_autore_view',
     'opera_detail_view',
+    'personaggi_lessico_view',
     # Eventi e Notizie
     'eventi_view',
     'calendario_view',

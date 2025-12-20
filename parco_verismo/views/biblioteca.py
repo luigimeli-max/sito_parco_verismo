@@ -45,3 +45,13 @@ def opera_detail_view(request, slug):
         'opera': opera,
     }
     return render(request, 'parco_verismo/opera_detail.html', context)
+
+
+def personaggi_lessico_view(request):
+    """Pagina Personaggi e Lessico del Verismo."""
+    return render(request, 'parco_verismo/personaggi_lessico.html')
+
+
+def luoghi_opere_view(request):
+    """Pagina Luoghi delle Opere del Verismo."""
+    return render(request, 'parco_verismo/luoghi_opere.html')
