@@ -7,7 +7,6 @@ from datetime import timedelta
 
 # Django imports
 from django.contrib import admin
-from django.db.models import Count
 from django.shortcuts import render
 from django.urls import path
 
