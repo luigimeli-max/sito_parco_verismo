@@ -35,9 +35,12 @@ from .views import (
     note_legali_view,
     cookie_policy_view,
     health_check_view,
+    google_verification_view,
 )
 
 urlpatterns = [
+    # Google Search Console verification
+    path("googlebff3b6f1bd148bc7.html", google_verification_view, name="google_verification"),
     path("", home_view, name="home"),
     # Pagina principale della biblioteca con ricerca
     path("biblioteca/", biblioteca_view, name="biblioteca"),

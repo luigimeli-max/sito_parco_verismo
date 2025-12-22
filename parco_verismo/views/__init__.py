@@ -60,8 +60,8 @@ from .istituzionale import (
     cookie_policy_view,
 )
 
-# Health Check
-from .health import health_check_view
+# Health Check e utilità
+from .health import health_check_view, google_verification_view
 
 __all__ = [
     # Home
@@ -103,4 +103,5 @@ __all__ = [
     "cookie_policy_view",
     # Health Check
     "health_check_view",
+    "google_verification_view",
 ]
