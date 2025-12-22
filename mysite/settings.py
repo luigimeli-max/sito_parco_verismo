@@ -118,12 +118,26 @@ if "postgresql" in DB_ENGINE:
     }
 else:
     # SQLite per sviluppo e piccole installazioni
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+    # In produzione (Docker): usa /app/data/db.sqlite3 (volume persistente)
+    # In sviluppo (locale): usa db.sqlite3 nella root del progetto
+    import os
+    if os.path.exists("/app/data"):
+        # Siamo in Docker
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": Path("/app/data/db.sqlite3"),
+            }
         }
-    }
+    else:
+        # Siamo in sviluppo locale
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "db.sqlite3",
+            }
+        }
+
 
 # Cache Configuration (required for rate limiting middleware)
 CACHES = {
