@@ -30,8 +30,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY --chown=appuser:appuser . .
 
 # 8. Creare directory per static e media
-RUN mkdir -p /app/staticfiles /app/media && \
-    chown -R appuser:appuser /app/staticfiles /app/media
+RUN mkdir -p /app/staticfiles /app/media /app/media_source && \
+    chown -R appuser:appuser /app/staticfiles /app/media /app/media_source
+
+# 8b. Copia media files in media_source (preserva originali prima del mount del volume)
+RUN cp -r /app/media/* /app/media_source/ 2>/dev/null || true
 
 # 9. Passare a utente non-root
 USER appuser

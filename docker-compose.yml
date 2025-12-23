@@ -53,6 +53,11 @@ services:
       sh -c "
         python manage.py migrate --noinput &&
         python manage.py collectstatic --noinput &&
+        echo 'Copying media files...' &&
+        cp -r /app/media_source/archivio_fotografico /app/media/ 2>/dev/null || true &&
+        cp -r /app/media_source/copertine /app/media/ 2>/dev/null || true &&
+        echo 'Running populate_db_complete.py...' &&
+        python populate_db_complete.py &&
         echo 'Init completed successfully'
       "
     networks:
