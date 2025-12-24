@@ -30,7 +30,8 @@ from django.contrib.auth import get_user_model
 
 def create_superuser():
     """
-    Crea o aggiorna il superuser admin con password admin123
+    Crea il superuser admin con password admin123 SOLO se non esiste.
+    Se esiste già, non tocca la password.
     """
     User = get_user_model()
     username = 'admin'
@@ -47,12 +48,8 @@ def create_superuser():
         user.save()
         print(f"✓ Superuser creato: {username} / {password}")
     else:
-        # Aggiorna la password anche se esiste già
-        user.set_password(password)
-        user.is_staff = True
-        user.is_superuser = True
-        user.save()
-        print(f"• Superuser aggiornato: {username} / {password}")
+        # Non aggiornare la password se l'utente esiste già!
+        print(f"• Superuser già esistente: {username} (password non modificata)")
 
 def copy_static_to_media(source_path, destination_relative):
     """
