@@ -56,8 +56,17 @@ services:
         echo 'Copying media files...' &&
         cp -r /app/media_source/archivio_fotografico /app/media/ 2>/dev/null || true &&
         cp -r /app/media_source/copertine /app/media/ 2>/dev/null || true &&
-        echo 'Running populate_db_complete.py...' &&
-        python populate_db_complete.py &&
+        echo 'Checking if database needs initial data...' &&
+        python -c \"
+import django; django.setup()
+from parco_verismo.models import Autore
+if Autore.objects.count() == 0:
+    print('Database empty, running populate...')
+    exit(0)
+else:
+    print('Database already has data, skipping populate')
+    exit(1)
+\" && python populate_db_complete.py || true &&
         echo 'Init completed successfully'
       "
     networks:
