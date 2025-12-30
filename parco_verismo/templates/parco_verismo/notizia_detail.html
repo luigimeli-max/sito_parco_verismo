@@ -20,7 +20,7 @@
 
         {% if notizia.immagine %}
           <div class="text-center mb-5">
-            <img src="{{ notizia.immagine.url }}" alt="Immagine notizia {{ notizia.titolo }}" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: contain;">
+            <img src="{{ notizia.immagine.url }}" alt="{% trans 'Immagine notizia' %} {{ notizia.titolo }}" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: contain;">
           </div>
         {% endif %}
 

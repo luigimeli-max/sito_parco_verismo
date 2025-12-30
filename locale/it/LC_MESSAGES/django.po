@@ -415,12 +415,7 @@ msgstr ""
 msgid "Regolamento del Comitato Tecnico-Scientifico"
 msgstr ""
 
-#: parco_verismo/templates/parco_verismo/comitato_regolamento.html:25
-#: parco_verismo/templates/parco_verismo/index.html:17
-#: parco_verismo/templates/parco_verismo/index.html:32
-#: parco_verismo/templates/parco_verismo/privacy_policy.html:71
-msgid "Parco Letterario Giovanni Verga e Luigi Capuana"
-msgstr ""
+
 
 #: parco_verismo/templates/parco_verismo/comitato_regolamento.html:41
 msgid "REGOLAMENTO DEL COMITATO TECNICO-SCIENTIFICO"

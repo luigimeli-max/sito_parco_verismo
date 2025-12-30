@@ -18,7 +18,7 @@
           <div class="row g-0 align-items-center">
             {% if opera.copertina %}
               <div class="col-md-2 text-center bg-light d-flex align-items-center justify-content-center" style="height: 150px;">
-                <img src="{{ opera.copertina.url }}" class="img-fluid rounded-start" alt="Copertina di {{ opera.titolo }}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                <img src="{{ opera.copertina.url }}" class="img-fluid rounded-start" alt="{% trans 'Copertina di' %} {{ opera.titolo }}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
               </div>
             {% endif %}
             <div class="col-md-10">

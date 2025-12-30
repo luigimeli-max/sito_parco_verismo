@@ -45,7 +45,7 @@
         </div>
         <div class="col-lg-6">
           <div class="pages-image-wrapper rounded-4 overflow-hidden shadow-lg">
-            <img src="{% static 'assets/img/vizzini/borgo.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="Panorama di Vizzini" />
+            <img src="{% static 'assets/img/vizzini/borgo.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="{% trans 'Panorama di' %} Vizzini" />
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="pages-image-wrapper rounded-4 overflow-hidden shadow-lg">
-            <img src="{% static 'assets/img/vizzini/casaVerga.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="Casa Natale di Giovanni Verga" />
+            <img src="{% static 'assets/img/vizzini/casaVerga.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="{% trans 'Casa Natale di' %} Giovanni Verga" />
           </div>
         </div>
       </div>
@@ -160,10 +160,10 @@
         <div class="col-lg-6">
           <div class="pages-highlight-text">
             <span class="pages-badge mb-3">{% trans 'Centro Storico' %}</span>
-            <h3 class="h4 fw-bold mb-3">Piazza Umberto I</h3>
-            <p class="lead">Il cuore pulsante di Vizzini, dove la vita sociale e le tradizioni si intrecciano in un'atmosfera unica.</p>
+            <h3 class="h4 fw-bold mb-3">{% trans 'Piazza Umberto I' %}</h3>
+            <p class="lead">{% trans "Il cuore pulsante di Vizzini, dove la vita sociale e le tradizioni si intrecciano in un'atmosfera unica." %}</p>
             <p class="text-secondary">
-              Dominata dalla scalinata monumentale del <strong>Duomo di San Gregorio Magno</strong>, la piazza è il punto di riferimento della città. Qui si affacciano eleganti palazzi nobiliari e si svolgono le principali manifestazioni cittadine. La "scalunata" in pietra lavica, con i suoi gradini decorati, è uno dei simboli più fotografati di Vizzini.
+              {% blocktrans %}Dominata dalla scalinata monumentale del <strong>Duomo di San Gregorio Magno</strong>, la piazza è il punto di riferimento della città. Qui si affacciano eleganti palazzi nobiliari e si svolgono le principali manifestazioni cittadine. La "scalunata" in pietra lavica, con i suoi gradini decorati, è uno dei simboli più fotografati di Vizzini.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -174,9 +174,9 @@
                 <i class="bi bi-building"></i>
               </div>
               <div class="pages-point-content">
-                <h4>Palazzo Verga</h4>
+                <h4>{% trans 'Palazzo Verga' %}</h4>
                 <p>
-                  Residenza storica della famiglia dello scrittore, oggi <strong>museo e centro culturale</strong>.
+                  {% blocktrans %}Residenza storica della famiglia dello scrittore, oggi <strong>museo e centro culturale</strong>.{% endblocktrans %}
                 </p>
               </div>
             </div>
@@ -185,9 +185,9 @@
                 <i class="bi bi-bank"></i>
               </div>
               <div class="pages-point-content">
-                <h4>Palazzo Comunale</h4>
+                <h4>{% trans 'Palazzo Comunale' %}</h4>
                 <p>
-                  Elegante edificio <strong>ottocentesco</strong> sede dell'amministrazione cittadina.
+                  {% blocktrans %}Elegante edificio <strong>ottocentesco</strong> sede dell'amministrazione cittadina.{% endblocktrans %}
                 </p>
               </div>
             </div>
@@ -196,9 +196,9 @@
                 <i class="bi bi-tree"></i>
               </div>
               <div class="pages-point-content">
-                <h4>Bosco Granvilla</h4>
+                <h4>{% trans 'Bosco Granvilla' %}</h4>
                 <p>
-                  Area naturale di <strong>querce e lecci</strong>, ideale per escursioni e passeggiate.
+                  {% blocktrans %}Area naturale di <strong>querce e lecci</strong>, ideale per escursioni e passeggiate.{% endblocktrans %}
                 </p>
               </div>
             </div>
@@ -224,9 +224,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Duomo di San Gregorio Magno</h4>
+            <h4 class="pages-value-title">{% trans 'Duomo di San Gregorio Magno' %}</h4>
             <p>
-              Chiesa madre di Vizzini, ricostruita nel <strong>XVIII secolo</strong> dopo il terremoto del 1693. Custodisce pregevoli opere d'arte barocca.
+              {% blocktrans %}Chiesa madre di Vizzini, ricostruita nel <strong>XVIII secolo</strong> dopo il terremoto del 1693. Custodisce pregevoli opere d'arte barocca.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -235,9 +235,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Basilica di San Giovanni Battista</h4>
+            <h4 class="pages-value-title">{% trans 'Basilica di San Giovanni Battista' %}</h4>
             <p>
-              Edificio religioso di grande valore storico con facciata <strong>tardogotica</strong> e portale finemente decorato.
+              {% blocktrans %}Edificio religioso di grande valore storico con facciata <strong>tardogotica</strong> e portale finemente decorato.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -246,9 +246,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa di Santa Maria di Gesù</h4>
+            <h4 class="pages-value-title">{% trans 'Chiesa di Santa Maria di Gesù' %}</h4>
             <p>
-              Annessa all'antico <strong>Convento dei Cappuccini</strong>, conserva opere d'arte sacra del XVII secolo.
+              {% blocktrans %}Annessa all'antico <strong>Convento dei Cappuccini</strong>, conserva opere d'arte sacra del XVII secolo.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -257,9 +257,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa di Sant'Agata</h4>
+            <h4 class="pages-value-title">{% trans "Chiesa di Sant'Agata" %}</h4>
             <p>
-              Piccola chiesa del centro storico, dedicata alla <strong>patrona di Catania</strong>.
+              {% blocktrans %}Piccola chiesa del centro storico, dedicata alla <strong>patrona di Catania</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -268,9 +268,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa di San Sebastiano</h4>
+            <h4 class="pages-value-title">{% trans 'Chiesa di San Sebastiano' %}</h4>
             <p>
-              Edificio barocco con facciata in pietra calcarea e <strong>campanile panoramico</strong>.
+              {% blocktrans %}Edificio barocco con facciata in pietra calcarea e <strong>campanile panoramico</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -279,9 +279,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa del Rosario</h4>
+            <h4 class="pages-value-title">{% trans 'Chiesa del Rosario' %}</h4>
             <p>
-              Custodisce un prezioso <strong>crocifisso ligneo</strong> del XV secolo e affreschi votivi.
+              {% blocktrans %}Custodisce un prezioso <strong>crocifisso ligneo</strong> del XV secolo e affreschi votivi.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -311,19 +311,19 @@
               <span class="cultura-card-badge">{% trans 'Museo' %}</span>
             </div>
             <div class="cultura-card-body">
-              <h3 class="cultura-card-title">Casa Museo Verga</h3>
+              <h3 class="cultura-card-title">{% trans 'Casa Museo Verga' %}</h3>
               <p class="cultura-card-text">
-                La <strong>casa natale dello scrittore</strong>, oggi museo dedicato alla sua vita e alle sue opere immortali.
+                {% blocktrans %}La <strong>casa natale dello scrittore</strong>, oggi museo dedicato alla sua vita e alle sue opere immortali.{% endblocktrans %}
               </p>
               <ul class="cultura-card-list">
                 <li>
-                  <i class="bi bi-pen"></i> Manoscritti originali
+                  <i class="bi bi-pen"></i> {% trans 'Manoscritti originali' %}
                 </li>
                 <li>
-                  <i class="bi bi-camera"></i> Fotografie d'epoca
+                  <i class="bi bi-camera"></i> {% trans "Fotografie d'epoca" %}
                 </li>
                 <li>
-                  <i class="bi bi-house"></i> Arredi storici
+                  <i class="bi bi-house"></i> {% trans 'Arredi storici' %}
                 </li>
               </ul>
             </div>
@@ -340,19 +340,19 @@
               <span class="cultura-card-badge">{% trans 'Centro Studi' %}</span>
             </div>
             <div class="cultura-card-body">
-              <h3 class="cultura-card-title">Centro Studi Verghiani</h3>
+              <h3 class="cultura-card-title">{% trans 'Centro Studi Verghiani' %}</h3>
               <p class="cultura-card-text">
-                Centro di ricerca e documentazione dedicato al <strong>Verismo</strong> e alla letteratura siciliana.
+                {% blocktrans %}Centro di ricerca e documentazione dedicato al <strong>Verismo</strong> e alla letteratura siciliana.{% endblocktrans %}
               </p>
               <ul class="cultura-card-list">
                 <li>
-                  <i class="bi bi-collection"></i> Archivio documentale
+                  <i class="bi bi-collection"></i> {% trans 'Archivio documentale' %}
                 </li>
                 <li>
-                  <i class="bi bi-people"></i> Convegni e seminari
+                  <i class="bi bi-people"></i> {% trans 'Convegni e seminari' %}
                 </li>
                 <li>
-                  <i class="bi bi-book"></i> Biblioteca specializzata
+                  <i class="bi bi-book"></i> {% trans 'Biblioteca specializzata' %}
                 </li>
               </ul>
             </div>
@@ -369,19 +369,19 @@
               <span class="cultura-card-badge">{% trans 'Sito Storico' %}</span>
             </div>
             <div class="cultura-card-body">
-              <h3 class="cultura-card-title">Borgo della Cunziria</h3>
+              <h3 class="cultura-card-title">{% trans 'Borgo della Cunziria' %}</h3>
               <p class="cultura-card-text">
-                Villaggio rupestre set della <strong>Cavalleria Rusticana</strong> di Zeffirelli.
+                {% blocktrans %}Villaggio rupestre set della <strong>Cavalleria Rusticana</strong> di Zeffirelli.{% endblocktrans %}
               </p>
               <ul class="cultura-card-list">
                 <li>
-                  <i class="bi bi-geo-alt"></i> Percorsi verghiani
+                  <i class="bi bi-geo-alt"></i> {% trans 'Percorsi verghiani' %}
                 </li>
                 <li>
-                  <i class="bi bi-camera-reels"></i> Location cinematografica
+                  <i class="bi bi-camera-reels"></i> {% trans 'Location cinematografica' %}
                 </li>
                 <li>
-                  <i class="bi bi-calendar-event"></i> Eventi estivi
+                  <i class="bi bi-calendar-event"></i> {% trans 'Eventi estivi' %}
                 </li>
               </ul>
             </div>

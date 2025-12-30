@@ -38,7 +38,7 @@
         {% if documento.anteprima %}
           <div class="text-center mb-5">
             <img src="{{ documento.anteprima.url }}" 
-                 alt="Anteprima {{ documento.titolo }}" 
+                 alt="{% trans 'Anteprima' %} {{ documento.titolo }}" 
                  class="img-fluid rounded shadow" 
                  style="max-height: 400px; object-fit: contain;">
           </div>

@@ -8,7 +8,7 @@ itinerario=itinerario %} {% endcomment %}
     <img
       src="{{ itinerario.immagine.url }}"
       class="card-img-top"
-      alt="Mappa {{ itinerario.titolo }}"
+      alt="{% trans 'Mappa' %} {{ itinerario.titolo }}"
       style="height: 200px; object-fit: cover"
     />
     {% endif %}

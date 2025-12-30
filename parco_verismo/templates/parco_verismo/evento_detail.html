@@ -14,7 +14,7 @@
 
         {% if evento.immagine %}
           <div class="text-center mb-5">
-            <img src="{{ evento.immagine.url }}" alt="Immagine evento {{ evento.titolo }}" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: contain;">
+            <img src="{{ evento.immagine.url }}" alt="{% trans 'Immagine evento' %} {{ evento.titolo }}" class="img-fluid rounded shadow" style="max-height: 400px; object-fit: contain;">
           </div>
         {% endif %}
 

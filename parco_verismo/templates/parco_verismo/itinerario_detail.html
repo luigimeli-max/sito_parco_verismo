@@ -35,7 +35,7 @@
             {% if itinerario.immagine %}
             <div class="itinerario-image-detail">
               <img src="{{ itinerario.immagine.url }}" 
-                   alt="Mappa {{ itinerario.titolo }}" 
+                   alt="{% trans 'Mappa' %} {{ itinerario.titolo }}" 
                    class="img-fluid rounded-3 shadow">
             </div>
             {% endif %}

@@ -18,7 +18,7 @@
 
       {% if opera.copertina %}
         <div class="text-center mb-4">
-          <img src="{{ opera.copertina.url }}" alt="Copertina di {{ opera.titolo }}" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: contain;">
+          <img src="{{ opera.copertina.url }}" alt="{% trans 'Copertina di' %} {{ opera.titolo }}" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: contain;">
         </div>
       {% endif %}
       <div class="presentazione-opera mb-5">

@@ -45,7 +45,7 @@
         </div>
         <div class="col-lg-6">
           <div class="pages-image-wrapper rounded-4 overflow-hidden shadow-lg">
-            <img src="{% static 'assets/img/mineo/bg-hero.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="Panorama di Mineo" />
+            <img src="{% static 'assets/img/mineo/bg-hero.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="{% trans 'Panorama di' %} Mineo" />
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="pages-image-wrapper rounded-4 overflow-hidden shadow-lg">
-            <img src="{% static 'assets/img/mineo/Casa-Luigi-Capuana.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="Casa Natale Luigi Capuana" />
+            <img src="{% static 'assets/img/mineo/Casa-Luigi-Capuana.jpg' %}" class="img-fluid w-100" style="height: 400px; object-fit: cover;" alt="{% trans 'Casa Natale' %} Luigi Capuana" />
           </div>
         </div>
       </div>
@@ -160,9 +160,9 @@
         <div class="col-lg-6">
           <div class="pages-highlight-text">
             <span class="pages-badge mb-3">{% trans 'Centro Storico' %}</span>
-            <h3 class="h4 fw-bold mb-3">Palazzo Comunale</h3>
-            <p class="lead">Elegante edificio storico con facciata neoclassica, cuore dell'amministrazione cittadina.</p>
-            <p class="text-secondary">Situato nella piazza principale, testimonia l'importanza civile e politica assunta da Mineo nel corso dell'Ottocento, quando la città conobbe un periodo di rinnovamento urbanistico e istituzionale.</p>
+            <h3 class="h4 fw-bold mb-3">{% trans 'Palazzo Comunale' %}</h3>
+            <p class="lead">{% trans "Elegante edificio storico con facciata neoclassica, cuore dell'amministrazione cittadina." %}</p>
+            <p class="text-secondary">{% blocktrans %}Situato nella piazza principale, testimonia l'importanza civile e politica assunta da Mineo nel corso dell'Ottocento, quando la città conobbe un periodo di rinnovamento urbanistico e istituzionale.{% endblocktrans %}</p>
           </div>
         </div>
         <div class="col-lg-6">
@@ -172,9 +172,9 @@
                 <i class="bi bi-geo-alt"></i>
               </div>
               <div class="pages-point-content">
-                <h4>Porta Adinolfo</h4>
+                <h4>{% trans 'Porta Adinolfo' %}</h4>
                 <p>
-                  Antica porta d'accesso al centro storico, <strong>testimonianza medievale</strong> delle mura difensive.
+                  {% blocktrans %}Antica porta d'accesso al centro storico, <strong>testimonianza medievale</strong> delle mura difensive.{% endblocktrans %}
                 </p>
               </div>
             </div>
@@ -183,9 +183,9 @@
                 <i class="bi bi-tree"></i>
               </div>
               <div class="pages-point-content">
-                <h4>Villa Comunale</h4>
+                <h4>{% trans 'Villa Comunale' %}</h4>
                 <p>
-                  Principale spazio verde con <strong>aiuole fiorite</strong>, viali alberati e fontane.
+                  {% blocktrans %}Principale spazio verde con <strong>aiuole fiorite</strong>, viali alberati e fontane.{% endblocktrans %}
                 </p>
               </div>
             </div>
@@ -194,9 +194,9 @@
                 <i class="bi bi-eye"></i>
               </div>
               <div class="pages-point-content">
-                <h4>Belvedere Panoramico</h4>
+                <h4>{% trans 'Belvedere Panoramico' %}</h4>
                 <p>
-                  Vista mozzafiato sulla <strong>piana di Catania</strong>, l'Etna e i monti Iblei.
+                  {% blocktrans %}Vista mozzafiato sulla <strong>piana di Catania</strong>, l'Etna e i monti Iblei.{% endblocktrans %}
                 </p>
               </div>
             </div>
@@ -222,9 +222,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa Madre di Sant'Agrippina</h4>
+            <h4 class="pages-value-title">{% trans "Chiesa Madre di Sant'Agrippina" %}</h4>
             <p>
-              Principale edificio religioso di Mineo, custodisce pregevoli opere d'arte sacra e la <strong>statua della patrona</strong>.
+              {% blocktrans %}Principale edificio religioso di Mineo, custodisce pregevoli opere d'arte sacra e la <strong>statua della patrona</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -233,9 +233,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa di San Pietro</h4>
+            <h4 class="pages-value-title">{% trans 'Chiesa di San Pietro' %}</h4>
             <p>
-              Edificio religioso più antico, con architettura medievale e <strong>affreschi e stucchi barocchi</strong>.
+              {% blocktrans %}Edificio religioso più antico, con architettura medievale e <strong>affreschi e stucchi barocchi</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -244,9 +244,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa di Sant'Antonio Abate</h4>
+            <h4 class="pages-value-title">{% trans "Chiesa di Sant'Antonio Abate" %}</h4>
             <p>
-              Piccolo gioiello barocco con decorazioni in stucco e <strong>altare dedicato al santo eremita</strong>.
+              {% blocktrans %}Piccolo gioiello barocco con decorazioni in stucco e <strong>altare dedicato al santo eremita</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -255,9 +255,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Convento dei Cappuccini</h4>
+            <h4 class="pages-value-title">{% trans 'Convento dei Cappuccini' %}</h4>
             <p>
-              Fondato nel XVI secolo, conserva chiostri, celle monastiche e una <strong>preziosa biblioteca</strong>.
+              {% blocktrans %}Fondato nel XVI secolo, conserva chiostri, celle monastiche e una <strong>preziosa biblioteca</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -266,9 +266,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa di Santa Maria</h4>
+            <h4 class="pages-value-title">{% trans 'Chiesa di Santa Maria' %}</h4>
             <p>
-              Edificio di culto con facciata settecentesca e <strong>opere d'arte sacra</strong> di pregio.
+              {% blocktrans %}Edificio di culto con facciata settecentesca e <strong>opere d'arte sacra</strong> di pregio.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -277,9 +277,9 @@
             <div class="pages-value-icon">
               <i class="bi bi-building"></i>
             </div>
-            <h4 class="pages-value-title">Chiesa del Carmine</h4>
+            <h4 class="pages-value-title">{% trans 'Chiesa del Carmine' %}</h4>
             <p>
-              Sorta tra XVI e XVII secolo, conserva l'<strong>urna con l'Adorazione dei Santi</strong>.
+              {% blocktrans %}Sorta tra XVI e XVII secolo, conserva l'<strong>urna con l'Adorazione dei Santi</strong>.{% endblocktrans %}
             </p>
           </div>
         </div>
@@ -309,19 +309,19 @@
               <span class="cultura-card-badge">{% trans 'Museo' %}</span>
             </div>
             <div class="cultura-card-body">
-              <h3 class="cultura-card-title">Casa Museo Capuana</h3>
+              <h3 class="cultura-card-title">{% trans 'Casa Museo Capuana' %}</h3>
               <p class="cultura-card-text">
-                La <strong>casa natale dello scrittore</strong>, oggi museo dedicato alla sua vita e alle sue opere letterarie.
+                {% blocktrans %}La <strong>casa natale dello scrittore</strong>, oggi museo dedicato alla sua vita e alle sue opere letterarie.{% endblocktrans %}
               </p>
               <ul class="cultura-card-list">
                 <li>
-                  <i class="bi bi-pen"></i> Manoscritti originali
+                  <i class="bi bi-pen"></i> {% trans 'Manoscritti originali' %}
                 </li>
                 <li>
-                  <i class="bi bi-book"></i> Prime edizioni
+                  <i class="bi bi-book"></i> {% trans 'Prime edizioni' %}
                 </li>
                 <li>
-                  <i class="bi bi-house"></i> Arredi d'epoca
+                  <i class="bi bi-house"></i> {% trans "Arredi d'epoca" %}
                 </li>
               </ul>
             </div>
@@ -338,19 +338,19 @@
               <span class="cultura-card-badge">{% trans 'Museo' %}</span>
             </div>
             <div class="cultura-card-body">
-              <h3 class="cultura-card-title">Museo Civico Tamburino Merlini</h3>
+              <h3 class="cultura-card-title">{% trans 'Museo Civico Tamburino Merlini' %}</h3>
               <p class="cultura-card-text">
-                Raccoglie reperti archeologici dall'età <strong>preistorica all'epoca romana</strong>.
+                {% blocktrans %}Raccoglie reperti archeologici dall'età <strong>preistorica all'epoca romana</strong>.{% endblocktrans %}
               </p>
               <ul class="cultura-card-list">
                 <li>
-                  <i class="bi bi-gem"></i> Ceramiche antiche
+                  <i class="bi bi-gem"></i> {% trans 'Ceramiche antiche' %}
                 </li>
                 <li>
-                  <i class="bi bi-coin"></i> Monete e utensili
+                  <i class="bi bi-coin"></i> {% trans 'Monete e utensili' %}
                 </li>
                 <li>
-                  <i class="bi bi-urn"></i> Corredi funerari
+                  <i class="bi bi-urn"></i> {% trans 'Corredi funerari' %}
                 </li>
               </ul>
             </div>
@@ -367,19 +367,19 @@
               <span class="cultura-card-badge">{% trans 'Biblioteca' %}</span>
             </div>
             <div class="cultura-card-body">
-              <h3 class="cultura-card-title">Biblioteca Luigi Capuana</h3>
+              <h3 class="cultura-card-title">{% trans 'Biblioteca Luigi Capuana' %}</h3>
               <p class="cultura-card-text">
-                Patrimonio librario con <strong>fondi antichi e opere veriste</strong>.
+                {% blocktrans %}Patrimonio librario con <strong>fondi antichi e opere veriste</strong>.{% endblocktrans %}
               </p>
               <ul class="cultura-card-list">
                 <li>
-                  <i class="bi bi-collection"></i> Testi di storia locale
+                  <i class="bi bi-collection"></i> {% trans 'Testi di storia locale' %}
                 </li>
                 <li>
-                  <i class="bi bi-people"></i> Laboratori didattici
+                  <i class="bi bi-people"></i> {% trans 'Laboratori didattici' %}
                 </li>
                 <li>
-                  <i class="bi bi-book"></i> Manoscritti
+                  <i class="bi bi-book"></i> {% trans 'Manoscritti' %}
                 </li>
               </ul>
             </div>
