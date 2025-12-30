@@ -114,7 +114,7 @@
                     <h3 class="h5 mb-3">{% trans 'Eventi recenti' %}</h3>
                     <ul class="list-unstyled mb-3">
                         {% if eventi %}
-                            {% for evento in eventi|slice:":4" %}
+                            {% for evento in eventi %}
                                 <li class="mb-3">
                                     <a href="{{ evento.get_absolute_url }}" class="d-block text-decoration-none">
                                         <strong class="d-block">{{ evento.titolo }}</strong>
@@ -137,7 +137,7 @@
                     <h3 class="h5 mb-3">{% trans 'Notizie recenti' %}</h3>
                     <ul class="list-unstyled mb-3">
                         {% if notizie %}
-                            {% for notizia in notizie|slice:":4" %}
+                            {% for notizia in notizie %}
                                 <li class="mb-3">
                                     <a href="{{ notizia.get_absolute_url }}" class="d-block text-decoration-none">
                                         <strong class="d-block">{{ notizia.titolo }}</strong>

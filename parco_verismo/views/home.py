@@ -49,15 +49,14 @@ def home_view(request):
     else:
         form = RichiestaForm()
 
-    # Eventi: prendere i prossimi eventi attivi (a partire da oggi) ordinati per data
-    eventi_latest = Evento.objects.filter(
-        is_active=True, data_inizio__gte=timezone.now()
-    ).order_by("data_inizio")[:4]
+    # Eventi: 5 eventi totali, prima quelli futuri (più vicini) poi quelli passati (più recenti)
+    now = timezone.now()
+    eventi_futuri = list(Evento.objects.filter(is_active=True, data_inizio__gte=now).order_by("data_inizio"))
+    eventi_passati = list(Evento.objects.filter(is_active=True, data_inizio__lt=now).order_by("-data_inizio"))
+    eventi_latest = (eventi_futuri + eventi_passati)[:5]
 
-    # Notizie: prendere le ultime notizie attive ordinate per data di pubblicazione
-    notizie_latest = Notizia.objects.filter(is_active=True).order_by(
-        "-data_pubblicazione"
-    )[:4]
+    # Notizie: prendere le ultime 5 notizie attive ordinate per data di pubblicazione
+    notizie_latest = Notizia.objects.filter(is_active=True).order_by("-data_pubblicazione")[:5]
 
     context = {
         "eventi": eventi_latest,
