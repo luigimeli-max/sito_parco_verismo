@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.parcoverismo.it/sitemap.xml
+Sitemap: https://parcovergacapuana.it/sitemap.xml
 
 # Disallow admin area
 Disallow: /admin/

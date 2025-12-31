@@ -50,58 +50,60 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization",
-          "name": "Parco Letterario Giovanni Verga e Luigi Capuana",
-          "url": "{{ request.scheme }}://{{ request.get_host }}/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'assets/img/logo-header.png' %}",
-            "width": "2000",
-            "height": "2000"
-          },
-          "sameAs": [
-            "https://www.facebook.com/parcoletterariovergacapuana",
-            "https://www.instagram.com/parcovergacapuana"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "{{ request.scheme }}://{{ request.get_host }}/#website",
-          "url": "{{ request.scheme }}://{{ request.get_host }}/",
-          "name": "Parco Letterario Giovanni Verga e Luigi Capuana",
-          "publisher": {
-            "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ request.scheme }}://{{ request.get_host }}/search/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "{% block schema_type %}TouristAttraction{% endblock %}",
-          "name": "Parco Letterario Giovanni Verga e Luigi Capuana",
-          "description": "{% trans 'Parco letterario dedicato alla scoperta del Verismo siciliano attraverso i luoghi di Giovanni Verga e Luigi Capuana' %}",
-          "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
-          "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "Sicilia",
-            "addressCountry": "IT"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "37.1667",
-            "longitude": "14.7500"
-          }{% block schema_extra %}{% endblock %}
-        }
+      "@type": "Organization",
+      "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization",
+      "name": "Parco Letterario Giovanni Verga e Luigi Capuana",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'assets/img/logo-header.png' %}",
+        "width": "2000",
+        "height": "2000"
+      },
+      "sameAs": [
+        "https://www.facebook.com/parcoletterariovergacapuana",
+        "https://www.instagram.com/parcovergacapuana"
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "{{ request.scheme }}://{{ request.get_host }}/#website",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
+      "name": "Parco Letterario Giovanni Verga e Luigi Capuana",
+      "publisher": {
+        "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ request.scheme }}://{{ request.get_host }}/search/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{% block schema_type %}TouristAttraction{% endblock %}",
+      "name": "Parco Letterario Giovanni Verga e Luigi Capuana",
+      "description": "{% trans 'Parco letterario dedicato alla scoperta del Verismo siciliano attraverso i luoghi di Giovanni Verga e Luigi Capuana' %}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Sicilia",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "37.1667",
+        "longitude": "14.7500"
+      }{% block schema_extra %}{% endblock %}
+    }
+    </script>
 
-    <title>{% block title %}{% trans 'Parco Letterario Giovanni Verga Luigi Capuana' %}{% endblock %}</title>
+    <title>{% block title %}{% trans 'Parco Letterario Giovanni Verga e Luigi Capuana' %}{% endblock %}</title>
 
     <!-- Favicon & Site Identity -->
     <link rel="icon" type="image/x-icon" href="{{ request.scheme }}://{{ request.get_host }}{% static 'assets/img/favicon.ico' %}">

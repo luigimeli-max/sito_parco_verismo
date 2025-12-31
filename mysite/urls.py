@@ -75,6 +75,9 @@ urlpatterns += [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    # Root-level SEO files
+    path("favicon.ico", lambda r: HttpResponse(open(settings.BASE_DIR / "parco_verismo/static/assets/img/favicon.ico", "rb").read(), content_type="image/x-icon")),
+    path("robots.txt", lambda r: HttpResponse(open(settings.BASE_DIR / "parco_verismo/static/robots.txt", "r").read(), content_type="text/plain")),
 ]
 
 # Serve media files in development
