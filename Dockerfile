@@ -44,4 +44,4 @@ USER appuser
 EXPOSE 8000
 
 # 11. Comando di avvio (produzione con Gunicorn)
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--access-logfile", "-", "--error-logfile", "-", "mysite.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-", "mysite.wsgi:application"]
