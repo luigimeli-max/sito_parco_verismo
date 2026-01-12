@@ -7,10 +7,16 @@
    SECTION STYLES
    =========================== */
 
-.pages-section.pages-notizie-list,
-.notizie-page .detail-page {
+.pages-section.pages-notizie-list {
     background: var(--color-background);
     min-height: 60vh;
+}
+
+/* Remove margin to avoid white gaps from page-content */
+.pages-section.pages-notizie-list.detail-page {
+    margin-bottom: 0;
+    padding-bottom: 5rem;
+    /* Replicate py-5 visuals */
 }
 
 /* ===========================
@@ -691,6 +697,7 @@
 .calendar-day.selected {
     box-shadow: 0 0 0 2px var(--color-text-primary);
 }
+
 /* ===========================
    RESPONSIVE - NOTIZIE
    =========================== */
@@ -703,7 +710,8 @@
         border-width: 1px !important;
     }
 
-    .notizia-card::before, .notizia-card::after {
+    .notizia-card::before,
+    .notizia-card::after {
         display: none !important;
     }
 
