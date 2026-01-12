@@ -138,7 +138,7 @@
     <link rel="stylesheet" href="{% static 'css/cookie_banner.css' %}">
 
     <!-- AOS (Animate On Scroll) CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}" />
 
     {% block extra_head %}{% endblock %}
 </head>
@@ -285,7 +285,7 @@
     </script>
 
     <!-- AOS (Animate On Scroll) JS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Selective AOS: Disable only for critical card sections on mobile to prevent scrolling jump
