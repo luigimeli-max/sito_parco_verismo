@@ -177,6 +177,15 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
     color: var(--color-primary-light);
 }
 
+/* Fix active/open dropdown toggle background */
+#mainNav .navbar-nav .nav-link.show,
+#mainNav .navbar-nav .show>.nav-link {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-inverse);
+    box-shadow: none !important;
+}
+
 /* Dropdown Menu */
 
 /* Indicatore chevron per dropdown - usa ::before per non interferire con il trattino */

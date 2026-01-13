@@ -204,6 +204,10 @@ a:focus {
     color: var(--color-primary) !important;
 }
 
+.border-primary {
+    border-color: var(--color-primary) !important;
+}
+
 /* ========================================================
    STILI BASE
    ======================================================== */
