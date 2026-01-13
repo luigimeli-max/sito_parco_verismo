@@ -5,10 +5,10 @@
         <!-- Top: Brand + Navigation + Contact (stack on mobile, three columns on desktop) -->
         <div class="footer-grid">
             <div class="footer-brand" aria-labelledby="footer-brand-title">
-                <h5 id="footer-brand-title" class="footer-heading">{% trans 'Parco Letterario Giovanni Verga e Luigi Capuana' %}</h5>
-                <p class="footer-text">{% trans 'I luoghi del Verismo: un viaggio nei paesaggi e nelle comunità che hanno ispirato i capolavori di Giovanni Verga e Luigi Capuana' %}</p>
+                <h5 id="footer-brand-title" class="footer-heading">{% trans 'Parco Letterario® Giovanni Verga e Luigi Capuana' %}</h5>
+                <p class="footer-text">{% trans '“I luoghi del Verismo a Vizzini, Mineo e Licodia Eubea”' %}</p>
                 <div class="social-links" aria-label="Social links">
-                    <a href="https://www.facebook.com/versoilparcoletterariodelverismo/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook">
+                    <a href="https://www.facebook.com/ParcoLetterarioGiovanniVergaeLuigiCapuana" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook">
                         <i class="bi bi-facebook" aria-hidden="true"></i>
                         <span class="visually-hidden">Facebook</span>
                     </a>
@@ -54,7 +54,7 @@
                     </div>
                     <div>
                         <i class="bi bi-envelope-fill footer-icon" aria-hidden="true"></i>
-                        <a href="mailto:info@centrostudicesta.it" class="footer-link">info@centrostudicesta.it</a>
+                        <a href="mailto:info@parcovergacapuana.it" class="footer-link">info@parcovergacapuana.it</a>
                     </div>
                     <div>
                         <i class="bi bi-telephone-fill footer-icon" aria-hidden="true"></i>
@@ -67,18 +67,19 @@
         <!-- Logos row (compact, wraps as needed) -->
         <div class="footer-logos-wrap">
             <div class="footer-logos" role="group" aria-label="Partner logos">
-                <img src="{% static 'assets/img/logo-header.png' %}" alt="{% trans 'Logo Parco Verismo' %}" class="footer-logo">
-                <img src="{% static 'assets/img/loghi/LogoRegione2.png' %}" alt="{% trans 'Logo Regione' %}" class="footer-logo">
-                <img src="{% static 'assets/img/loghi/LogoVizzini3.png' %}" alt="{% trans 'Logo Vizzini' %}" class="footer-logo">
-                <img src="{% static 'assets/img/loghi/LogoMineo4.png' %}" alt="{% trans 'Logo Mineo' %}" class="footer-logo">
-                <img src="{% static 'assets/img/loghi/LogoLicodiaEubea5.png' %}" alt="{% trans 'Logo Licodia Eubea' %}" class="footer-logo">
-                <img src="{% static 'assets/img/loghi/LogoCesta6.png' %}" alt="{% trans 'Logo Cesta' %}" class="footer-logo footer-logo-large">
+                <img src="{% static 'assets/img/loghi/partner/LogoRegione2.png' %}" alt="{% trans 'Logo Regione' %}" class="footer-logo logo-regione">
+                <img src="{% static 'assets/img/loghi/network/logo-parchi-letterari.png' %}" alt="{% trans 'Logo Parchi Letterari' %}" class="footer-logo logo-parchi-naz">
+                <img src="{% static 'assets/img/loghi/parco/logo-parco-black.png' %}" alt="{% trans 'Logo Parco Verga e Capuana' %}" class="footer-logo logo-parco-local">
+                <img src="{% static 'assets/img/loghi/partner/LogoVizzini3.png' %}" alt="{% trans 'Logo Vizzini' %}" class="footer-logo logo-vizzini">
+                <img src="{% static 'assets/img/loghi/partner/LogoMineo4.png' %}" alt="{% trans 'Logo Mineo' %}" class="footer-logo logo-mineo">
+                <img src="{% static 'assets/img/loghi/partner/LogoLicodiaEubea5.png' %}" alt="{% trans 'Logo Licodia Eubea' %}" class="footer-logo logo-licodia">
+                <img src="{% static 'assets/img/loghi/partner/LogoCesta6.png' %}" alt="{% trans 'Logo Cesta' %}" class="footer-logo logo-cesta">
             </div>
         </div>
 
         <!-- Bottom bar: small and compact -->
         <div class="footer-bottom">
-            <p class="mb-0 small footer-text">&copy; {% now "Y" %} {% trans 'Parco Letterario Giovanni Verga Luigi Capuana. Tutti i diritti riservati.' %}</p>
+            <p class="mb-0 small footer-text">&copy; {% now "Y" %} {% trans 'Parco Letterario® Giovanni Verga e Luigi Capuana. Tutti i diritti riservati.' %}</p>
             <div class="footer-links small">
                 <a href="{% url 'privacy_policy' %}" class="footer-link">{% trans 'Privacy' %}</a>
                 <a href="{% url 'cookie_policy' %}" class="footer-link">{% trans 'Cookie' %}</a>

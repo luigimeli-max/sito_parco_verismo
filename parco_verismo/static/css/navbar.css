@@ -77,7 +77,16 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
 
 .logo-header {
     height: 4rem;
-    transition: height var(--transition-base), opacity var(--transition-base);
+    transition: height var(--transition-base);
+}
+
+/* Dual logo layout - Parchi Letterari is smaller */
+.logo-header.logo-parchi {
+    height: 3rem;
+}
+
+.logo-header.logo-parco {
+    height: 4rem;
 }
 
 /* Logo nero nelle pagine non-homepage */
@@ -85,8 +94,16 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
     height: 3rem;
 }
 
+#mainNav.navbar-dark-pages .logo-header.logo-parchi {
+    height: 2.5rem;
+}
+
 #mainNav.navbar-scrolled .logo-header {
     height: 3rem;
+}
+
+#mainNav.navbar-scrolled .logo-header.logo-parchi {
+    height: 2.5rem;
 }
 
 /* Link della navbar */
@@ -430,4 +447,35 @@ body.transparent-nav #mainNav.navbar-scrolled .navbar-brand {
     #mainNav .navbar-nav .nav-link::after {
         display: none;
     }
+}
+
+/* Logo Toggling Logic */
+/* Default (Transparent): Show White, Hide Black/Color */
+.logo-header.logo-white {
+    display: block;
+}
+
+.logo-header.logo-black,
+.logo-header.logo-color {
+    display: none;
+}
+
+/* Scrolled (Solid): Hide White, Show Black/Color */
+#mainNav.navbar-scrolled .logo-header.logo-white {
+    display: none;
+}
+
+#mainNav.navbar-scrolled .logo-header.logo-black,
+#mainNav.navbar-scrolled .logo-header.logo-color {
+    display: block;
+}
+
+/* Ensure darker pages (always solid) show Black/Color logo */
+#mainNav.navbar-dark-pages .logo-header.logo-white {
+    display: none;
+}
+
+#mainNav.navbar-dark-pages .logo-header.logo-black,
+#mainNav.navbar-dark-pages .logo-header.logo-color {
+    display: block;
 }
