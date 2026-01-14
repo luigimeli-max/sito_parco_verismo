@@ -465,11 +465,21 @@
             var playPromise = video.play();
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
-                    // Autoplay started!
+                    console.log("Video autoplay started successfully");
                 }).catch(error => {
-                    console.log("Auto-play was prevented. Attempting mute-and-play workaround.", error);
+                    console.error("Auto-play error details:", error);
+                    console.log("Error Name:", error.name);
+                    console.log("Error Message:", error.message);
+                    
+                    if (error.name === 'NotAllowedError') {
+                        console.log("Autoplay blocked by browser policy (user interaction required).");
+                    } else if (error.name === 'AbortError') {
+                        console.log("Autoplay aborted (loading issue?).");
+                    }
+
+                    // Fallback attempt
                     video.muted = true;
-                    video.play().catch(e => console.log("Still failed to play video", e));
+                    video.play().catch(e => console.error("Fallback mute-and-play also failed:", e));
                 });
             }
         }

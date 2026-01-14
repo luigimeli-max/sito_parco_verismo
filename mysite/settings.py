@@ -216,12 +216,17 @@ PARLER_DEFAULT_LANGUAGE_CODE = "it"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+
 STATIC_URL = config("STATIC_URL", default="/static/")
 STATIC_ROOT = config("STATIC_ROOT", default=BASE_DIR / "staticfiles")
 
 STATICFILES_DIRS = [
     BASE_DIR / "parco_verismo" / "static",
 ]
+
+# Whitenoise configuration for development (ensures consistent behavior including Range requests)
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = True
 
 # Media files (User uploads) - Organizzati per tipo
 MEDIA_URL = config("MEDIA_URL", default="/media/")
